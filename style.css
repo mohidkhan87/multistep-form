@@ -4,23 +4,23 @@ body {
 }
 #wrapper {
   display: flex;
+  gap: 50px;
   justify-content: center;
-  gap: 40px;
-  padding: 50px;
+  padding: 20px 50px;
 }
 
 /*****************************************************
                     Steps Header
 ******************************************************/
 #wrapper .steps-wrapper {
-  border: 1px solid grey;
-  border-radius: 10px;
-  width: 465px;
+  border: 1px solid #e5e5e5;
   padding: 10px;
+  flex: 1;
 }
 #wrapper h1 {
   text-align: center;
   font-weight: normal;
+  margin: 12px 0px;
 }
 #wrapper .step-app > .step-steps {
   margin: 0;
@@ -33,59 +33,47 @@ body {
 #wrapper .step-app > .step-steps > li {
   list-style: none;
   flex: 1;
-  flex-shrink: 0;
-  flex-grow: 0;
   cursor: pointer;
   display: block;
-  /* padding: 10px; */
-  color: #333;
+  color: #333333;
   background-color: #e5e5e5;
   text-decoration: none;
 }
 #wrapper .step-app > .step-steps > li:hover {
-  background-color: #ddd;
-}
-#wrapper .step-app > .step-steps > li:last-child a {
-  border: none;
-}
-#wrapper .step-app > .step-steps > li.active {
-  /* border: 2px solid blue; */
-  padding: 0;
-}
-#wrapper .step-app > .step-steps > li.error .step .bullet {
-  background-color: #e7505a;
-  color: white;
+  background-color: #dddddd;
 }
 #wrapper .step-app > .step-steps > li.done {
   padding: 0;
   margin: 0;
 }
-.step-app > .step-steps > li > .step {
-  /* display: flex;
+#wrapper .step-app > .step-steps > li > .step {
+  display: flex;
   justify-content: center;
-  align-items: center; */
-  /* border: 1px solid green; */
+  align-items: center;
+  flex-direction: column;
 }
-.step-app > .step-steps > li > .step .title {
+#wrapper .step-app > .step-steps > li > .step .title {
   height: 60px;
-  width: 85px;
+  width: 100%;
   margin: 0;
-  padding-right: 3px;
   text-align: center;
-  /* border: 1px solid red; */
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
-/* step-app > .step-steps > li.active > .step .title, */
-step-app > .step-steps > li.done > .step .title p {
+#wrapper .step-app > .step-steps > li > .step .title p {
+  margin:0;
+}
+#wrapper .step-app > .step-steps > li.done > .step .title p {
   color: blue;
 }
-.step-app > .step-steps > li > .step .bullet {
+#wrapper .step-app > .step-steps > li > .step .bullet {
   position: relative;
   background-color: lightgrey;
   color: grey;
-  /* border: 1px solid green; */
   height: 30px;
   width: 30px;
-  margin: 0 auto;
+  margin: 0 auto 10px auto;
   border-radius: 50%;
   border: none;
   padding: 8px;
@@ -94,26 +82,43 @@ step-app > .step-steps > li.done > .step .title p {
   align-items: center;
   transition: all 0.3s;
 }
-.step-app > .step-steps > li.done > .step .bullet,
-.step-app > .step-steps > li.active > .step .bullet {
+#wrapper .step-app > .step-steps > li.done > .step .bullet,
+#wrapper .step-app > .step-steps > li.active > .step .bullet {
   background-color: rgb(9, 9, 122);
   color: white;
   transition: all 0.6s;
 }
-
-.step-app > .step-steps > li.done > .step .bullet:after {
+#wrapper .step-app > .step-steps > li.done > .step .bullet:after {
   content: "";
   position: absolute;
   top: 50%;
   left: 100%;
   height: 3px;
-  width: 55px;
+  width: 80px;
   background-color: rgb(9, 9, 122);
-  transition: scaleX(0);
   transform-origin: left;
   animation: animate 0.6s;
 }
-
+#wrapper .step-app > .step-steps > li:last-child > .step .bullet:after {
+  display: none;
+}
+#wrapper .step-app > .step-steps > li.error > .step > .bullet {
+  background-color: #e7505a;
+  color: white;
+}
+#wrapper .step-app > .step-steps > li > .step .bullet .check {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+#wrapper .step-app > .step-steps > li.done > .step .bullet span {
+  display: none;
+}
+#wrapper .step-app > .step-steps > li.done > .step .bullet .check {
+  display: block;
+}
 @keyframes animate {
   0% {
     transform: scaleX(0);
@@ -122,26 +127,6 @@ step-app > .step-steps > li.done > .step .title p {
     transform: scaleX(1);
   }
 }
-
-/* .step-app > .step-steps > li:last-child > .step .bullet:before, */
-.step-app > .step-steps > li:last-child > .step .bullet:after {
-  display: none;
-}
-
-.step-app > .step-steps > li > .step .bullet .check {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: none;
-}
-.step-app > .step-steps > li.done > .step .bullet span {
-  display: none;
-}
-.step-app > .step-steps > li.done > .step .bullet .check {
-  display: block;
-}
-
 /*****************************************************
                     Steps Content
 ******************************************************/
@@ -153,9 +138,8 @@ step-app > .step-steps > li.done > .step .title p {
 #wrapper .step-app > .step-content > .step-tab-panel {
   display: none;
 }
-
 .step-app > .step-content > .step-tab-panel .options {
-  margin: 2.5rem 0;
+  margin: 24px 0;
   display: flex;
   gap: 1rem;
 }
@@ -249,7 +233,6 @@ step-app > .step-steps > li.done > .step .title p {
   padding: 13px 16px;
   width: 100%;
   box-sizing: border-box;
-  border-radius: 5px;
   border: 1px solid silver;
   margin: 5px 0;
 }
@@ -298,10 +281,15 @@ step-app > .step-steps > li.done > .step .title p {
 #wrapper .step-app > .step-footer > .step-btn:hover {
   box-shadow: 0 0 0 2px white, 0 0 0 3px rgb(9, 9, 122);
 }
+/* Step 3 */
+#wrapper .step-app .step-content .step-tab-panel .loan-currency-wrapper{
+  display:flex;
+  gap:10px;
+}
 /*****************************************************
                     Display Section
 ******************************************************/
 #wrapper .display-wrapper {
   border: 1px solid red;
-  width: 500px;
+  flex: 1;
 }
