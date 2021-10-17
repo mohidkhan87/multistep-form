@@ -1,98 +1,307 @@
-body{
-    margin:0;
-    font-family: 'Calibri';
+body {
+  margin: 0;
+  font-family: "Calibri";
 }
-#wrapper{
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-gap: 40px;
-    padding:50px
+#wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 50px;
 }
+
 /*****************************************************
                     Steps Header
 ******************************************************/
-#wrapper .steps-wrapper{
-    border: 1px solid red;
+#wrapper .steps-wrapper {
+  border: 1px solid grey;
+  border-radius: 10px;
+  width: 465px;
+  padding: 10px;
 }
-#wrapper h1{
-    text-align:center;
+#wrapper h1 {
+  text-align: center;
+  font-weight: normal;
 }
 #wrapper .step-app > .step-steps {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    border-radius: 3px 3px 0 0;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
 }
 #wrapper .step-app > .step-steps > li {
-    list-style: none;
-    flex: 1;
-    cursor: pointer;
-    display: block;
-    padding: 10px;
-    color: #333;
-    background-color: #e5e5e5;
-    text-decoration: none;
-    border-right: 1px solid #fff;
+  list-style: none;
+  flex: 1;
+  flex-shrink: 0;
+  flex-grow: 0;
+  cursor: pointer;
+  display: block;
+  /* padding: 10px; */
+  color: #333;
+  background-color: #e5e5e5;
+  text-decoration: none;
 }
 #wrapper .step-app > .step-steps > li:hover {
-    background-color: #ddd;
+  background-color: #ddd;
 }
 #wrapper .step-app > .step-steps > li:last-child a {
-    border: none;
+  border: none;
 }
 #wrapper .step-app > .step-steps > li.active {
-    background-color: #32c5d2;
-    color: #fff;
+  /* border: 2px solid blue; */
+  padding: 0;
 }
-#wrapper .step-app > .step-steps > li.error {
-    background-color: #e7505a;
-    color: #fff;
+#wrapper .step-app > .step-steps > li.error .step .bullet {
+  background-color: #e7505a;
+  color: white;
 }
 #wrapper .step-app > .step-steps > li.done {
-    background-color: #3cb371;
-    color: #fff;
+  padding: 0;
+  margin: 0;
 }
-#wrapper .step-app > .step-steps > li > .number {
-    background: #fff;
-    padding: 0 8px;
-    display: inline-block;
-    text-align: center;
-    margin-right: 15px;
-    border-radius: 3px;
-    color: #333;
+.step-app > .step-steps > li > .step {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  /* border: 1px solid green; */
 }
+.step-app > .step-steps > li > .step .title {
+  height: 60px;
+  width: 85px;
+  margin: 0;
+  padding-right: 3px;
+  text-align: center;
+  /* border: 1px solid red; */
+}
+/* step-app > .step-steps > li.active > .step .title, */
+step-app > .step-steps > li.done > .step .title p {
+  color: blue;
+}
+.step-app > .step-steps > li > .step .bullet {
+  position: relative;
+  background-color: lightgrey;
+  color: grey;
+  /* border: 1px solid green; */
+  height: 30px;
+  width: 30px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: none;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+}
+.step-app > .step-steps > li.done > .step .bullet,
+.step-app > .step-steps > li.active > .step .bullet {
+  background-color: rgb(9, 9, 122);
+  color: white;
+  transition: all 0.6s;
+}
+
+.step-app > .step-steps > li.done > .step .bullet:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  height: 3px;
+  width: 55px;
+  background-color: rgb(9, 9, 122);
+  transition: scaleX(0);
+  transform-origin: left;
+  animation: animate 0.6s;
+}
+
+@keyframes animate {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* .step-app > .step-steps > li:last-child > .step .bullet:before, */
+.step-app > .step-steps > li:last-child > .step .bullet:after {
+  display: none;
+}
+
+.step-app > .step-steps > li > .step .bullet .check {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+.step-app > .step-steps > li.done > .step .bullet span {
+  display: none;
+}
+.step-app > .step-steps > li.done > .step .bullet .check {
+  display: block;
+}
+
 /*****************************************************
                     Steps Content
 ******************************************************/
 #wrapper .step-app > .step-content {
-    border: 1px solid #e5e5e5;
-    padding: 10px;
-    border-top: 0;
+  border: 1px solid #e5e5e5;
+  padding: 10px;
+  border-top: 0;
 }
 #wrapper .step-app > .step-content > .step-tab-panel {
-    display: none;
+  display: none;
+}
+
+.step-app > .step-content > .step-tab-panel .options {
+  margin: 2.5rem 0;
+  display: flex;
+  gap: 1rem;
+}
+.step-content > .step-tab-panel .options .field {
+  position: relative;
+  /* border: 1px solid green; */
+  z-index: 9;
+}
+.step-app > .step-content > .step-tab-panel .legal-form1,
+.step-app > .step-content > .step-tab-panel .legal-form {
+  display: block;
+}
+
+.step-app > .step-content > .step-tab-panel .individual-form1,
+.step-app > .step-content > .step-tab-panel .individual-form {
+  display: none;
+}
+
+/* ================== */
+/*==== Toggle Sections ====*/
+/* =================== */
+
+/* ================== */
+.step-content > .step-tab-panel .options .field input[type="radio"] {
+  position: absolute;
+  visibility: hidden;
+}
+.step-content > .step-tab-panel .options .field label {
+  cursor: pointer;
+  margin-left: 1.5rem;
+  -webkit-transition: all 0.25s linear;
+}
+.step-content > .step-tab-panel .options .field:hover label {
+  color: rgb(9, 9, 122);
+}
+.step-content > .step-tab-panel .options .field .custom-radio {
+  position: absolute;
+  border: 2px solid #aaaaaa;
+  border-radius: 50%;
+  height: 12px;
+  width: 12px;
+  top: 50%;
+  left: 0px;
+  transform: translateY(-50%);
+  transition: border 0.25s linear;
+  -webkit-transition: border 0.25s linear;
+}
+
+.step-content > .step-tab-panel .options .field:hover .custom-radio {
+  border: 2px solid rgb(9, 9, 122);
+  display: flex;
+}
+
+.step-content > .step-tab-panel .options .field .custom-radio::before {
+  display: block;
+  position: absolute;
+  content: "";
+  border-radius: 100%;
+  height: 8px;
+  width: 8px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  transition: background 0.25s linear;
+  -webkit-transition: background 0.25s linear;
+}
+
+.step-tab-panel .options .field input[type="radio"]:checked ~ .custom-radio {
+  border: 2px solid rgb(9, 9, 122);
+}
+
+.step-tab-panel .options .field input[type="radio"]:checked ~ label {
+  color: rgb(9, 9, 122);
+}
+
+.step-tab-panel
+  .options
+  .field
+  input[type="radio"]:checked
+  ~ .custom-radio::before {
+  background-color: rgb(9, 9, 122);
+}
+
+.step-app > .step-content > .step-tab-panel form p {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.step-app > .step-content > .step-tab-panel form input {
+  padding: 13px 16px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid silver;
+  margin: 5px 0;
+}
+.step-app > .step-content > .step-tab-panel form select {
+  padding: 13px 16px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid silver;
+  margin: 5px 0;
+}
+.step-app > .step-content > .step-tab-panel form select:focus {
+  outline: 0;
+  box-shadow: none;
+  border: 1px solid rgb(9, 9, 122);
+}
+.step-content > .step-tab-panel form input:focus {
+  border: 1px solid rgb(9, 9, 122);
+  outline: none;
 }
 #wrapper .step-app > .step-content > .step-tab-panel.active {
-    display: block;
+  display: block;
 }
 #wrapper .step-app > .step-footer {
-    margin-top: 15px;
-    margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: end;
+  gap: 8px;
 }
 #wrapper .step-app > .step-footer > .step-btn {
-    padding: 4px 16px;
-    color: #333;
-    text-decoration: none;
-    background: #e5e5e5;
-    border-radius: 3px;
-    border: none;
-    outline: none;
-    cursor: pointer;
+  width: 100%;
+  padding: 13px 16px;
+  text-decoration: none;
+  background: rgb(9, 9, 122);
+  border-radius: 5px;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#wrapper .step-app > .step-footer > .step-btn:hover {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px rgb(9, 9, 122);
 }
 /*****************************************************
                     Display Section
 ******************************************************/
-#wrapper .display-wrapper{
-    border: 1px solid red;
+#wrapper .display-wrapper {
+  border: 1px solid red;
+  width: 500px;
 }
