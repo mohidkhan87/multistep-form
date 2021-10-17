@@ -1,0 +1,98 @@
+body{
+    margin:0;
+    font-family: 'Calibri';
+}
+#wrapper{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 40px;
+    padding:50px
+}
+/*****************************************************
+                    Steps Header
+******************************************************/
+#wrapper .steps-wrapper{
+    border: 1px solid red;
+}
+#wrapper h1{
+    text-align:center;
+}
+#wrapper .step-app > .step-steps {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+}
+#wrapper .step-app > .step-steps > li {
+    list-style: none;
+    flex: 1;
+    cursor: pointer;
+    display: block;
+    padding: 10px;
+    color: #333;
+    background-color: #e5e5e5;
+    text-decoration: none;
+    border-right: 1px solid #fff;
+}
+#wrapper .step-app > .step-steps > li:hover {
+    background-color: #ddd;
+}
+#wrapper .step-app > .step-steps > li:last-child a {
+    border: none;
+}
+#wrapper .step-app > .step-steps > li.active {
+    background-color: #32c5d2;
+    color: #fff;
+}
+#wrapper .step-app > .step-steps > li.error {
+    background-color: #e7505a;
+    color: #fff;
+}
+#wrapper .step-app > .step-steps > li.done {
+    background-color: #3cb371;
+    color: #fff;
+}
+#wrapper .step-app > .step-steps > li > .number {
+    background: #fff;
+    padding: 0 8px;
+    display: inline-block;
+    text-align: center;
+    margin-right: 15px;
+    border-radius: 3px;
+    color: #333;
+}
+/*****************************************************
+                    Steps Content
+******************************************************/
+#wrapper .step-app > .step-content {
+    border: 1px solid #e5e5e5;
+    padding: 10px;
+    border-top: 0;
+}
+#wrapper .step-app > .step-content > .step-tab-panel {
+    display: none;
+}
+#wrapper .step-app > .step-content > .step-tab-panel.active {
+    display: block;
+}
+#wrapper .step-app > .step-footer {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+#wrapper .step-app > .step-footer > .step-btn {
+    padding: 4px 16px;
+    color: #333;
+    text-decoration: none;
+    background: #e5e5e5;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+/*****************************************************
+                    Display Section
+******************************************************/
+#wrapper .display-wrapper{
+    border: 1px solid red;
+}
