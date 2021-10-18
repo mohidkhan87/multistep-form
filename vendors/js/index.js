@@ -5,23 +5,38 @@
 function toggleForm(name) {
   switch (name) {
     case 'legal':
-      $('.legal-form').css('display', 'block');
-      $('.individual-form').css('display', 'none');
+      $('.legal-form').show();
+      $('.individual-form').hide();
       break;
     case 'individual':
-      $('.individual-form').css('display', 'block');
-      $('.legal-form').css('display', 'none');
+      $('.individual-form').show();
+      $('.legal-form').hide();
       break;
     case 'legal-lender':
-      $('.legal-form1').css('display', 'block');
-      $('.individual-form1').css('display', 'none');
+      $('.legal-form1').show();
+      $('.individual-form1').hide();
       break;
     case 'individual-lender':
-      $('.individual-form1').css('display', 'block');
-      $('.legal-form1').css('display', 'none');
+      $('.individual-form1').show();
+      $('.legal-form1').hide();
       break;
 
     default:
       break;
   }
+}
+
+// Handle inputs on change
+
+function inputHandler(e) {
+
+let eventName = e.target.name;
+let eventValue = e.target.value;
+// let selectedText = $(e.val());
+
+// $('#aioConceptName').find(":selected").text();
+
+$('.'+eventName)[0].innerHTML = eventValue
+// console.log($('.'+eventName)[0]);
+  
 }

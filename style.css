@@ -1,10 +1,13 @@
 body {
   margin: 0;
   font-family: "Calibri";
+  background-color: rgb(212, 212, 253);
 }
 #wrapper {
+  max-width: 1370px;
+  margin: 0 auto;
   display: flex;
-  gap: 50px;
+  gap: 10px;
   justify-content: center;
   padding: 20px 50px;
 }
@@ -16,11 +19,13 @@ body {
   border: 1px solid #e5e5e5;
   padding: 10px;
   flex: 1;
+  background-color: white;
+  box-shadow: 10px 15px 50px 5px rgba(0, 0, 0, 0.03);
 }
 #wrapper h1 {
   text-align: center;
   font-weight: normal;
-  margin: 12px 0px;
+  margin: 26px 0px 12px;
 }
 #wrapper .step-app > .step-steps {
   margin: 0;
@@ -53,12 +58,12 @@ body {
   width: 100%;
   margin: 0;
   text-align: center;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #wrapper .step-app > .step-steps > li > .step .title p {
-  margin:0;
+  margin: 0;
 }
 #wrapper .step-app > .step-steps > li.done > .step .title p {
   color: blue;
@@ -276,14 +281,39 @@ body {
   box-shadow: 0 0 0 2px white, 0 0 0 3px rgb(9, 9, 122);
 }
 /* Step 3 */
-#wrapper .step-app .step-content .step-tab-panel .loan-currency-wrapper{
-  display:flex;
-  gap:10px;
+#wrapper .step-app .step-content .step-tab-panel .loan-currency-wrapper {
+  display: flex;
+  gap: 10px;
 }
 /*****************************************************
                     Display Section
 ******************************************************/
 #wrapper .display-wrapper {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem;
+}
+#wrapper .display-wrapper .step-content h2 {
+  font-size: 28px;
+  font-weight: normal;
+}
+
+#wrapper .display-wrapper .step-content section .form-text p {
+  font-size: 25px;
+  font-weight: 300;
+  /* text-align: center; */
+}
+
+#wrapper .display-wrapper .step-content section .form-text p span {
+  font-weight: normal;
+}
+
+#wrapper .display-wrapper .legal-form {
+  display: block;
+}
+#wrapper .display-wrapper .individual-form {
+  display: none;
 }
