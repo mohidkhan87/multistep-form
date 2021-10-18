@@ -32,11 +32,9 @@ function inputHandler(e) {
 
 let eventName = e.target.name;
 let eventValue = e.target.value;
-// let selectedText = $(e.val());
 
-// $('#aioConceptName').find(":selected").text();
+$('.'+eventName)[0].innerHTML = eventValue;
 
-$('.'+eventName)[0].innerHTML = eventValue
 // console.log($('.'+eventName)[0]);
   
 }

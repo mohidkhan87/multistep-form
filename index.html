@@ -76,8 +76,8 @@
             </li>
           </ul>
 
-          <!-- -------  1st Step  ------ -->
           <div class="step-content">
+            <!-- -------  1st Step  ------ -->
             <section class="step-tab-panel" data-step="step1">
               <!-- --------  Radio Buttons  --------- -->
               <div class="options">
@@ -97,12 +97,12 @@
                 </div>
               </div>
               <!------------ Legal Form ------------>
-              <form name="frmInfo" id="" class="legal-form">
+              <form name="frmInfo" id="legalFrm" class="legal-form">
                 <p for="">Company Name</p>
                 <input
                   type="text"
-                  name="companyName"
                   placeholder="Company Name"
+                  name="companyName"
                   onKeyUp="inputHandler(event)"
                   value=""
                   required
@@ -153,33 +153,41 @@
                 />
               </form>
               <!------------ Individual Form ------------>
-              <form name="frmInfo" id="" class="individual-form">
+              <form name="frmInfo" id="individualFrm" class="individual-form">
                 <p for="">First name</p>
                 <input
                   type="text"
-                  name="txtFirstName"
                   placeholder="First name"
+                  name="firstName"
+                  onKeyUp="inputHandler(event)"
+                  value=""
                   required
                 />
                 <p for="">Last name</p>
                 <input
                   type="text"
                   placeholder="Last Name"
-                  name="txtLastName"
+                  name="lastName"
+                  onKeyUp="inputHandler(event)"
+                  value=""
                   required
                 />
                 <p for="">Address</p>
                 <input
                   type="text"
                   placeholder="Address"
-                  name="txtLastName"
+                  name="address"
+                  onKeyUp="inputHandler(event)"
+                  value=""
                   required
                 />
                 <p for="">Defined as..</p>
                 <input
                   type="text"
                   placeholder="Defined as.."
-                  name="txtLastName"
+                  name="definedIndividual"
+                  onKeyUp="inputHandler(event)"
+                  value=""
                   required
                 />
               </form>
@@ -207,30 +215,40 @@
                 </div>
               </div>
               <!------------ Legal Form ------------>
-              <form name="frmInfo" id="frmInfo" class="legal-form1">
+              <form name="frmInfo" id="frmInfo1" class="legal-form1">
                 <p for="">Company Name</p>
                 <input
                   type="text"
-                  name="txtFirstName"
                   placeholder="Company Name"
+                  name="companyName1"
+                  onKeyUp="inputHandler(event)"
+                  value=""
                   required
                 />
                 <p for="">Registered Address</p>
                 <input
                   type="text"
                   placeholder="Registered Address"
-                  name="txtLastName"
+                  onKeyUp="inputHandler(event)"
+                  name="registeredAddress1"
+                  value=""
                   required
                 />
                 <p for="">Registration Number</p>
                 <input
                   type="text"
-                  name="txtFirstName"
                   placeholder="Registration Number"
+                  onKeyUp="inputHandler(event)"
+                  name="registrationNumber1"
+                  value=""
                   required
                 />
                 <p for="">Registration Country</p>
-                <select name="" id="">
+                <select
+                  name="registrationCountry1"
+                  onchange="inputHandler(event)"
+                  required
+                >
                   <option value="Afganistan">Afghanistan</option>
                   <option value="Albania">Albania</option>
                   <option value="Algeria">Algeria</option>
@@ -247,38 +265,48 @@
                 <input
                   type="text"
                   placeholder="Defined as..."
-                  name="txtLastName"
+                  onKeyUp="inputHandler(event)"
+                  name="definedAs1"
+                  value=""
                   required
                 />
               </form>
               <!------------ Individual Form ------------>
-              <form name="frmInfo" id="" class="individual-form1">
+              <form name="frmInfo" id="frmInfo1" class="individual-form1">
                 <p for="">First name</p>
                 <input
                   type="text"
-                  name="txtFirstName"
                   placeholder="First name"
+                  name="firstName1"
+                  onKeyUp="inputHandler(event)"
+                  value=""
                   required
                 />
                 <p for="">Last name</p>
                 <input
                   type="text"
                   placeholder="Last Name"
-                  name="txtLastName"
+                  name="lastName1"
+                  onKeyUp="inputHandler(event)"
+                  value=""
                   required
                 />
                 <p for="">Address</p>
                 <input
                   type="text"
                   placeholder="Address"
-                  name="txtLastName"
+                  name="address1"
+                  onKeyUp="inputHandler(event)"
+                  value=""
                   required
                 />
                 <p for="">Defined as..</p>
                 <input
                   type="text"
                   placeholder="Defined as.."
-                  name="txtLastName"
+                  name="definedIndividual1"
+                  onKeyUp="inputHandler(event)"
+                  value=""
                   required
                 />
               </form>
@@ -289,8 +317,15 @@
               <form name="loan-form" id="loan-form">
                 <p for="">Loan Amount</p>
                 <div class="loan-currency-wrapper">
-                  <input type="text" placeholder="0.00" size="8" />
-                  <select name="" id="">
+                  <input
+                    type="text"
+                    placeholder="0.00"
+                    size="8"
+                    name="loanAmount"
+                    onKeyUp="inputHandler(event)"
+                    value=""
+                  />
+                  <select name="currency" onchange="inputHandler(event)" id="">
                     <option data-symbol="$" data-placeholder="0.00">USD</option>
                     <option data-symbol="€" data-placeholder="0.00">EUR</option>
                     <option data-symbol="£" data-placeholder="0.00">GBP</option>
@@ -306,28 +341,36 @@
                 <input
                   type="text"
                   placeholder="Moratorium"
-                  name="txtPassword"
+                  name="moratorium"
+                  onKeyUp="inputHandler(event)"
+                  value=""
                   required
                 />
                 <p for="">Interest Rate</p>
                 <input
                   type="text"
                   placeholder="Interest Rate"
-                  name="txtPassword"
+                  name="interestRate"
+                  onKeyUp="inputHandler(event)"
+                  value=""
                   required
                 />
                 <p for="">Loan Duration/Maturity Date</p>
                 <input
                   type="text"
                   placeholder="Loan Duration/Maturity Date"
-                  name="txtPassword"
+                  name="loanDuration"
+                  onKeyUp="inputHandler(event)"
+                  value=""
                   required
                 />
                 <p for="">Use of Loan</p>
                 <input
                   type="text"
                   placeholder="Use of Loan"
-                  name="txtPassword"
+                  name="loanUse"
+                  onKeyUp="inputHandler(event)"
+                  value=""
                   required
                 />
               </form>
@@ -340,7 +383,9 @@
                 <input
                   type="text"
                   placeholder="Recitals"
-                  name="txtEmail"
+                  name="recitals"
+                  onKeyUp="inputHandler(event)"
+                  value=""
                   required
                 />
               </form>
@@ -353,14 +398,18 @@
                 <input
                   type="text"
                   placeholder="Definitions"
-                  name="txtMobileNum"
+                  name="definition"
+                  onKeyUp="inputHandler(event)"
+                  value=""
                   required
                 />
                 <p for="">Meaning</p>
                 <input
                   type="text"
                   placeholder="Meaning"
-                  name="txtMobileNum"
+                  name="meaning"
+                  onKeyUp="inputHandler(event)"
+                  value=""
                   required
                 />
               </form>
@@ -378,32 +427,102 @@
       <div class="display-wrapper">
         <div class="step-content">
           <h2>THIS AGREEMENT is made this….. day of ……. 20____ between:</h2>
-          <section class="step-tab-panel legal-form" data-step="step1">
+
+          <!-- ------  1st Step  -------  -->
+          <section class="step-tab-panel" data-step="step1">
+            <div class="legal-form">
+              <div class="form-text">
+                <p>
+                  <span class="companyName">INPUT 1 LIMITED</span>, a company
+                  incorporated under the laws of
+                  <span class="registrationCountry">INPUT 4</span> having its
+                  registered address at
+                  <span class="registeredAddress">INPUT 2</span> and have in its
+                  registration number as
+                  <span class="registrationNumber">INPUT 3</span> (hereinafter
+                  referred to as the "<span class="definedAs">INPUT 5</span>")
+                  of the first part;
+                </p>
+              </div>
+            </div>
+
+            <div class="individual-form">
+              <div class="form-text">
+                <p>
+                  <span class="firstName">INPUT 1 </span>
+                  <span class="lastName">INPUT 2</span> of
+                  <span class="address">INPUT 3</span> (hereinafter referred to
+                  as the "<span class="definedIndividual">INPUT 4</span>") of
+                  the second part;
+                </p>
+              </div>
+            </div>
+          </section>
+          <!-- ------  2nd Step  -------  -->
+          <section class="step-tab-panel" data-step="step2">
+            <h2>Step 2</h2>
+            <div class="legal-form1">
+              <div class="form-text">
+                <p>
+                  <span class="companyName1">INPUT 1 LIMITED</span>, a company
+                  incorporated under the laws of
+                  <span class="registrationCountry1">INPUT 4</span> having its
+                  registered address at
+                  <span class="registeredAddress1">INPUT 2</span> and have in
+                  its registration number as
+                  <span class="registrationNumber1">INPUT 3</span> (hereinafter
+                  referred to as the "<span class="definedAs1">INPUT 5</span>")
+                  of the first part;
+                </p>
+              </div>
+            </div>
+
+            <div class="individual-form1">
+              <div class="form-text">
+                <p>
+                  <span class="firstName1">INPUT 1 </span>
+                  <span class="lastName1">INPUT 2</span> of
+                  <span class="address1">INPUT 3</span> (hereinafter referred to
+                  as the "<span class="definedIndividual1">INPUT 4</span>") of
+                  the second part;
+                </p>
+              </div>
+            </div>
+          </section>
+          <!-- ------  3rd Step ------ -->
+          <section class="step-tab-panel" data-step="step3">
+            <h2>Step 3</h2>
             <div class="form-text">
               <p>
-                <span class="companyName">INPUT 1 LIMITED</span>, a company
-                incorporated under the laws of
-                <span class="registrationCountry">INPUT 4</span> having its
-                registered address at
-                <span class="registeredAddress">INPUT 2</span> and have in its
-                registration number as
-                <span class="registrationNumber">INPUT 3</span> (hereinafter
-                referred to as the <span class="definedAs">“INPUT 5”</span>) of
-                the first part;
+                “Loan” means <span class="currency">[CURRENCY]</span>
+                <span class="loanAmount">INPUT 1</span> <br />“Moratorium” means
+                <span class="moratorium">INPUT 2</span> <br />“Interest Rate”
+                means <span class="interestRate">INPUT 3</span> <br />“Loan
+                Duration” means <span class="loanDuration">INPUT 4</span>
+                <br />“Use of Loan” means
+                <span class="loanUse">INPUT 5</span>
               </p>
+            </div>
+          </section>
+          <!-- ------  4th Step ------ -->
+          <section class="step-tab-panel" data-step="step4">
+            <h2>Recitals</h2>
+            <div class="form-text">
+              <span class="recitals">INPUT Recitals</span>
+            </div>
+          </section>
+          <!-- ------  5th Step ------ -->
+          <section class="step-tab-panel" data-step="step5">
+            <h2>Definitions</h2>
+            <div class="form-text">
+              <div class="form-table">
+                <p class="definition">INPUT Definition</p>
+                <p class="meaning">INPUT Meaning</p>
+              </div>
             </div>
           </section>
 
-          <!-- ------  2nd Step  -------  -->
-          <section class="step-tab-panel individual-form" data-step="step2">
-            <div class="form-text">
-              <p>
-                <span>INPUT 1 + INPUT 2</span> of
-                <span>INPUT 3</span> (hereinafter referred to as the
-                <span>“INPUT 4”</span>) of the second part;
-              </p>
-            </div>
-          </section>
+          <!--  -->
         </div>
       </div>
     </div>
@@ -413,8 +532,14 @@
     <script src="vendors/jquery-steps/jquery-steps.min.js"></script>
     <script src="vendors/js/index.js"></script>
     <script>
-      var frmInfo = $("#frmInfo");
-      var frmInfoValidator = frmInfo.validate();
+      var legalFrm = $("#legalFrm");
+      var legalFrmValidator = legalFrm.validate();
+
+      var individualFrm = $("#individualFrm");
+      var individualFrmValidator = individualFrm.validate();
+
+      var frmInfo1 = $("#frmInfo1");
+      var frmInfoValidator = frmInfo1.validate();
 
       var frmLogin = $("#frmLogin");
       var frmLoginValidator = frmLogin.validate();
@@ -423,12 +548,24 @@
       var frmMobileValidator = frmMobile.validate();
 
       $("#demo").steps({
-        transitionEffect: "fade",
+        transitionEffect: 2,
+        transitionEffectSpeed: 200,
         onChange: function (currentIndex, newIndex, stepDirection) {
+          // step1
+          if (currentIndex === 0) {
+            if (stepDirection === "forward") {
+              return legalFrm.valid();
+              return individualFrm.valid();
+            }
+            if (stepDirection === "backward") {
+              legalFrmValidator.resetForm();
+              individualFrmValidator.resetForm();
+            }
+          }
           // step2
           if (currentIndex === 1) {
             if (stepDirection === "forward") {
-              return frmInfo.valid();
+              return frmInfo1.valid();
             }
             if (stepDirection === "backward") {
               frmInfoValidator.resetForm();
