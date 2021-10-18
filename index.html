@@ -1,97 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mulit Step Form</title>
-    <!-- <link rel="stylesheet" href="vendors/font-awesome/all.css" /> -->
-    <link
-      rel="stylesheet"
-      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
-    <div id="wrapper">
-      <div class="steps-wrapper">
-        <h1>Loan Agreement</h1>
-        <div class="step-app" id="demo">
-          <ul class="step-steps">
-            <li data-step-target="step1">
-              <div class="step">
-                <div class="title">
-                  <p>Borrower Info</p>
-                </div>
-                <div class="bullet">
-                  <span class="fas fa-hand-holding-usd"></span>
-                  <div class="check fas fa-check"></div>
-                </div>
-              </div>
-            </li>
-            <li data-step-target="step2">
-              <div class="step">
-                <div class="title">
-                  <p>Lender Info</p>
-                </div>
-                <div class="bullet">
-                  <span class="fas fa-dollar-sign"></span>
-                  <div class="check fas fa-check"></div>
-                </div>
-              </div>
-            </li>
-            <li data-step-target="step3">
-              <div class="step">
-                <div class="title">
-                  <p>Loan Info</p>
-                </div>
-                <div class="bullet">
-                  <span class="fas fa-search-dollar"></span>
-                  <div class="check fas fa-check"></div>
-                </div>
-              </div>
-            </li>
-            <li data-step-target="step4">
-              <div class="step">
-                <div class="title">
-                  <p>Recitals</p>
-                </div>
-                <div class="bullet">
-                  <span class="fas fa-user-ninja"></span>
-                  <div class="check fas fa-check"></div>
-                </div>
-              </div>
-            </li>
-            <li data-step-target="step5">
-              <div class="step">
-                <div class="title">
-                  <p>Definitions</p>
-                </div>
-                <div class="bullet">
-                  <span class="fas fa-handshake"></span>
-                  <div class="check fas fa-check"></div>
-                </div>
-              </div>
-            </li>
-          </ul>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mulit Step Form</title>
+  <!-- <link rel="stylesheet" href="vendors/font-awesome/all.css" /> -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-          <div class="step-content">
-            <!-- -------  1st Step  ------ -->
-            <section class="step-tab-panel" data-step="step1">
+<body>
+  <div id="wrapper">
+    <div class="steps-wrapper">
+      <h1>Loan Agreement</h1>
+      <div class="step-app" id="demo">
+        <ul class="step-steps">
+          <li data-step-target="step1">
+            <div class="step">
+              <div class="title">
+                <p>Borrower Info</p>
+              </div>
+              <div class="bullet">
+                <span class="fas fa-hand-holding-usd"></span>
+                <div class="check fas fa-check"></div>
+              </div>
+            </div>
+          </li>
+          <li data-step-target="step2">
+            <div class="step">
+              <div class="title">
+                <p>Lender Info</p>
+              </div>
+              <div class="bullet">
+                <span class="fas fa-dollar-sign"></span>
+                <div class="check fas fa-check"></div>
+              </div>
+            </div>
+          </li>
+          <li data-step-target="step3">
+            <div class="step">
+              <div class="title">
+                <p>Loan Info</p>
+              </div>
+              <div class="bullet">
+                <span class="fas fa-search-dollar"></span>
+                <div class="check fas fa-check"></div>
+              </div>
+            </div>
+          </li>
+          <li data-step-target="step4">
+            <div class="step">
+              <div class="title">
+                <p>Recitals</p>
+              </div>
+              <div class="bullet">
+                <span class="fas fa-user-ninja"></span>
+                <div class="check fas fa-check"></div>
+              </div>
+            </div>
+          </li>
+          <li data-step-target="step5">
+            <div class="step">
+              <div class="title">
+                <p>Definitions</p>
+              </div>
+              <div class="bullet">
+                <span class="fas fa-handshake"></span>
+                <div class="check fas fa-check"></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="step-content">
+          <!-- -------  1st Step  ------ -->
+          <section class="step-tab-panel" data-step="step1">
+            <div class="dynamic-section-1">
               <!-- --------  Radio Buttons  --------- -->
               <div class="options">
                 <div class="legal field">
                   <input type="radio" id="legal-btn" name="choose" checked />
-                  <label for="legal-btn" onclick="toggleForm('legal')"
-                    >Legal Entity</label
-                  >
+                  <label for="legal-btn" onclick="toggleForm('legal')">Legal Entity</label>
                   <div class="custom-radio"></div>
                 </div>
                 <div class="individual field">
                   <input type="radio" id="individual-btn" name="choose" />
-                  <label for="individual-btn" onclick="toggleForm('individual')"
-                    >Individual
+                  <label for="individual-btn" onclick="toggleForm('individual')">Individual
                   </label>
                   <div class="custom-radio"></div>
                 </div>
@@ -99,37 +95,16 @@
               <!------------ Legal Form ------------>
               <form name="frmInfo" id="legalFrm" class="legal-form">
                 <p for="">Company Name</p>
-                <input
-                  type="text"
-                  placeholder="Company Name"
-                  name="companyName"
-                  onKeyUp="inputHandler(event)"
-                  value=""
-                  required
-                />
+                <input type="text" placeholder="Company Name" name="companyName" onKeyUp="inputHandler(event)" value=""
+                  required />
                 <p for="">Registered Address</p>
-                <input
-                  type="text"
-                  placeholder="Registered Address"
-                  onKeyUp="inputHandler(event)"
-                  name="registeredAddress"
-                  value=""
-                  required
-                />
+                <input type="text" placeholder="Registered Address" onKeyUp="inputHandler(event)"
+                  name="registeredAddress" value="" required />
                 <p for="">Registration Number</p>
-                <input
-                  type="text"
-                  placeholder="Registration Number"
-                  onKeyUp="inputHandler(event)"
-                  name="registrationNumber"
-                  value=""
-                  required
-                />
+                <input type="text" placeholder="Registration Number" onKeyUp="inputHandler(event)"
+                  name="registrationNumber" value="" required />
                 <p for="">Registration Country</p>
-                <select
-                  name="registrationCountry"
-                  onchange="inputHandler(event)"
-                >
+                <select name="registrationCountry" onchange="inputHandler(event)">
                   <option value="Afganistan">Afghanistan</option>
                   <option value="Albania">Albania</option>
                   <option value="Algeria">Algeria</option>
@@ -143,481 +118,265 @@
                   <option value="Aruba">Aruba</option>
                 </select>
                 <p for="">Defined as...</p>
-                <input
-                  type="text"
-                  placeholder="Defined as..."
-                  onKeyUp="inputHandler(event)"
-                  name="definedAs"
-                  value=""
-                  required
-                />
+                <input type="text" placeholder="Defined as..." onKeyUp="inputHandler(event)" name="definedAs" value=""
+                  required />
               </form>
               <!------------ Individual Form ------------>
               <form name="frmInfo" id="individualFrm" class="individual-form">
                 <p for="">First name</p>
-                <input
-                  type="text"
-                  placeholder="First name"
-                  name="firstName"
-                  onKeyUp="inputHandler(event)"
-                  value=""
-                  required
-                />
+                <input type="text" placeholder="First name" name="firstName" onKeyUp="inputHandler(event)" value=""
+                  required />
                 <p for="">Last name</p>
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  name="lastName"
-                  onKeyUp="inputHandler(event)"
-                  value=""
-                  required
-                />
+                <input type="text" placeholder="Last Name" name="lastName" onKeyUp="inputHandler(event)" value=""
+                  required />
                 <p for="">Address</p>
-                <input
-                  type="text"
-                  placeholder="Address"
-                  name="address"
-                  onKeyUp="inputHandler(event)"
-                  value=""
-                  required
-                />
+                <input type="text" placeholder="Address" name="address" onKeyUp="inputHandler(event)" value=""
+                  required />
                 <p for="">Defined as..</p>
-                <input
-                  type="text"
-                  placeholder="Defined as.."
-                  name="definedIndividual"
-                  onKeyUp="inputHandler(event)"
-                  value=""
-                  required
-                />
+                <input type="text" placeholder="Defined as.." name="definedIndividual" onKeyUp="inputHandler(event)"
+                  value="" required />
               </form>
-            </section>
-
-            <!-- ------  2nd Step  -------  -->
-            <section class="step-tab-panel" data-step="step2">
-              <!-- --------  Radio Buttons  --------- -->
-              <div class="options">
-                <div class="legal field">
-                  <input type="radio" id="legal-btn1" name="choose1" checked />
-                  <label for="legal-btn1" onclick="toggleForm('legal-lender')"
-                    >Legal Entity</label
-                  >
-                  <div class="custom-radio"></div>
-                </div>
-                <div class="individual field">
-                  <input type="radio" id="individual-btn1" name="choose1" />
-                  <label
-                    for="individual-btn1"
-                    onclick="toggleForm('individual-lender')"
-                    >Individual
-                  </label>
-                  <div class="custom-radio"></div>
-                </div>
-              </div>
-              <!------------ Legal Form ------------>
-              <form name="frmInfo" id="legalFrm1" class="legal-form1">
-                <p for="">Company Name</p>
-                <input
-                  type="text"
-                  placeholder="Company Name"
-                  name="companyName1"
-                  onKeyUp="inputHandler(event)"
-                  value=""
-                  required
-                />
-                <p for="">Registered Address</p>
-                <input
-                  type="text"
-                  placeholder="Registered Address"
-                  onKeyUp="inputHandler(event)"
-                  name="registeredAddress1"
-                  value=""
-                  required
-                />
-                <p for="">Registration Number</p>
-                <input
-                  type="text"
-                  placeholder="Registration Number"
-                  onKeyUp="inputHandler(event)"
-                  name="registrationNumber1"
-                  value=""
-                  required
-                />
-                <p for="">Registration Country</p>
-                <select
-                  name="registrationCountry1"
-                  onchange="inputHandler(event)"
-                  required
-                >
-                  <option value="Afganistan">Afghanistan</option>
-                  <option value="Albania">Albania</option>
-                  <option value="Algeria">Algeria</option>
-                  <option value="American Samoa">American Samoa</option>
-                  <option value="Andorra">Andorra</option>
-                  <option value="Angola">Angola</option>
-                  <option value="Anguilla">Anguilla</option>
-                  <option value="Antigua & Barbuda">Antigua & Barbuda</option>
-                  <option value="Argentina">Argentina</option>
-                  <option value="Armenia">Armenia</option>
-                  <option value="Aruba">Aruba</option>
-                </select>
-                <p for="">Defined as...</p>
-                <input
-                  type="text"
-                  placeholder="Defined as..."
-                  onKeyUp="inputHandler(event)"
-                  name="definedAs1"
-                  value=""
-                  required
-                />
-              </form>
-              <!------------ Individual Form ------------>
-              <form name="frmInfo" id="individualFrm1" class="individual-form1">
-                <p for="">First name</p>
-                <input
-                  type="text"
-                  placeholder="First name"
-                  name="firstName1"
-                  onKeyUp="inputHandler(event)"
-                  value=""
-                  required
-                />
-                <p for="">Last name</p>
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  name="lastName1"
-                  onKeyUp="inputHandler(event)"
-                  value=""
-                  required
-                />
-                <p for="">Address</p>
-                <input
-                  type="text"
-                  placeholder="Address"
-                  name="address1"
-                  onKeyUp="inputHandler(event)"
-                  value=""
-                  required
-                />
-                <p for="">Defined as..</p>
-                <input
-                  type="text"
-                  placeholder="Defined as.."
-                  name="definedIndividual1"
-                  onKeyUp="inputHandler(event)"
-                  value=""
-                  required
-                />
-              </form>
-            </section>
-
-            <!-- ------  3rd Step  ------ -->
-            <section class="step-tab-panel" data-step="step3">
-              <form name="loan-form" id="loanForm">
-                <p for="">Loan Amount</p>
-                <div class="loan-currency-wrapper">
-                  <input
-                    type="text"
-                    placeholder="0.00"
-                    size="8"
-                    name="loanAmount"
-                    onKeyUp="inputHandler(event)"
-                    value=""
-                    required
-                  />
-                  <select
-                    name="currency"
-                    onchange="inputHandler(event)"
-                    id=""
-                    required
-                  >
-                    <option data-symbol="$" data-placeholder="0.00">USD</option>
-                    <option data-symbol="€" data-placeholder="0.00">EUR</option>
-                    <option data-symbol="£" data-placeholder="0.00">GBP</option>
-                    <option data-symbol="₦" data-placeholder="0.00" selected>
-                      NGN
-                    </option>
-                    <option data-symbol="¥" data-placeholder="0">JPY</option>
-                    <option data-symbol="$" data-placeholder="0.00">CAD</option>
-                    <option data-symbol="$" data-placeholder="0.00">AUD</option>
-                  </select>
-                </div>
-                <p for="">Moratorium</p>
-                <input
-                  type="text"
-                  placeholder="Moratorium"
-                  name="moratorium"
-                  onKeyUp="inputHandler(event)"
-                  value=""
-                  required
-                />
-                <p for="">Interest Rate</p>
-                <input
-                  type="text"
-                  placeholder="Interest Rate"
-                  name="interestRate"
-                  onKeyUp="inputHandler(event)"
-                  value=""
-                  required
-                />
-                <p for="">Loan Duration/Maturity Date</p>
-                <input
-                  type="text"
-                  placeholder="Loan Duration/Maturity Date"
-                  name="loanDuration"
-                  onKeyUp="inputHandler(event)"
-                  value=""
-                  required
-                />
-                <p for="">Use of Loan</p>
-                <input
-                  type="text"
-                  placeholder="Use of Loan"
-                  name="loanUse"
-                  onKeyUp="inputHandler(event)"
-                  value=""
-                  required
-                />
-              </form>
-            </section>
-
-            <!-- -------  4th Step  ------- -->
-            <section class="step-tab-panel" data-step="step4">
-              <form name="frmLogin" id="recitalForm">
-                <p for="">Recitals</p>
-                <input
-                  type="text"
-                  placeholder="Recitals"
-                  name="recitals"
-                  onKeyUp="inputHandler(event)"
-                  value=""
-                  required
-                />
-              </form>
-            </section>
-
-            <!-- ------  5th Step  -------- -->
-            <section class="step-tab-panel" data-step="step5">
-              <form name="frmMobile" id="definitionFrm">
-                <p for="">Definitions</p>
-                <input
-                  type="text"
-                  placeholder="Definitions"
-                  name="definition"
-                  onKeyUp="inputHandler(event)"
-                  value=""
-                  required
-                />
-                <p for="">Meaning</p>
-                <input
-                  type="text"
-                  placeholder="Meaning"
-                  name="meaning"
-                  onKeyUp="inputHandler(event)"
-                  value=""
-                  required
-                />
-              </form>
-            </section>
-          </div>
-
-          <!-- Step Footer -->
-          <div class="step-footer">
-            <button data-step-action="prev" class="step-btn">Previous</button>
-            <button data-step-action="next" class="step-btn">Next</button>
-            <button data-step-action="finish" class="step-btn">Finish</button>
-          </div>
-        </div>
-      </div>
-      <div class="display-wrapper">
-        <div class="step-content">
-          <h2>THIS AGREEMENT is made this….. day of ……. 20____ between:</h2>
-
-          <!-- ------  1st Step  -------  -->
-          <section class="step-tab-panel" data-step="step1">
-            <div class="legal-form">
-              <div class="form-text">
-                <p>
-                  <span class="companyName">INPUT 1 LIMITED</span>, a company
-                  incorporated under the laws of
-                  <span class="registrationCountry">INPUT 4</span> having its
-                  registered address at
-                  <span class="registeredAddress">INPUT 2</span> and have in its
-                  registration number as
-                  <span class="registrationNumber">INPUT 3</span> (hereinafter
-                  referred to as the "<span class="definedAs">INPUT 5</span>")
-                  of the first part;
-                </p>
-              </div>
-            </div>
-
-            <div class="individual-form">
-              <div class="form-text">
-                <p>
-                  <span class="firstName">INPUT 1 </span>
-                  <span class="lastName">INPUT 2</span> of
-                  <span class="address">INPUT 3</span> (hereinafter referred to
-                  as the "<span class="definedIndividual">INPUT 4</span>") of
-                  the second part;
-                </p>
-              </div>
             </div>
           </section>
+
           <!-- ------  2nd Step  -------  -->
           <section class="step-tab-panel" data-step="step2">
-            <h2>Step 2</h2>
-            <div class="legal-form1">
-              <div class="form-text">
-                <p>
-                  <span class="companyName1">INPUT 1 LIMITED</span>, a company
-                  incorporated under the laws of
-                  <span class="registrationCountry1">INPUT 4</span> having its
-                  registered address at
-                  <span class="registeredAddress1">INPUT 2</span> and have in
-                  its registration number as
-                  <span class="registrationNumber1">INPUT 3</span> (hereinafter
-                  referred to as the "<span class="definedAs1">INPUT 5</span>")
-                  of the first part;
-                </p>
+            <!-- --------  Radio Buttons  --------- -->
+            <div class="options">
+              <div class="legal field">
+                <input type="radio" id="legal-btn1" name="choose1" checked />
+                <label for="legal-btn1" onclick="toggleForm('legal-lender')">Legal Entity</label>
+                <div class="custom-radio"></div>
+              </div>
+              <div class="individual field">
+                <input type="radio" id="individual-btn1" name="choose1" />
+                <label for="individual-btn1" onclick="toggleForm('individual-lender')">Individual
+                </label>
+                <div class="custom-radio"></div>
               </div>
             </div>
-
-            <div class="individual-form1">
-              <div class="form-text">
-                <p>
-                  <span class="firstName1">INPUT 1 </span>
-                  <span class="lastName1">INPUT 2</span> of
-                  <span class="address1">INPUT 3</span> (hereinafter referred to
-                  as the "<span class="definedIndividual1">INPUT 4</span>") of
-                  the second part;
-                </p>
-              </div>
-            </div>
+            <!------------ Legal Form ------------>
+            <form name="frmInfo" id="legalFrm1" class="legal-form">
+              <p for="">Company Name</p>
+              <input type="text" placeholder="Company Name" name="companyName1" onKeyUp="inputHandler(event)" value=""
+                required />
+              <p for="">Registered Address</p>
+              <input type="text" placeholder="Registered Address" onKeyUp="inputHandler(event)"
+                name="registeredAddress1" value="" required />
+              <p for="">Registration Number</p>
+              <input type="text" placeholder="Registration Number" onKeyUp="inputHandler(event)"
+                name="registrationNumber1" value="" required />
+              <p for="">Registration Country</p>
+              <select name="registrationCountry1" onchange="inputHandler(event)" required>
+                <option value="Afganistan">Afghanistan</option>
+                <option value="Albania">Albania</option>
+                <option value="Algeria">Algeria</option>
+                <option value="American Samoa">American Samoa</option>
+                <option value="Andorra">Andorra</option>
+                <option value="Angola">Angola</option>
+                <option value="Anguilla">Anguilla</option>
+                <option value="Antigua & Barbuda">Antigua & Barbuda</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Armenia">Armenia</option>
+                <option value="Aruba">Aruba</option>
+              </select>
+              <p for="">Defined as...</p>
+              <input type="text" placeholder="Defined as..." onKeyUp="inputHandler(event)" name="definedAs1" value=""
+                required />
+            </form>
+            <!------------ Individual Form ------------>
+            <form name="frmInfo" id="individualFrm1" class="individual-form">
+              <p for="">First name</p>
+              <input type="text" placeholder="First name" name="firstName1" onKeyUp="inputHandler(event)" value=""
+                required />
+              <p for="">Last name</p>
+              <input type="text" placeholder="Last Name" name="lastName1" onKeyUp="inputHandler(event)" value=""
+                required />
+              <p for="">Address</p>
+              <input type="text" placeholder="Address" name="address1" onKeyUp="inputHandler(event)" value=""
+                required />
+              <p for="">Defined as..</p>
+              <input type="text" placeholder="Defined as.." name="definedIndividual1" onKeyUp="inputHandler(event)"
+                value="" required />
+            </form>
           </section>
-          <!-- ------  3rd Step ------ -->
+
+          <!-- ------  3rd Step  ------ -->
           <section class="step-tab-panel" data-step="step3">
-            <h2>Step 3</h2>
-            <div class="form-text">
-              <p>
-                “Loan” means <span class="currency">[CURRENCY]</span>
-                <span class="loanAmount">INPUT 1</span> <br />“Moratorium” means
-                <span class="moratorium">INPUT 2</span> <br />“Interest Rate”
-                means <span class="interestRate">INPUT 3</span> <br />“Loan
-                Duration” means <span class="loanDuration">INPUT 4</span>
-                <br />“Use of Loan” means
-                <span class="loanUse">INPUT 5</span>
-              </p>
-            </div>
-          </section>
-          <!-- ------  4th Step ------ -->
-          <section class="step-tab-panel" data-step="step4">
-            <h2>Recitals</h2>
-            <div class="form-text">
-              <span class="recitals">INPUT Recitals</span>
-            </div>
-          </section>
-          <!-- ------  5th Step ------ -->
-          <section class="step-tab-panel" data-step="step5">
-            <h2>Definitions</h2>
-            <div class="form-text">
-              <div class="form-table">
-                <p class="definition">INPUT Definition</p>
-                <p class="meaning">INPUT Meaning</p>
+            <form name="loan-form" id="loanForm">
+              <p for="">Loan Amount</p>
+              <div class="loan-currency-wrapper">
+                <input type="text" placeholder="0.00" size="8" name="loanAmount" onKeyUp="inputHandler(event)" value=""
+                  required />
+                <select name="currency" onchange="inputHandler(event)" id="" required>
+                  <option data-symbol="$" data-placeholder="0.00">USD</option>
+                  <option data-symbol="€" data-placeholder="0.00">EUR</option>
+                  <option data-symbol="£" data-placeholder="0.00">GBP</option>
+                  <option data-symbol="₦" data-placeholder="0.00" selected>
+                    NGN
+                  </option>
+                  <option data-symbol="¥" data-placeholder="0">JPY</option>
+                  <option data-symbol="$" data-placeholder="0.00">CAD</option>
+                  <option data-symbol="$" data-placeholder="0.00">AUD</option>
+                </select>
               </div>
-            </div>
+              <p for="">Moratorium</p>
+              <input type="text" placeholder="Moratorium" name="moratorium" onKeyUp="inputHandler(event)" value=""
+                required />
+              <p for="">Interest Rate</p>
+              <input type="text" placeholder="Interest Rate" name="interestRate" onKeyUp="inputHandler(event)" value=""
+                required />
+              <p for="">Loan Duration/Maturity Date</p>
+              <input type="text" placeholder="Loan Duration/Maturity Date" name="loanDuration"
+                onKeyUp="inputHandler(event)" value="" required />
+              <p for="">Use of Loan</p>
+              <input type="text" placeholder="Use of Loan" name="loanUse" onKeyUp="inputHandler(event)" value=""
+                required />
+            </form>
           </section>
 
-          <!--  -->
+          <!-- -------  4th Step  ------- -->
+          <section class="step-tab-panel" data-step="step4">
+            <form id="recitals-form">
+              <div>
+                <label for="">Recitals</label>
+                <div class="recital-row">
+                  <div class="input-with-error">
+                    <input type="text" placeholder="Recitals" onKeyUp="recitalsInputHandler(event)" name="recitals[]" class="rect-input" id="rect-input-1" required />
+                  </div>
+                  <button class="addbtn" type="button" onclick="recitals_fields()"> 
+                    <i class="fa fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </form>            
+          </section>
+
+          <!-- ------  5th Step  -------- -->
+          <section class="step-tab-panel" data-step="step5">
+            <form name="frmMobile" id="definitionFrm">
+              <p for="">Definitions</p>
+              <input type="text" placeholder="Definitions" name="definition" onKeyUp="inputHandler(event)" value=""
+                required />
+              <p for="">Meaning</p>
+              <input type="text" placeholder="Meaning" name="meaning" onKeyUp="inputHandler(event)" value="" required />
+            </form>
+          </section>
+        </div>
+
+        <!-- Step Footer -->
+        <div class="step-footer">
+          <button data-step-action="prev" class="step-btn">Previous</button>
+          <button data-step-action="next" class="step-btn">Next</button>
+          <button data-step-action="finish" class="step-btn">Finish</button>
         </div>
       </div>
     </div>
+    <div class="display-wrapper">
+      <div class="step-content">
+        <h2 class="date">THIS AGREEMENT is made this….. day of ……. 20____ between:</h2>
 
-    <script src="vendors/jquery/jquery.min.js"></script>
-    <script src="vendors/jquery-validate/jquery.validate.min.js"></script>
-    <script src="vendors/jquery-steps/jquery-steps.min.js"></script>
-    <script src="vendors/js/index.js"></script>
-    <script>
-      //  Step 1 Forms
-      var legalFrm = $("#legalFrm");
-      var legalFrmValidator = legalFrm.validate();
+        <!-- ------  1st Step  -------  -->
+        <section id="display-step-0" class="display-steps">
+          <h2>Borrower Info</h2>
+          <div class="legal-form">
+            <div class="form-text">
+              <p>
+                <span class="companyName">INPUT 1 LIMITED</span>, a company
+                incorporated under the laws of
+                <span class="registrationCountry">INPUT 4</span> having its
+                registered address at
+                <span class="registeredAddress">INPUT 2</span> and have in its
+                registration number as
+                <span class="registrationNumber">INPUT 3</span> (hereinafter
+                referred to as the "<span class="definedAs">INPUT 5</span>")
+                of the first part;
+              </p>
+            </div>
+          </div>
 
-      //   var individualFrm = $("#individualFrm");
-      //   var individualFrmValidator = individualFrm.validate();
+          <div class="individual-form">
+            <div class="form-text">
+              <p>
+                <span class="firstName">INPUT 1 </span>
+                <span class="lastName">INPUT 2</span> of
+                <span class="address">INPUT 3</span> (hereinafter referred to
+                as the "<span class="definedIndividual">INPUT 4</span>") of
+                the second part;
+              </p>
+            </div>
+          </div>
+        </section>
+        <!-- ------  2nd Step  -------  -->
+        <section id="display-step-1" class="display-steps">
+          <h2>Lender Info</h2>
+          <div class="legal-form1">
+            <div class="form-text">
+              <p>
+                <span class="companyName1">INPUT 1 LIMITED</span>, a company
+                incorporated under the laws of
+                <span class="registrationCountry1">INPUT 4</span> having its
+                registered address at
+                <span class="registeredAddress1">INPUT 2</span> and have in
+                its registration number as
+                <span class="registrationNumber1">INPUT 3</span> (hereinafter
+                referred to as the "<span class="definedAs1">INPUT 5</span>")
+                of the first part;
+              </p>
+            </div>
+          </div>
 
-      //   Step 2 Forms
-      var legalFrm1 = $("#legalFrm1");
-      var legalFrm1Validator = legalFrm1.validate();
+          <div class="individual-form1">
+            <div class="form-text">
+              <p>
+                <span class="firstName1">INPUT 1 </span>
+                <span class="lastName1">INPUT 2</span> of
+                <span class="address1">INPUT 3</span> (hereinafter referred to
+                as the "<span class="definedIndividual1">INPUT 4</span>") of
+                the second part;
+              </p>
+            </div>
+          </div>
+        </section>
+        <!-- ------  3rd Step ------ -->
+        <section id="display-step-2" class="display-steps">
+          <h2>Loan Info</h2>
+          <div class="form-text">
+            <p>
+              “Loan” means <span class="currency">[CURRENCY]</span>
+              <span class="loanAmount">INPUT 1</span> <br />“Moratorium” means
+              <span class="moratorium">INPUT 2</span> <br />“Interest Rate”
+              means <span class="interestRate">INPUT 3</span> <br />“Loan
+              Duration” means <span class="loanDuration">INPUT 4</span>
+              <br />“Use of Loan” means
+              <span class="loanUse">INPUT 5</span>
+            </p>
+          </div>
+        </section>
+        <!-- ------  4th Step ------ -->
+        <section id="display-step-3" class="display-steps">
+          <div class="display-recitals-inputs">
+          </div>
+        </section>
+        <!-- ------  5th Step ------ -->
+        <section id="display-step-4" class="display-steps">
+          <h2>Definitions</h2>
+          <div class="form-text">
+            <div class="form-table">
+              <p class="definition">INPUT Definition</p>
+              <p class="meaning">INPUT Meaning</p>
+            </div>
+          </div>
+        </section>
 
-      //   Step 3 Form
-      var loanForm = $("#loanForm");
-      var loanFormValidator = loanForm.validate();
+      </div>
+    </div>
+  </div>
 
-      //   Step 4 Form
-      var recitalForm = $("#recitalForm");
-      var recitalFormValidator = recitalForm.validate();
+  <script src="vendors/jquery/jquery.min.js"></script>
+  <script src="vendors/jquery-validate/jquery.validate.min.js"></script>
+  <script src="vendors/jquery-steps/jquery-steps.min.js"></script>
+  <script src="vendors/js/index.js"></script>
+</body>
 
-      //   Step 5 Form
-      var definitionFrm = $("#definitionFrm");
-      var definitionFrmValidator = definitionFrm.validate();
-
-      $("#demo").steps({
-        transitionEffect: 2,
-        transitionEffectSpeed: 200,
-        onChange: function (currentIndex, newIndex, stepDirection) {
-          // step1
-          if (currentIndex === 0) {
-            if (stepDirection === "forward") {
-              return legalFrm.valid();
-              //   return individualFrm.valid();
-            }
-            if (stepDirection === "backward") {
-              legalFrmValidator.resetForm();
-              //   individualFrmValidator.resetForm();
-            }
-          }
-          // step2
-          if (currentIndex === 1) {
-            if (stepDirection === "forward") {
-              return legalFrm1.valid();
-            }
-            if (stepDirection === "backward") {
-              legalFrm1Validator.resetForm();
-            }
-          }
-          // step3
-          if (currentIndex === 2) {
-            if (stepDirection === "forward") {
-              return loanForm.valid();
-            }
-            if (stepDirection === "backward") {
-              loanFormValidator.resetForm();
-            }
-          }
-          // step4
-          if (currentIndex === 3) {
-            if (stepDirection === "forward") {
-              return recitalForm.valid();
-            }
-            if (stepDirection === "backward") {
-              recitalFormValidator.resetForm();
-            }
-          }
-          // step5
-          if (currentIndex === 4) {
-            if (stepDirection === "forward") {
-              return definitionFrm.valid();
-            }
-            if (stepDirection === "backward") {
-              definitionFrmValidator.resetForm();
-            }
-          }
-          return true;
-        },
-        onFinish: function () {
-          alert("Agreement Completed");
-        },
-      });
-    </script>
-  </body>
 </html>

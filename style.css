@@ -19,9 +19,7 @@ body {
   border: 1px solid #e5e5e5;
   padding: 10px;
   flex: 1;
-  background-color: white;
-  /* box-shadow: 0 0 0.1cm rgba(0,0,0,0.5); */
-  /* box-shadow: 0 4px 25px 0 rgb(0 0 0 / 10%); */
+  background-color: #FFFFFF;
 }
 #wrapper h1 {
   text-align: center;
@@ -140,6 +138,14 @@ body {
 #wrapper .step-app > .step-content > .step-tab-panel {
   display: none;
 }
+.step-app > .step-content > .step-tab-panel .legal-form {
+  display: block;
+}
+
+.step-app > .step-content > .step-tab-panel .individual-form {
+  display: none;
+}
+
 .step-app > .step-content > .step-tab-panel .options {
   margin: 24px 0;
   display: flex;
@@ -147,24 +153,8 @@ body {
 }
 .step-content > .step-tab-panel .options .field {
   position: relative;
-  /* border: 1px solid green; */
   z-index: 9;
 }
-.step-app > .step-content > .step-tab-panel .legal-form1,
-.step-app > .step-content > .step-tab-panel .legal-form {
-  display: block;
-}
-
-.step-app > .step-content > .step-tab-panel .individual-form1,
-.step-app > .step-content > .step-tab-panel .individual-form {
-  display: none;
-}
-
-/* ================== */
-/*==== Toggle Sections ====*/
-/* =================== */
-
-/* ================== */
 .step-content > .step-tab-panel .options .field input[type="radio"] {
   position: absolute;
   visibility: hidden;
@@ -218,11 +208,7 @@ body {
   color: rgb(9, 9, 122);
 }
 
-.step-tab-panel
-  .options
-  .field
-  input[type="radio"]:checked
-  ~ .custom-radio::before {
+.step-tab-panel .options .field input[type="radio"]:checked ~ .custom-radio::before {
   background-color: rgb(9, 9, 122);
 }
 
@@ -232,14 +218,15 @@ body {
 }
 
 .step-app > .step-content > .step-tab-panel form input {
-  padding: 13px 16px;
+  height: 40px;
+  padding:0px 10px;
   width: 100%;
   box-sizing: border-box;
   border: 1px solid silver;
-  margin: 5px 0;
 }
 .step-app > .step-content > .step-tab-panel form select {
-  padding: 13px 16px;
+  height: 40px;
+  padding:0px 10px;
   width: 100%;
   box-sizing: border-box;
   border: 1px solid silver;
@@ -287,12 +274,43 @@ body {
   display: flex;
   gap: 10px;
 }
+/* Step 4 */
+#wrapper .step-app .step-content .step-tab-panel #recitals-form > div:not(:first-child) {
+  margin-top:10px;
+}
+#wrapper .step-app .step-content .step-tab-panel #recitals-form .recital-row {
+  display: flex;
+  gap:10px;
+}
+#wrapper .step-app .step-content .step-tab-panel #recitals-form .recital-row .input-with-error{
+  width:100%;
+  display: flex;
+  flex-direction:column;
+}
+#wrapper .step-app .step-content .step-tab-panel #recitals-form .recital-row button.addbtn {
+  width: 40px;
+  height: 40px;
+  border-radius:50%;
+  background: rgb(9, 9, 122);
+  outline: none;
+  border: 0;
+}
+#wrapper .step-app .step-content .step-tab-panel #recitals-form .recital-row button.removebtn {
+  width: 40px;
+  height: 40px;
+  border-radius:50%;
+  background: red;
+  outline: none;
+  border: 0;
+}
+#wrapper .step-app .step-content .step-tab-panel #recitals-form .recital-row button i {
+  color: #FFFFFF;
+}
 /*****************************************************
                     Display Section
 ******************************************************/
 #wrapper .display-wrapper {
-  box-shadow: 0 4px 25px 0 rgb(0 0 0 / 10%);
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid #e5e5e5;
   flex: 1;
   display: flex;
   justify-content: center;
@@ -301,54 +319,52 @@ body {
   background-color: #ffffff;
 }
 
-#wrapper .display-wrapper .step-content h2 {
-  font-size: 20px;
+#wrapper .display-wrapper .step-content h2.date {
+  font-size: 18px;
   font-weight: bold;
+  margin:0;
 }
 
-#wrapper .display-wrapper .step-content section .form-text p {
-  font-size: 18px;
-  font-weight: 300;
-}
-
-#wrapper .display-wrapper .step-content section .form-text span {
-  font-size: 18px;
-  font-weight: normal;
-}
-
-#wrapper .display-wrapper .step-content section .form-text .form-table {
-  display: flex;
-  gap: 4rem;
-}
-
-#wrapper .display-wrapper .step-content section .form-text .form-table p {
-  margin: 0;
-  font-size: 18px;
-  font-weight: normal;
-}
-
-#wrapper
-  .display-wrapper
-  .step-content
-  section
-  .form-text
-  #wrapper
-  .display-wrapper
-  .step-content
-  .step-tab-panel
-  .legal-form1,
-#wrapper .display-wrapper .step-content .step-tab-panel .legal-form {
-  display: block;
-}
-#wrapper .display-wrapper .step-content .step-tab-panel .individual-form1,
-#wrapper .display-wrapper .step-content .step-tab-panel .individual-form {
+#wrapper .display-wrapper .step-content .display-steps{
   display: none;
 }
 
-/* ================== */
-/*           Media Queries            */
-/* ================= */
+#wrapper .display-wrapper .step-content #display-step-0{
+  display: block;
+}
 
+#wrapper .display-wrapper .step-content .display-steps .display-recitals-inputs{
+  margin-top: 20px;
+}
+
+#wrapper .display-wrapper .step-content .display-steps .display-recitals-inputs > div{
+  margin: 10px 0;
+}
+
+#wrapper .display-wrapper .step-content .display-steps .form-text p {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+#wrapper .display-wrapper .step-content .display-steps .form-text p > span {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+#wrapper .display-wrapper .step-content .display-steps .form-text .form-table {
+  display: flex;
+  gap: 20px;
+}
+
+#wrapper .display-wrapper .step-content .display-steps .form-text .form-table p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/*****************************************************
+                    Media Queries
+******************************************************/
 @media (max-width: 1080px) {
   #wrapper .step-app > .step-steps > li.done > .step .bullet:after {
     width: 100%;
