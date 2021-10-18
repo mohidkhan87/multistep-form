@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: "Calibri";
-  background-color: rgb(212, 212, 253);
+  background-color: #F8F8F8;
 }
 #wrapper {
   max-width: 1370px;
@@ -20,7 +20,8 @@ body {
   padding: 10px;
   flex: 1;
   background-color: white;
-  box-shadow: 10px 15px 50px 5px rgba(0, 0, 0, 0.03);
+  border-radius: 8px;
+  box-shadow: 0 4px 25px 0 rgb(0 0 0 / 10%);
 }
 #wrapper h1 {
   text-align: center;
