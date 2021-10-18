@@ -344,3 +344,13 @@ body {
 #wrapper .display-wrapper .step-content .step-tab-panel .individual-form {
   display: none;
 }
+
+/* ================== */
+/*           Media Queries            */
+/* ================= */
+
+@media (max-width: 1080px) {
+  #wrapper .step-app > .step-steps > li.done > .step .bullet:after {
+    width: 100%;
+  }
+}
