@@ -215,7 +215,7 @@
                 </div>
               </div>
               <!------------ Legal Form ------------>
-              <form name="frmInfo" id="frmInfo1" class="legal-form1">
+              <form name="frmInfo" id="legalFrm1" class="legal-form1">
                 <p for="">Company Name</p>
                 <input
                   type="text"
@@ -272,7 +272,7 @@
                 />
               </form>
               <!------------ Individual Form ------------>
-              <form name="frmInfo" id="frmInfo1" class="individual-form1">
+              <form name="frmInfo" id="individualFrm1" class="individual-form1">
                 <p for="">First name</p>
                 <input
                   type="text"
@@ -314,7 +314,7 @@
 
             <!-- ------  3rd Step  ------ -->
             <section class="step-tab-panel" data-step="step3">
-              <form name="loan-form" id="loan-form">
+              <form name="loan-form" id="loanForm">
                 <p for="">Loan Amount</p>
                 <div class="loan-currency-wrapper">
                   <input
@@ -324,8 +324,14 @@
                     name="loanAmount"
                     onKeyUp="inputHandler(event)"
                     value=""
+                    required
                   />
-                  <select name="currency" onchange="inputHandler(event)" id="">
+                  <select
+                    name="currency"
+                    onchange="inputHandler(event)"
+                    id=""
+                    required
+                  >
                     <option data-symbol="$" data-placeholder="0.00">USD</option>
                     <option data-symbol="€" data-placeholder="0.00">EUR</option>
                     <option data-symbol="£" data-placeholder="0.00">GBP</option>
@@ -378,7 +384,7 @@
 
             <!-- -------  4th Step  ------- -->
             <section class="step-tab-panel" data-step="step4">
-              <form name="frmLogin" id="frmLogin">
+              <form name="frmLogin" id="recitalForm">
                 <p for="">Recitals</p>
                 <input
                   type="text"
@@ -393,7 +399,7 @@
 
             <!-- ------  5th Step  -------- -->
             <section class="step-tab-panel" data-step="step5">
-              <form name="frmMobile" id="frmMobile">
+              <form name="frmMobile" id="definitionFrm">
                 <p for="">Definitions</p>
                 <input
                   type="text"
@@ -532,20 +538,28 @@
     <script src="vendors/jquery-steps/jquery-steps.min.js"></script>
     <script src="vendors/js/index.js"></script>
     <script>
+      //  Step 1 Forms
       var legalFrm = $("#legalFrm");
       var legalFrmValidator = legalFrm.validate();
 
-      var individualFrm = $("#individualFrm");
-      var individualFrmValidator = individualFrm.validate();
+      //   var individualFrm = $("#individualFrm");
+      //   var individualFrmValidator = individualFrm.validate();
 
-      var frmInfo1 = $("#frmInfo1");
-      var frmInfoValidator = frmInfo1.validate();
+      //   Step 2 Forms
+      var legalFrm1 = $("#legalFrm1");
+      var legalFrm1Validator = legalFrm1.validate();
 
-      var frmLogin = $("#frmLogin");
-      var frmLoginValidator = frmLogin.validate();
+      //   Step 3 Form
+      var loanForm = $("#loanForm");
+      var loanFormValidator = loanForm.validate();
 
-      var frmMobile = $("#frmMobile");
-      var frmMobileValidator = frmMobile.validate();
+      //   Step 4 Form
+      var recitalForm = $("#recitalForm");
+      var recitalFormValidator = recitalForm.validate();
+
+      //   Step 5 Form
+      var definitionFrm = $("#definitionFrm");
+      var definitionFrmValidator = definitionFrm.validate();
 
       $("#demo").steps({
         transitionEffect: 2,
@@ -555,38 +569,47 @@
           if (currentIndex === 0) {
             if (stepDirection === "forward") {
               return legalFrm.valid();
-              return individualFrm.valid();
+              //   return individualFrm.valid();
             }
             if (stepDirection === "backward") {
               legalFrmValidator.resetForm();
-              individualFrmValidator.resetForm();
+              //   individualFrmValidator.resetForm();
             }
           }
           // step2
           if (currentIndex === 1) {
             if (stepDirection === "forward") {
-              return frmInfo1.valid();
+              return legalFrm1.valid();
             }
             if (stepDirection === "backward") {
-              frmInfoValidator.resetForm();
+              legalFrm1Validator.resetForm();
+            }
+          }
+          // step3
+          if (currentIndex === 2) {
+            if (stepDirection === "forward") {
+              return loanForm.valid();
+            }
+            if (stepDirection === "backward") {
+              loanFormValidator.resetForm();
             }
           }
           // step4
           if (currentIndex === 3) {
             if (stepDirection === "forward") {
-              return frmLogin.valid();
+              return recitalForm.valid();
             }
             if (stepDirection === "backward") {
-              frmLoginValidator.resetForm();
+              recitalFormValidator.resetForm();
             }
           }
           // step5
           if (currentIndex === 4) {
             if (stepDirection === "forward") {
-              // return frmMobile.valid();
+              return definitionFrm.valid();
             }
             if (stepDirection === "backward") {
-              // frmMobileValidator.resetForm();
+              definitionFrmValidator.resetForm();
             }
           }
           return true;
