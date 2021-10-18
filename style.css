@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: "Calibri";
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
 }
 #wrapper {
   max-width: 1370px;
@@ -292,17 +292,18 @@ body {
 ******************************************************/
 #wrapper .display-wrapper {
   box-shadow: 0 4px 25px 0 rgb(0 0 0 / 10%);
-  border: 1px solid rgba(0,0,0,0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding: 3rem;
-  background-color:#FFFFFF;
+  background-color: #ffffff;
 }
+
 #wrapper .display-wrapper .step-content h2 {
   font-size: 20px;
-  font-weight: normal;
+  font-weight: bold;
 }
 
 #wrapper .display-wrapper .step-content section .form-text p {
@@ -310,13 +311,36 @@ body {
   font-weight: 300;
 }
 
-#wrapper .display-wrapper .step-content section .form-text p span {
+#wrapper .display-wrapper .step-content section .form-text span {
+  font-size: 18px;
   font-weight: normal;
 }
 
-#wrapper .display-wrapper .legal-form {
+#wrapper .display-wrapper .step-content section .form-text .form-table {
+  display: flex;
+  gap: 4rem;
+}
+
+#wrapper .display-wrapper .step-content section .form-text .form-table p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+#wrapper
+  .display-wrapper
+  .step-content
+  section
+  .form-text
+  #wrapper
+  .display-wrapper
+  .step-content
+  .step-tab-panel
+  .legal-form1,
+#wrapper .display-wrapper .step-content .step-tab-panel .legal-form {
   display: block;
 }
-#wrapper .display-wrapper .individual-form {
+#wrapper .display-wrapper .step-content .step-tab-panel .individual-form1,
+#wrapper .display-wrapper .step-content .step-tab-panel .individual-form {
   display: none;
 }
