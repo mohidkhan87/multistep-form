@@ -101,11 +101,15 @@ function toggleFormBorrower(type, id) {
       form_id = id.substring(21);
       $('#borrower-individual-form-' + form_id).hide();
       $('#borrower-legal-form-' + form_id).show();
+      $('#legal-display-1').show();
+      $('#individual-display-1').hide();
       break;
     case 'borrower-individual':
       form_id = id.substring(26)
       $('#borrower-legal-form-' + form_id).hide();
       $('#borrower-individual-form-' + form_id).show();
+      $('#legal-display-1').hide();
+      $('#individual-display-1').show();
       break;
     default:
       break;
@@ -177,11 +181,15 @@ function toggleForm(type, id) {
       form_id = id.substring(19);
       $('#lendor-individual-form-' + form_id).hide();
       $('#lendor-legal-form-' + form_id).show();
+      $('#lendor-legal-display-' + form_id).show();
+      $('#lendor-individual-display-' + form_id).hide();
       break;
     case 'lender-individual':
       form_id = id.substring(24)
       $('#lendor-legal-form-' + form_id).hide();
       $('#lendor-individual-form-' + form_id).show();
+      $('#lendor-legal-display-' + form_id).hide();
+      $('#lendor-individual-display-' + form_id).show();
       break;
     default:
       break;
@@ -309,7 +317,7 @@ function showLenderInputs() {
   let input = '';
   for (var i = 0; i < lendorForms; i++) {
     input += '<div>'+
-                '<div class="legal-form1">'+
+                '<div class="legal-form" id="lendor-legal-display-'+lendorForms+'">'+
                   '<div class="form-text">'+
                     '<p>'+
                       '<span id="display-lender-legal-company-input-'+(i+1)+'">INPUT 1 LIMITED</span>, a company incorporated under the laws of'+
@@ -320,7 +328,7 @@ function showLenderInputs() {
                     '</p>'+
                   '</div>'+
                 '</div>'+
-                '<div class="individual-form1">'+
+                '<div class="individual-form" id="lendor-individual-display-'+lendorForms+'">'+
                   '<div class="form-text">'+
                     '<p>'+
                       '<span id="display-lender-individual-firstname-input-'+(i+1)+'">INPUT 1 </span>'+

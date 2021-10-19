@@ -388,6 +388,10 @@ body {
   display: block;
 }
 
+#wrapper .display-wrapper .step-content .display-steps .individual-form{
+  display: none;
+}
+
 #wrapper .display-wrapper .step-content .display-steps .display-recitals-inputs{
   margin-top: 20px;
 }
