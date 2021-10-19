@@ -82,13 +82,6 @@ $("#demo").steps({
   },
 });
 
-// Handle inputs on change
-
-function inputHandler(e) {
-  let eventName = e.target.name;
-  let eventValue = e.target.value;
-  $('.' + eventName)[0].innerHTML = eventValue;
-}
 
 function changeDisplay(currentStep) {
   let display_steps = document.getElementsByClassName("display-steps");
@@ -118,65 +111,64 @@ function toggleFormBorrower(type, id) {
       break;
   }
 }
-let borrowerTarget = $("#dynamic-borrower-forms");
-let borrowerForms = 1;
-function add_borrower_form() {
-  borrowerForms++;
-  let div = document.createElement("div");
-  div.setAttribute("id", "borrower-form-div-" + borrowerForms);
-  div.innerHTML = '<div class="options">'+
-                    '<div class="legal field">'+
-                      '<input type="radio" id="borrower-legal-radio-'+borrowerForms+'" name="borrower-radio-'+borrowerForms+'" checked />'+
-                        '<label for="borrower-legal-radio-'+borrowerForms+'" id="borrower-legal-radio-'+borrowerForms+'" onclick="toggleFormBorrower(\'borrower-legal\', \'borrower-legal-radio-'+borrowerForms+'\')">Legal Entity</label>'+
-                      '<div class="custom-radio"></div>'+
-                    '</div>'+
-                    '<div class="individual field">'+
-                      '<input type="radio" id="borrower-individual-radio-'+borrowerForms+'" name="borrower-radio-'+borrowerForms+'" />'+
-                      '<label for="borrower-individual-radio-'+borrowerForms+'" id="borrower-individual-radio-'+borrowerForms+'" onclick="toggleFormBorrower(\'borrower-individual\',\'borrower-individual-radio-'+borrowerForms+'\')">Individual'+
-                      '</label>'+
-                      '<div class="custom-radio"></div>'+
-                    '</div>'+
-                  '</div>'+
-                  '<form id="borrower-legal-form-'+borrowerForms+'" class="legal-form">'+
-                    '<p for="">Company Name</p>'+
-                    '<input type="text" placeholder="Company Name" name="companyName1" onKeyUp="inputHandler(event)0 "value="" required />'+
-                    '<p for="">Registered Address</p>'+
-                    '<input type="text" placeholder="Registered Address" onKeyUp="inputHandler(event)" name="registeredAddress1" value="" required />'+
-                    '<p for="">Registration Number</p>'+
-                    '<input type="text" placeholder="Registration Number" onKeyUp="inputHandler(event)" name="registrationNumber1" value="" required />'+
-                    '<p for="">Registration Country</p>'+
-                    '<select name="registrationCountry1" onchange="inputHandler(event)" required>'+
-                      '<option value="Afganistan">Afghanistan</option>'+
-                      '<option value="Albania">Albania</option>'+
-                      '<option value="Algeria">Algeria</option>'+
-                      '<option value="American Samoa">American Samoa</option>'+
-                      '<option value="Andorra">Andorra</option>'+
-                      '<option value="Angola">Angola</option>'+
-                      '<option value="Anguilla">Anguilla</option>'+
-                      '<option value="Antigua & Barbuda">Antigua & Barbuda</option>'+
-                      '<option value="Argentina">Argentina</option>'+
-                      '<option value="Armenia">Armenia</option>'+
-                      '<option value="Aruba">Aruba</option>'+
-                    '</select>'+
-                    '<p for="">Defined as...</p>'+
-                    '<input type="text" placeholder="Defined as..." onKeyUp="inputHandler(event)" name="definedAs1" value="" required />'+
-                  '</form>'+
-                  '<form id="borrower-individual-form-'+borrowerForms+'" class="individual-form">'+
-                    '<p for="">First name</p>'+
-                    '<input type="text" placeholder="First name" name="firstName1" onKeyUp="inputHandler(event)" value="" required />'+
-                    '<p for="">Last name</p>'+
-                    '<input type="text" placeholder="Last Name" name="lastName1" onKeyUp="inputHandler(event)" value="" required />'+
-                    '<p for="">Address</p>'+
-                    '<input type="text" placeholder="Address" name="address1" onKeyUp="inputHandler(event)" value="" required />'+
-                    '<p for="">Defined as..</p>'+
-                    '<input type="text" placeholder="Defined as.." name="definedIndividual1" onKeyUp="inputHandler(event)" value="" required />'+
-                  '</form><button class="removebtn" type="button" onclick="remove_borrower_form(' + borrowerForms + ')">Delete <i class="fa fa-minus"></i></button>'
-  borrowerTarget.append(div);
+
+// Company
+function borrowerLegalCompanyHandler(event){
+  let eventValue = event.target.value;
+  let id = event.target.id.substring(23)
+  document.getElementById("display-borrower-legal-company-input-" + id).innerHTML = eventValue;
 }
-function remove_borrower_form(id){
-  borrowerForms--;
-  $('#borrower-form-div-' + id).remove();
+// Address
+function borrowerLegalAdressHandler(event){
+  let eventValue = event.target.value;
+  
+  let id = event.target.id.substring(23)
+  document.getElementById("display-borrower-legal-address-input-" + id).innerHTML = eventValue;
 }
+// Register Number
+function borrowerLegalRegNumberHandler(event){
+  let eventValue = event.target.value;
+  let id = event.target.id.substring(25)
+  document.getElementById("display-borrower-legal-regNumber-input-" + id).innerHTML = eventValue;
+}
+// Country
+function borrowerLegalCountryHandler(event){
+  let eventValue = event.target.value;
+  let id = event.target.id.substring(23)
+  document.getElementById("display-borrower-legal-country-input-" + id).innerHTML = eventValue;
+}
+// Defined
+function borrowerLegalDefinedHandler(event){
+  let eventValue = event.target.value;
+  let id = event.target.id.substring(23)
+  document.getElementById("display-borrower-legal-defined-input-" + id).innerHTML = eventValue;
+}
+
+// Firstname
+function borrowerIndividualFirstnameHandler(event){
+  let eventValue = event.target.value;
+  let id = event.target.id.substring(30)
+  document.getElementById("display-borrower-individual-firstname-input-" + id).innerHTML = eventValue;
+}
+// Lastname
+function borrowerIndividualLastnameHandler(event){
+  let eventValue = event.target.value;
+  let id = event.target.id.substring(29)
+  document.getElementById("display-borrower-individual-lastname-input-" + id).innerHTML = eventValue;
+}
+// Address
+function borrowerIndividualAddressHandler(event){
+  let eventValue = event.target.value;
+  let id = event.target.id.substring(28)
+  document.getElementById("display-borrower-individual-address-input-" + id).innerHTML = eventValue;
+}
+// Defined
+function borrowerIndividualDefinedHandler(event){
+  let eventValue = event.target.value;
+  let id = event.target.id.substring(28)
+  document.getElementById("display-borrower-individual-defined-input-" + id).innerHTML = eventValue;
+}
+
 // Step 2
 function toggleForm(type, id) {
   let form_id = -1;
@@ -216,13 +208,13 @@ function add_lendor_form() {
                   '</div>'+
                   '<form id="lendor-legal-form-'+lendorForms+'" class="legal-form">'+
                     '<p for="">Company Name</p>'+
-                    '<input type="text" placeholder="Company Name" name="companyName1" onKeyUp="inputHandler(event)0 "value="" required />'+
+                    '<input type="text" placeholder="Company Name" onKeyUp="lenderLegalCompanyHandler(event)" id="lender-legal-company-'+lendorForms+'" required />'+
                     '<p for="">Registered Address</p>'+
-                    '<input type="text" placeholder="Registered Address" onKeyUp="inputHandler(event)" name="registeredAddress1" value="" required />'+
+                    '<input type="text" placeholder="Registered Address" onKeyUp="lenderLegalAdressHandler(event)" id="lender-legal-address-'+lendorForms+'" required />'+
                     '<p for="">Registration Number</p>'+
-                    '<input type="text" placeholder="Registration Number" onKeyUp="inputHandler(event)" name="registrationNumber1" value="" required />'+
+                    '<input type="text" placeholder="Registration Number" onKeyUp="lenderLegalRegNumberHandler(event)" id="lender-legal-regNumber-'+lendorForms+'" required />'+
                     '<p for="">Registration Country</p>'+
-                    '<select name="registrationCountry1" onchange="inputHandler(event)" required>'+
+                    '<select onchange="lenderLegalCountryHandler(event)" id="lender-legal-country-'+lendorForms+'" required>'+
                       '<option value="Afganistan">Afghanistan</option>'+
                       '<option value="Albania">Albania</option>'+
                       '<option value="Algeria">Algeria</option>'+
@@ -236,25 +228,114 @@ function add_lendor_form() {
                       '<option value="Aruba">Aruba</option>'+
                     '</select>'+
                     '<p for="">Defined as...</p>'+
-                    '<input type="text" placeholder="Defined as..." onKeyUp="inputHandler(event)" name="definedAs1" value="" required />'+
+                    '<input type="text" placeholder="Defined as..." onKeyUp="lenderLegalDefinedHandler(event)" id="lender-legal-defined-1" required />'+
                   '</form>'+
                   '<form id="lendor-individual-form-'+lendorForms+'" class="individual-form">'+
                     '<p for="">First name</p>'+
-                    '<input type="text" placeholder="First name" name="firstName1" onKeyUp="inputHandler(event)" value="" required />'+
+                    '<input type="text" placeholder="First name" onKeyUp="lenderIndividualFirstnameHandler(event)" id="lender-individual-firstname-'+lendorForms+'" required />'+
                     '<p for="">Last name</p>'+
-                    '<input type="text" placeholder="Last Name" name="lastName1" onKeyUp="inputHandler(event)" value="" required />'+
+                    '<input type="text" placeholder="Last Name" onKeyUp="lenderIndividualLastnameHandler(event)" id="lender-individual-lastname-'+lendorForms+'" required />'+
                     '<p for="">Address</p>'+
-                    '<input type="text" placeholder="Address" name="address1" onKeyUp="inputHandler(event)" value="" required />'+
+                    '<input type="text" placeholder="Address" onKeyUp="lenderIndividualAddressHandler(event)" id="lender-individual-address-'+lendorForms+'" required />'+
                     '<p for="">Defined as..</p>'+
-                    '<input type="text" placeholder="Defined as.." name="definedIndividual1" onKeyUp="inputHandler(event)" value="" required />'+
+                    '<input type="text" placeholder="Defined as.." onKeyUp="lenderIndividualDefinedHandler(event)" id="lender-individual-defined-'+lendorForms+'" required />'+
                   '</form><button class="removebtn" type="button" onclick="remove_lendor_form(' + lendorForms + ')">Delete <i class="fa fa-minus"></i></button>'
   lendorTarget.append(div);
+  showLenderInputs();
 }
 function remove_lendor_form(id){
   console.log(id)
   lendorForms--;
   $('#form-div-' + id).remove();
+  showLenderInputs();
 }
+// Company
+function lenderLegalCompanyHandler(event){
+  let eventValue = event.target.value;
+  let id = event.target.id.substring(21)
+  document.getElementById("display-lender-legal-company-input-" + id).innerHTML = eventValue;
+}
+// Address
+function lenderLegalAdressHandler(event){
+  let eventValue = event.target.value;
+  let id = event.target.id.substring(21)
+  document.getElementById("display-lender-legal-address-input-" + id).innerHTML = eventValue;
+}
+// Register Number
+function lenderLegalRegNumberHandler(event){
+  let eventValue = event.target.value;
+  let id = event.target.id.substring(23)
+  document.getElementById("display-lender-legal-regNumber-input-" + id).innerHTML = eventValue;
+}
+// Country
+function lenderLegalCountryHandler(event){
+  let eventValue = event.target.value;
+  let id = event.target.id.substring(21)
+  document.getElementById("display-lender-legal-country-input-" + id).innerHTML = eventValue;
+}
+// Defined
+function lenderLegalDefinedHandler(event){
+  let eventValue = event.target.value;
+  let id = event.target.id.substring(21)
+  document.getElementById("display-lender-legal-defined-input-" + id).innerHTML = eventValue;
+}
+
+// Firstname
+function lenderIndividualFirstnameHandler(event){
+  let eventValue = event.target.value;
+  let id = event.target.id.substring(28)
+  document.getElementById("display-lender-individual-firstname-input-" + id).innerHTML = eventValue;
+}
+// Lastname
+function lenderIndividualLastnameHandler(event){
+  let eventValue = event.target.value;
+  let id = event.target.id.substring(27)
+  document.getElementById("display-lender-individual-lastname-input-" + id).innerHTML = eventValue;
+}
+// Address
+function lenderIndividualAddressHandler(event){
+  let eventValue = event.target.value;
+  let id = event.target.id.substring(26)
+  document.getElementById("display-lender-individual-address-input-" + id).innerHTML = eventValue;
+}
+// Defined
+function lenderIndividualDefinedHandler(event){
+  let eventValue = event.target.value;
+  let id = event.target.id.substring(26)
+  document.getElementById("display-lender-individual-defined-input-" + id).innerHTML = eventValue;
+}
+
+function showLenderInputs() {
+  let input = '';
+  for (var i = 0; i < lendorForms; i++) {
+    input += '<div>'+
+                '<div class="legal-form1">'+
+                  '<div class="form-text">'+
+                    '<p>'+
+                      '<span id="display-lender-legal-company-input-'+(i+1)+'">INPUT 1 LIMITED</span>, a company incorporated under the laws of'+
+                      '<span id="display-lender-legal-country-input-'+(i+1)+'">INPUT 4</span> having its registered address at'+
+                      '<span id="display-lender-legal-address-input-'+(i+1)+'">INPUT 2</span> and have in its registration number as'+
+                      '<span id="display-lender-legal-regNumber-input-'+(i+1)+'">INPUT 3</span> (hereinafter referred to as the "'+
+                      '<span id="display-lender-legal-defined-input-'+(i+1)+'">INPUT 5</span>")of the first part'+
+                    '</p>'+
+                  '</div>'+
+                '</div>'+
+                '<div class="individual-form1">'+
+                  '<div class="form-text">'+
+                    '<p>'+
+                      '<span id="display-lender-individual-firstname-input-'+(i+1)+'">INPUT 1 </span>'+
+                      '<span id="display-lender-individual-lastname-input-'+(i+1)+'">INPUT 2</span> of'+
+                      '<span id="display-lender-individual-address-input-'+(i+1)+'">INPUT 3</span> (hereinafter referred to as the "'+
+                      '<span id="display-lender-individual-defined-input-'+(i+1)+'">INPUT 4</span>") of the second part'+
+                    '</p>'+
+                  '</div>'+
+                '</div>'+
+              '</div><hr>';
+  }
+  let target = $(".display-lender-inputs");
+  target.html(input);
+}
+showLenderInputs();
 // Step 3
 function loanHandler(event) {
   let id = event.target.id;
