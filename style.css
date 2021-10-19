@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  font-family: calibri;
-  background-color: lightgrey;
+  font-family: "Calibri";
+  background-color: #f8f8f8;
 }
 #wrapper {
   max-width: 1370px;
@@ -28,13 +28,11 @@ body {
 }
 #wrapper .step-app > .step-steps {
   margin: 0;
-  padding: 0 0 0 10px;
+  padding: 0;
   display: flex;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 3px 3px 0 0;
   overflow: hidden;
-  box-shadow: 0 2px 12px 8px lightgrey;
-  /* border: 1px solid silver; */
 }
 #wrapper .step-app > .step-steps > li {
   list-style: none;
@@ -43,7 +41,6 @@ body {
   display: block;
   color: #333333;
   text-decoration: none;
-  margin-bottom: 10px;
 }
 #wrapper .step-app > .step-steps > li.done {
   padding: 0;
@@ -136,17 +133,11 @@ body {
 #wrapper .step-app > .step-content {
   border: 1px solid #e5e5e5;
   padding: 10px;
-  /* padding-top: 0; */
   margin-top: 10px;
 }
 #wrapper .step-app > .step-content > .step-tab-panel {
   display: none;
 }
-
-#wrapper .step-app > .step-content > .step-tab-panel button {
-  background-color: blue;
-}
-
 .step-app > .step-content > .step-tab-panel .legal-form {
   display: block;
 }
@@ -260,7 +251,9 @@ body {
   margin-top: 15px;
   margin-bottom: 15px;
   padding: 10px;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: end;
   gap: 8px;
 }
 #wrapper .step-app > .step-footer > .step-btn {
@@ -281,21 +274,11 @@ body {
 }
 /* Step 1 */
 #wrapper .step-app .step-content .step-tab-panel button.borroweraddbtn {
-  padding: 8px 13px;
-  background: rgb(9, 9, 122);
+  padding: 6px 12px;
+  background: #28a745;
   outline: none;
   border: 0;
-  border-radius: 1rem;
   color: #ffffff;
-  text-transform: uppercase;
-  display: block;
-  margin-left: auto;
-  transform: translateY(50px);
-}
-
-#wrapper .step-app .step-content .step-tab-panel button i {
-  margin-right: 3px;
-  font-size: 12px;
 }
 #wrapper
   .step-app
@@ -303,29 +286,13 @@ body {
   .step-tab-panel
   #dynamic-borrower-forms
   button.removebtn {
-  padding: 8px 13px;
+  padding: 6px 12px;
   background-color: #dc3545;
   color: white;
-  text-transform: uppercase;
   border: 0;
-  border-radius: 1rem;
   outline: none;
-  margin-top: 14px;
-  display: block;
-  margin-left: auto;
+  margin-top: 8px;
 }
-
-#wrapper
-  .step-app
-  .step-content
-  .step-tab-panel
-  #dynamic-borrower-forms
-  button.removebtn
-  i {
-  margin-right: 5px;
-  font-size: 12px;
-}
-
 /* Step 2 */
 #wrapper .step-app .step-content .step-tab-panel button.lendoraddbtn {
   padding: 6px 12px;
@@ -429,11 +396,8 @@ body {
   margin-top: 30px;
 }
 #wrapper .step-app .step-content .step-tab-panel button.definitionaddbtn {
-  padding: 8px 13px;
-  background: rgb(9, 9, 122);
-  border-radius: 1rem;
-  display: block;
-  margin-left: auto;
+  padding: 6px 12px;
+  background: #28a745;
   outline: none;
   border: 0;
   color: #ffffff;
@@ -444,10 +408,7 @@ body {
   .step-tab-panel
   #dynamic-definition-forms
   button.removebtn {
-  padding: 8px 13px;
-  border-radius: 1rem;
-  display: block;
-  margin-left: auto;
+  padding: 6px 12px;
   background-color: #dc3545;
   color: white;
   border: 0;
@@ -479,6 +440,10 @@ body {
 
 #wrapper .display-wrapper .step-content #display-step-0 {
   display: block;
+}
+
+#wrapper .display-wrapper .step-content .display-steps .individual-form {
+  display: none;
 }
 
 #wrapper

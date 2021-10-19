@@ -78,9 +78,8 @@
           <div class="step-content">
             <!-- -------  1st Step  ------ -->
             <section class="step-tab-panel" data-step="step2">
-              <button class="borroweraddbtn" onclick="add_borrower_form()">
-                <i class="fa fa-plus"></i> Add
-              </button>
+              <!-- <button class="borroweraddbtn" onclick="add_borrower_form()">Add&nbsp;&nbsp;<i
+              class="fa fa-plus"></i></button> -->
               <div id="dynamic-borrower-forms">
                 <div id="borrower-form-div-1">
                   <div class="options">
@@ -119,33 +118,30 @@
                     <input
                       type="text"
                       placeholder="Company Name"
-                      name="companyName1"
-                      onKeyUp="inputHandler(event)"
-                      value=""
+                      onKeyUp="borrowerLegalCompanyHandler(event)"
+                      id="borrower-legal-company-1"
                       required
                     />
                     <p for="">Registered Address</p>
                     <input
                       type="text"
                       placeholder="Registered Address"
-                      onKeyUp="inputHandler(event)"
-                      name="registeredAddress1"
-                      value=""
+                      onKeyUp="borrowerLegalAdressHandler(event)"
+                      id="borrower-legal-address-1"
                       required
                     />
                     <p for="">Registration Number</p>
                     <input
                       type="text"
                       placeholder="Registration Number"
-                      onKeyUp="inputHandler(event)"
-                      name="registrationNumber1"
-                      value=""
+                      onKeyUp="borrowerLegalRegNumberHandler(event)"
+                      id="borrower-legal-regNumber-1"
                       required
                     />
                     <p for="">Registration Country</p>
                     <select
-                      name="registrationCountry1"
-                      onchange="inputHandler(event)"
+                      onchange="borrowerLegalCountryHandler(event)"
+                      id="borrower-legal-country-1"
                       required
                     >
                       <option value="Afganistan">Afghanistan</option>
@@ -166,9 +162,8 @@
                     <input
                       type="text"
                       placeholder="Defined as..."
-                      onKeyUp="inputHandler(event)"
-                      name="definedAs1"
-                      value=""
+                      onKeyUp="borrowerLegalDefinedHandler(event)"
+                      id="borrower-legal-defined-1"
                       required
                     />
                   </form>
@@ -177,36 +172,32 @@
                     <input
                       type="text"
                       placeholder="First name"
-                      name="firstName1"
-                      onKeyUp="inputHandler(event)"
-                      value=""
+                      onKeyUp="borrowerIndividualFirstnameHandler(event)"
+                      id="borrower-individual-firstname-1"
                       required
                     />
                     <p for="">Last name</p>
                     <input
                       type="text"
                       placeholder="Last Name"
-                      name="lastName1"
-                      onKeyUp="inputHandler(event)"
-                      value=""
+                      onKeyUp="borrowerIndividualLastnameHandler(event)"
+                      id="borrower-individual-lastname-1"
                       required
                     />
                     <p for="">Address</p>
                     <input
                       type="text"
                       placeholder="Address"
-                      name="address1"
-                      onKeyUp="inputHandler(event)"
-                      value=""
+                      onKeyUp="borrowerIndividualAddressHandler(event)"
+                      id="borrower-individual-address-1"
                       required
                     />
                     <p for="">Defined as..</p>
                     <input
                       type="text"
                       placeholder="Defined as.."
-                      name="definedIndividual1"
-                      onKeyUp="inputHandler(event)"
-                      value=""
+                      onKeyUp="borrowerIndividualDefinedHandler(event)"
+                      id="borrower-individual-defined-1"
                       required
                     />
                   </form>
@@ -257,33 +248,30 @@
                     <input
                       type="text"
                       placeholder="Company Name"
-                      name="companyName1"
-                      onKeyUp="inputHandler(event)"
-                      value=""
+                      onKeyUp="lenderLegalCompanyHandler(event)"
+                      id="lender-legal-company-1"
                       required
                     />
                     <p for="">Registered Address</p>
                     <input
                       type="text"
                       placeholder="Registered Address"
-                      onKeyUp="inputHandler(event)"
-                      name="registeredAddress1"
-                      value=""
+                      onKeyUp="lenderLegalAdressHandler(event)"
+                      id="lender-legal-address-1"
                       required
                     />
                     <p for="">Registration Number</p>
                     <input
                       type="text"
                       placeholder="Registration Number"
-                      onKeyUp="inputHandler(event)"
-                      name="registrationNumber1"
-                      value=""
+                      onKeyUp="lenderLegalRegNumberHandler(event)"
+                      id="lender-legal-regNumber-1"
                       required
                     />
                     <p for="">Registration Country</p>
                     <select
-                      name="registrationCountry1"
-                      onchange="inputHandler(event)"
+                      onchange="lenderLegalCountryHandler(event)"
+                      id="lender-legal-country-1"
                       required
                     >
                       <option value="Afganistan">Afghanistan</option>
@@ -304,9 +292,8 @@
                     <input
                       type="text"
                       placeholder="Defined as..."
-                      onKeyUp="inputHandler(event)"
-                      name="definedAs1"
-                      value=""
+                      onKeyUp="lenderLegalDefinedHandler(event)"
+                      id="lender-legal-defined-1"
                       required
                     />
                   </form>
@@ -315,36 +302,32 @@
                     <input
                       type="text"
                       placeholder="First name"
-                      name="firstName1"
-                      onKeyUp="inputHandler(event)"
-                      value=""
+                      onKeyUp="lenderIndividualFirstnameHandler(event)"
+                      id="lender-individual-firstname-1"
                       required
                     />
                     <p for="">Last name</p>
                     <input
                       type="text"
                       placeholder="Last Name"
-                      name="lastName1"
-                      onKeyUp="inputHandler(event)"
-                      value=""
+                      onKeyUp="lenderIndividualLastnameHandler(event)"
+                      id="lender-individual-lastname-1"
                       required
                     />
                     <p for="">Address</p>
                     <input
                       type="text"
                       placeholder="Address"
-                      name="address1"
-                      onKeyUp="inputHandler(event)"
-                      value=""
+                      onKeyUp="lenderIndividualAddressHandler(event)"
+                      id="lender-individual-address-1"
                       required
                     />
                     <p for="">Defined as..</p>
                     <input
                       type="text"
                       placeholder="Defined as.."
-                      name="definedIndividual1"
-                      onKeyUp="inputHandler(event)"
-                      value=""
+                      onKeyUp="lenderIndividualDefinedHandler(event)"
+                      id="lender-individual-defined-1"
                       required
                     />
                   </form>
@@ -456,7 +439,7 @@
                         type="text"
                         placeholder="Recitals"
                         onKeyUp="recitalsInputHandler(event)"
-                        name="recitals1"
+                        name="recitals[]"
                         class="rect-input"
                         id="rect-input-1"
                         required
@@ -477,7 +460,7 @@
             <!-- ------  5th Step  -------- -->
             <section class="step-tab-panel" data-step="step5">
               <button class="definitionaddbtn" onclick="add_definition_form()">
-                <i class="fa fa-plus"></i> Add
+                Add&nbsp;&nbsp;<i class="fa fa-plus"></i>
               </button>
               <div id="dynamic-definition-forms">
                 <form id="definition-form-1">
@@ -520,65 +503,59 @@
 
           <!-- ------  1st Step  -------  -->
           <section id="display-step-0" class="display-steps">
-            <h2>Borrower Info</h2>
-            <div class="legal-form">
-              <div class="form-text">
-                <p>
-                  <span class="companyName">INPUT 1 LIMITED</span>, a company
-                  incorporated under the laws of
-                  <span class="registrationCountry">INPUT 4</span> having its
-                  registered address at
-                  <span class="registeredAddress">INPUT 2</span> and have in its
-                  registration number as
-                  <span class="registrationNumber">INPUT 3</span> (hereinafter
-                  referred to as the "<span class="definedAs">INPUT 5</span>")
-                  of the first part;
-                </p>
-              </div>
-            </div>
+            <div class="display-borrower-inputs">
+              <div>
+                <div class="legal-form" id="legal-display-1">
+                  <div class="form-text">
+                    <p>
+                      <span id="display-borrower-legal-company-input-1"
+                        >INPUT 1 LIMITED</span
+                      >, a company incorporated under the laws of
+                      <span id="display-borrower-legal-country-input-1"
+                        >INPUT 4</span
+                      >
+                      having its registered address at
+                      <span id="display-borrower-legal-address-input-1"
+                        >INPUT 2</span
+                      >
+                      and have in its registration number as
+                      <span id="display-borrower-legal-regNumber-input-1"
+                        >INPUT 3</span
+                      >
+                      (hereinafter referred to as the "<span
+                        id="display-borrower-legal-defined-input-1"
+                        >INPUT 5</span
+                      >") of the first part;
+                    </p>
+                  </div>
+                </div>
 
-            <div class="individual-form">
-              <div class="form-text">
-                <p>
-                  <span class="firstName">INPUT 1 </span>
-                  <span class="lastName">INPUT 2</span> of
-                  <span class="address">INPUT 3</span> (hereinafter referred to
-                  as the "<span class="definedIndividual">INPUT 4</span>") of
-                  the second part;
-                </p>
+                <div class="individual-form" id="individual-display-1">
+                  <div class="form-text">
+                    <p>
+                      <span id="display-borrower-individual-firstname-input-1"
+                        >INPUT 1
+                      </span>
+                      <span id="display-borrower-individual-lastname-input-1"
+                        >INPUT 2</span
+                      >
+                      of
+                      <span id="display-borrower-individual-address-input-1"
+                        >INPUT 3</span
+                      >
+                      (hereinafter referred to as the "<span
+                        id="display-borrower-individual-defined-input-1"
+                        >INPUT 4</span
+                      >") of the second part;
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
           <!-- ------  2nd Step  -------  -->
           <section id="display-step-1" class="display-steps">
-            <h2>Lender Info</h2>
-            <div class="legal-form1">
-              <div class="form-text">
-                <p>
-                  <span class="companyName1">INPUT 1 LIMITED</span>, a company
-                  incorporated under the laws of
-                  <span class="registrationCountry1">INPUT 4</span> having its
-                  registered address at
-                  <span class="registeredAddress1">INPUT 2</span> and have in
-                  its registration number as
-                  <span class="registrationNumber1">INPUT 3</span> (hereinafter
-                  referred to as the "<span class="definedAs1">INPUT 5</span>")
-                  of the first part;
-                </p>
-              </div>
-            </div>
-
-            <div class="individual-form1">
-              <div class="form-text">
-                <p>
-                  <span class="firstName1">INPUT 1 </span>
-                  <span class="lastName1">INPUT 2</span> of
-                  <span class="address1">INPUT 3</span> (hereinafter referred to
-                  as the "<span class="definedIndividual1">INPUT 4</span>") of
-                  the second part;
-                </p>
-              </div>
-            </div>
+            <div class="display-lender-inputs"></div>
           </section>
           <!-- ------  3rd Step ------ -->
           <section id="display-step-2" class="display-steps">
@@ -605,7 +582,7 @@
           </section>
           <!-- ------  4th Step ------ -->
           <section id="display-step-3" class="display-steps">
-            <div class="recitals1"></div>
+            <div class="display-recitals-inputs"></div>
           </section>
           <!-- ------  5th Step ------ -->
           <section id="display-step-4" class="display-steps">
