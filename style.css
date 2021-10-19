@@ -268,6 +268,43 @@ body {
 #wrapper .step-app > .step-footer > .step-btn:hover {
   box-shadow: 0 0 0 2px white, 0 0 0 3px rgb(9, 9, 122);
 }
+/* Step 1 */
+#wrapper .step-app .step-content .step-tab-panel button.borroweraddbtn {
+  padding:6px 12px;
+  background: #28A745;
+  outline: none;
+  border: 0;
+  color:#FFFFFF
+}
+#wrapper .step-app .step-content .step-tab-panel #dynamic-borrower-forms button.removebtn{
+  padding:6px 12px;
+  background-color:#DC3545;
+  color:white;
+  border: 0;
+  outline: none;
+  margin-top:8px;
+}
+/* Step 2 */
+#wrapper .step-app .step-content .step-tab-panel button.lendoraddbtn {
+  padding:6px 12px;
+  background: #28A745;
+  outline: none;
+  border: 0;
+  color:#FFFFFF
+}
+#wrapper .step-app .step-content .step-tab-panel #dynamic-lendor-forms > div:not(:first-child) {
+  margin-top: 30px;
+  border-top: 1px solid gray;
+}
+#wrapper .step-app .step-content .step-tab-panel #dynamic-lendor-forms button.removebtn{
+  padding:6px 12px;
+  background-color:#DC3545;
+  color:white;
+  border: 0;
+  outline: none;
+  margin-top:8px;
+}
+
 /* Step 3 */
 #wrapper .step-app .step-content .step-tab-panel .loan-currency-wrapper {
   display: flex;
