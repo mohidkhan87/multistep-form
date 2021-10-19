@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  font-family: "Calibri";
-  background-color: #f8f8f8;
+  font-family: calibri;
+  background-color: lightgrey;
 }
 #wrapper {
   max-width: 1370px;
@@ -19,7 +19,7 @@ body {
   border: 1px solid #e5e5e5;
   padding: 10px;
   flex: 1;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 #wrapper h1 {
   text-align: center;
@@ -28,11 +28,13 @@ body {
 }
 #wrapper .step-app > .step-steps {
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 10px;
   display: flex;
   justify-content: center;
-  border-radius: 3px 3px 0 0;
+  border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 2px 12px 8px lightgrey;
+  /* border: 1px solid silver; */
 }
 #wrapper .step-app > .step-steps > li {
   list-style: none;
@@ -41,6 +43,7 @@ body {
   display: block;
   color: #333333;
   text-decoration: none;
+  margin-bottom: 10px;
 }
 #wrapper .step-app > .step-steps > li.done {
   padding: 0;
@@ -133,11 +136,17 @@ body {
 #wrapper .step-app > .step-content {
   border: 1px solid #e5e5e5;
   padding: 10px;
+  /* padding-top: 0; */
   margin-top: 10px;
 }
 #wrapper .step-app > .step-content > .step-tab-panel {
   display: none;
 }
+
+#wrapper .step-app > .step-content > .step-tab-panel button {
+  background-color: blue;
+}
+
 .step-app > .step-content > .step-tab-panel .legal-form {
   display: block;
 }
@@ -208,7 +217,11 @@ body {
   color: rgb(9, 9, 122);
 }
 
-.step-tab-panel .options .field input[type="radio"]:checked ~ .custom-radio::before {
+.step-tab-panel
+  .options
+  .field
+  input[type="radio"]:checked
+  ~ .custom-radio::before {
   background-color: rgb(9, 9, 122);
 }
 
@@ -219,14 +232,14 @@ body {
 
 .step-app > .step-content > .step-tab-panel form input {
   height: 40px;
-  padding:0px 10px;
+  padding: 0px 10px;
   width: 100%;
   box-sizing: border-box;
   border: 1px solid silver;
 }
 .step-app > .step-content > .step-tab-panel form select {
   height: 40px;
-  padding:0px 10px;
+  padding: 0px 10px;
   width: 100%;
   box-sizing: border-box;
   border: 1px solid silver;
@@ -247,9 +260,7 @@ body {
   margin-top: 15px;
   margin-bottom: 15px;
   padding: 10px;
-  display: grid;
-  grid-template-columns: auto auto;
-  align-items: end;
+  display: flex;
   gap: 8px;
 }
 #wrapper .step-app > .step-footer > .step-btn {
@@ -270,39 +281,80 @@ body {
 }
 /* Step 1 */
 #wrapper .step-app .step-content .step-tab-panel button.borroweraddbtn {
-  padding:6px 12px;
-  background: #28A745;
+  padding: 8px 13px;
+  background: rgb(9, 9, 122);
   outline: none;
   border: 0;
-  color:#FFFFFF
+  border-radius: 1rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  display: block;
+  margin-left: auto;
+  transform: translateY(50px);
 }
-#wrapper .step-app .step-content .step-tab-panel #dynamic-borrower-forms button.removebtn{
-  padding:6px 12px;
-  background-color:#DC3545;
-  color:white;
+
+#wrapper .step-app .step-content .step-tab-panel button i {
+  margin-right: 3px;
+  font-size: 12px;
+}
+#wrapper
+  .step-app
+  .step-content
+  .step-tab-panel
+  #dynamic-borrower-forms
+  button.removebtn {
+  padding: 8px 13px;
+  background-color: #dc3545;
+  color: white;
+  text-transform: uppercase;
   border: 0;
+  border-radius: 1rem;
   outline: none;
-  margin-top:8px;
+  margin-top: 14px;
+  display: block;
+  margin-left: auto;
 }
+
+#wrapper
+  .step-app
+  .step-content
+  .step-tab-panel
+  #dynamic-borrower-forms
+  button.removebtn
+  i {
+  margin-right: 5px;
+  font-size: 12px;
+}
+
 /* Step 2 */
 #wrapper .step-app .step-content .step-tab-panel button.lendoraddbtn {
-  padding:6px 12px;
-  background: #28A745;
+  padding: 6px 12px;
+  background: #28a745;
   outline: none;
   border: 0;
-  color:#FFFFFF
+  color: #ffffff;
 }
-#wrapper .step-app .step-content .step-tab-panel #dynamic-lendor-forms > div:not(:first-child) {
+#wrapper
+  .step-app
+  .step-content
+  .step-tab-panel
+  #dynamic-lendor-forms
+  > div:not(:first-child) {
   margin-top: 30px;
   border-top: 1px solid gray;
 }
-#wrapper .step-app .step-content .step-tab-panel #dynamic-lendor-forms button.removebtn{
-  padding:6px 12px;
-  background-color:#DC3545;
-  color:white;
+#wrapper
+  .step-app
+  .step-content
+  .step-tab-panel
+  #dynamic-lendor-forms
+  button.removebtn {
+  padding: 6px 12px;
+  background-color: #dc3545;
+  color: white;
   border: 0;
   outline: none;
-  margin-top:8px;
+  margin-top: 8px;
 }
 
 /* Step 3 */
@@ -311,55 +363,96 @@ body {
   gap: 10px;
 }
 /* Step 4 */
-#wrapper .step-app .step-content .step-tab-panel #recitals-form > div:not(:first-child) {
-  margin-top:10px;
+#wrapper
+  .step-app
+  .step-content
+  .step-tab-panel
+  #recitals-form
+  > div:not(:first-child) {
+  margin-top: 10px;
 }
 #wrapper .step-app .step-content .step-tab-panel #recitals-form .recital-row {
   display: flex;
-  gap:10px;
+  gap: 10px;
 }
-#wrapper .step-app .step-content .step-tab-panel #recitals-form .recital-row .input-with-error{
-  width:100%;
+#wrapper
+  .step-app
+  .step-content
+  .step-tab-panel
+  #recitals-form
+  .recital-row
+  .input-with-error {
+  width: 100%;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
 }
-#wrapper .step-app .step-content .step-tab-panel #recitals-form .recital-row button.addbtn {
+#wrapper
+  .step-app
+  .step-content
+  .step-tab-panel
+  #recitals-form
+  .recital-row
+  button.addbtn {
   width: 40px;
   height: 40px;
-  border-radius:50%;
+  border-radius: 50%;
   background: rgb(9, 9, 122);
   outline: none;
   border: 0;
 }
-#wrapper .step-app .step-content .step-tab-panel #recitals-form .recital-row button.removebtn {
+#wrapper
+  .step-app
+  .step-content
+  .step-tab-panel
+  #recitals-form
+  .recital-row
+  button.removebtn {
   width: 40px;
   height: 40px;
-  border-radius:50%;
+  border-radius: 50%;
   background: red;
   outline: none;
   border: 0;
 }
-#wrapper .step-app .step-content .step-tab-panel #recitals-form .recital-row button i {
-  color: #FFFFFF;
+#wrapper
+  .step-app
+  .step-content
+  .step-tab-panel
+  #recitals-form
+  .recital-row
+  button
+  i {
+  color: #ffffff;
 }
 /* Step 5 */
-#wrapper .step-app .step-content .step-tab-panel #dynamic-definition-forms hr{
-  margin-top:30px;
+#wrapper .step-app .step-content .step-tab-panel #dynamic-definition-forms hr {
+  margin-top: 30px;
 }
 #wrapper .step-app .step-content .step-tab-panel button.definitionaddbtn {
-  padding:6px 12px;
-  background: #28A745;
+  padding: 8px 13px;
+  background: rgb(9, 9, 122);
+  border-radius: 1rem;
+  display: block;
+  margin-left: auto;
   outline: none;
   border: 0;
-  color:#FFFFFF
+  color: #ffffff;
 }
-#wrapper .step-app .step-content .step-tab-panel #dynamic-definition-forms button.removebtn{
-  padding:6px 12px;
-  background-color:#DC3545;
-  color:white;
+#wrapper
+  .step-app
+  .step-content
+  .step-tab-panel
+  #dynamic-definition-forms
+  button.removebtn {
+  padding: 8px 13px;
+  border-radius: 1rem;
+  display: block;
+  margin-left: auto;
+  background-color: #dc3545;
+  color: white;
   border: 0;
   outline: none;
-  margin-top:8px;
+  margin-top: 8px;
 }
 /*****************************************************
                     Display Section
@@ -377,26 +470,31 @@ body {
 #wrapper .display-wrapper .step-content h2.date {
   font-size: 18px;
   font-weight: bold;
-  margin:0;
+  margin: 0;
 }
 
-#wrapper .display-wrapper .step-content .display-steps{
+#wrapper .display-wrapper .step-content .display-steps {
   display: none;
 }
 
-#wrapper .display-wrapper .step-content #display-step-0{
+#wrapper .display-wrapper .step-content #display-step-0 {
   display: block;
 }
 
-#wrapper .display-wrapper .step-content .display-steps .individual-form{
-  display: none;
-}
-
-#wrapper .display-wrapper .step-content .display-steps .display-recitals-inputs{
+#wrapper
+  .display-wrapper
+  .step-content
+  .display-steps
+  .display-recitals-inputs {
   margin-top: 20px;
 }
 
-#wrapper .display-wrapper .step-content .display-steps .display-recitals-inputs > div{
+#wrapper
+  .display-wrapper
+  .step-content
+  .display-steps
+  .display-recitals-inputs
+  > div {
   margin: 10px 0;
 }
 
@@ -415,7 +513,13 @@ body {
   gap: 20px;
 }
 
-#wrapper .display-wrapper .step-content .display-steps .form-text .form-table p {
+#wrapper
+  .display-wrapper
+  .step-content
+  .display-steps
+  .form-text
+  .form-table
+  p {
   margin: 0;
   font-size: 16px;
   font-weight: 400;

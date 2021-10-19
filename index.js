@@ -1,12 +1,12 @@
 //  Step 1 Forms
-var legalFrm = $("#legalFrm");
-var legalFrmValidator = legalFrm.validate();
+var brLegalFrm = $(".legal-form");
+var brLegalFrmValidator = brLegalFrm.validate();
 
 //   var individualFrm = $("#individualFrm");
 //   var individualFrmValidator = individualFrm.validate();
 
 //   Step 2 Forms
-var legalFrm1 = $("#legalFrm1");
+var legalFrm1 = $("#lendor-legal-form-1");
 var legalFrm1Validator = legalFrm1.validate();
 
 //   Step 3 Form
@@ -31,11 +31,11 @@ $("#demo").steps({
     // step1
     if (currentIndex === 0) {
       if (stepDirection === "forward") {
-        // return legalFrm.valid();
+        return brLegalFrm.valid();
         //   return individualFrm.valid();
       }
       if (stepDirection === "backward") {
-        // legalFrmValidator.resetForm();
+        return brLegalFrmValidator.resetForm();
         //   individualFrmValidator.resetForm();
       }
     }
@@ -60,10 +60,10 @@ $("#demo").steps({
     // step4
     if (currentIndex === 3) {
       if (stepDirection === "forward") {
-        // return recitalsForm.valid();
+        return recitalsForm.valid();
       }
       if (stepDirection === "backward") {
-        // recitalsFormValidator.resetForm();
+         recitalsFormValidator.resetForm();
       }
     }
     // step5
@@ -115,12 +115,60 @@ function toggleFormBorrower(type, id) {
       break;
   }
 }
-
-// Company
-function borrowerLegalCompanyHandler(event){
-  let eventValue = event.target.value;
-  let id = event.target.id.substring(23)
-  document.getElementById("display-borrower-legal-company-input-" + id).innerHTML = eventValue;
+let borrowerTarget = $("#dynamic-borrower-forms");
+let borrowerForms = 1;
+function add_borrower_form() {
+  borrowerForms++;
+  let div = document.createElement("div");
+  div.setAttribute("id", "borrower-form-div-" + borrowerForms);
+  div.innerHTML = '<div class="options">'+
+                    '<div class="legal field">'+
+                      '<input type="radio" id="borrower-legal-radio-'+borrowerForms+'" name="borrower-radio-'+borrowerForms+'" checked />'+
+                        '<label for="borrower-legal-radio-'+borrowerForms+'" id="borrower-legal-radio-'+borrowerForms+'" onclick="toggleFormBorrower(\'borrower-legal\', \'borrower-legal-radio-'+borrowerForms+'\')">Legal Entity</label>'+
+                      '<div class="custom-radio"></div>'+
+                    '</div>'+
+                    '<div class="individual field">'+
+                      '<input type="radio" id="borrower-individual-radio-'+borrowerForms+'" name="borrower-radio-'+borrowerForms+'" />'+
+                      '<label for="borrower-individual-radio-'+borrowerForms+'" id="borrower-individual-radio-'+borrowerForms+'" onclick="toggleFormBorrower(\'borrower-individual\',\'borrower-individual-radio-'+borrowerForms+'\')">Individual'+
+                      '</label>'+
+                      '<div class="custom-radio"></div>'+
+                    '</div>'+
+                  '</div>'+
+                  '<form id="borrower-legal-form-'+borrowerForms+'" class="legal-form">'+
+                    '<p for="">Company Name</p>'+
+                    '<input type="text" placeholder="Company Name" name="companyName'+borrowerForms+'" onKeyUp="inputHandler(event)0 "value="" required />'+
+                    '<p for="">Registered Address</p>'+
+                    '<input type="text" placeholder="Registered Address" onKeyUp="inputHandler(event)" name="registeredAddress'+borrowerForms+'" value="" required />'+
+                    '<p for="">Registration Number</p>'+
+                    '<input type="text" placeholder="Registration Number" onKeyUp="inputHandler(event)" name="registrationNumber'+borrowerForms+'" value="" required />'+
+                    '<p for="">Registration Country</p>'+
+                    '<select name="registrationCountry'+borrowerForms+'" onchange="inputHandler(event)" required>'+
+                      '<option value="Afganistan">Afghanistan</option>'+
+                      '<option value="Albania">Albania</option>'+
+                      '<option value="Algeria">Algeria</option>'+
+                      '<option value="American Samoa">American Samoa</option>'+
+                      '<option value="Andorra">Andorra</option>'+
+                      '<option value="Angola">Angola</option>'+
+                      '<option value="Anguilla">Anguilla</option>'+
+                      '<option value="Antigua & Barbuda">Antigua & Barbuda</option>'+
+                      '<option value="Argentina">Argentina</option>'+
+                      '<option value="Armenia">Armenia</option>'+
+                      '<option value="Aruba">Aruba</option>'+
+                    '</select>'+
+                    '<p for="">Defined as...</p>'+
+                    '<input type="text" placeholder="Defined as..." onKeyUp="inputHandler(event)" name="definedAs'+borrowerForms+'" value="" required />'+
+                  '</form>'+
+                  '<form id="borrower-individual-form-'+borrowerForms+'" class="individual-form">'+
+                    '<p for="">First name</p>'+
+                    '<input type="text" placeholder="First name" name="firstName1" onKeyUp="inputHandler(event)" value="" required />'+
+                    '<p for="">Last name</p>'+
+                    '<input type="text" placeholder="Last Name" name="lastName1" onKeyUp="inputHandler(event)" value="" required />'+
+                    '<p for="">Address</p>'+
+                    '<input type="text" placeholder="Address" name="address1" onKeyUp="inputHandler(event)" value="" required />'+
+                    '<p for="">Defined as..</p>'+
+                    '<input type="text" placeholder="Defined as.." name="definedIndividual1" onKeyUp="inputHandler(event)" value="" required />'+
+                  '</form><button class="removebtn" type="button" onclick="remove_borrower_form(' + borrowerForms + ')"> <i class="fa fa-minus"></i>Delete</button>'
+  borrowerTarget.append(div);
 }
 // Address
 function borrowerLegalAdressHandler(event){
@@ -352,19 +400,26 @@ function loanHandler(event) {
 
 // Step 4
 let recitalsTarget = $("form#recitals-form");
+let displayStep3 = $("#display-step-3");
 let recitals = 1;
 function recitals_fields() {
   recitals++;
   let div = document.createElement("div");
+  let displaySteps = document.createElement("div");
   div.setAttribute("class", "removerecital" + recitals);
-  div.innerHTML = '<label for="">Recitals</label><div class="recital-row"><div class="input-with-error"><input type="text" placeholder="Recitals" onKeyUp="recitalsInputHandler(event)" name="recitals[]" class="rect-input" id="rect-input-' + recitals + '" required /></div><button class="removebtn" type="button" onclick="remove_recital_field(' + recitals + ')"> <i class="fa fa-minus"></i></button></div>'
+  div.innerHTML = '<label for="">Recitals</label><div class="recital-row"><div class="input-with-error"><input type="text" placeholder="Recitals" onKeyUp="recitalsInputHandler(event)" name="recitals'+recitals+'" class="rect-input" id="rect-input-' + recitals + '" required /></div><button class="removebtn" type="button" onclick="remove_recital_field(' + recitals + ')"> <i class="fa fa-minus"></i></button></div>'
   recitalsTarget.append(div);
+
+  displaySteps.setAttribute("class", "recitals" + recitals);
+  displayStep3.append(displaySteps)
   showInputs();
 }
 function remove_recital_field(id) {
   recitals--;
   $('.removerecital' + id).remove();
+  $('.recitals' + id).remove();
   showInputs();
+  console.log(id);
 }
 function showInputs() {
   let inputs = document.getElementsByName('recitals[]');
@@ -376,9 +431,11 @@ function showInputs() {
   target.html(input);
 }
 function recitalsInputHandler(event) {
+  let eventName = event.target.name;
   let eventValue = event.target.value;
-  let id = event.target.id.substring(11)
-  document.getElementById("display-recitals-input-" + id).innerHTML = eventValue;
+  // let id = event.target.id.substring(11)
+  $('.'+ eventName)[0].innerHTML = eventValue;
+  console.log($('.'+ eventName)[0]);
 }
 showInputs();
 
@@ -389,7 +446,7 @@ function add_definition_form() {
   definitionForms++;
   let form = document.createElement("form");
   form.setAttribute("id", "definition-form-" + definitionForms);
-  form.innerHTML = '<hr><p>Definitions</p><input type="text" onKeyUp="definitionInputHandler(event)" id="definition-input-' + definitionForms + '" placeholder="Definitions" name="definition" required /><p>Meaning</p><input type="text" onKeyUp="definitionInputHandler(event)" id="meaning-input-' + definitionForms + '" placeholder="Meaning" name="meaning" required /><button class="removebtn" type="button" onclick="remove_definition_form(' + definitionForms + ')">Delete <i class="fa fa-minus"></i></button>'
+  form.innerHTML = '<hr><p>Definitions</p><input type="text" onKeyUp="definitionInputHandler(event)" id="definition-input-' + definitionForms + '" placeholder="Definitions" name="definition" required /><p>Meaning</p><input type="text" onKeyUp="definitionInputHandler(event)" id="meaning-input-' + definitionForms + '" placeholder="Meaning" name="meaning" required /><button class="removebtn" type="button" onclick="remove_definition_form(' + definitionForms + ')"><i class="fa fa-minus"></i>Delete</button>'
   definitionTarget.append(form);
   showDefinitionInputs()
 }
