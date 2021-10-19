@@ -204,34 +204,28 @@
           <!-- ------  3rd Step  ------ -->
           <section class="step-tab-panel" data-step="step3">
             <form name="loan-form" id="loanForm">
-              <p for="">Loan Amount</p>
+              <label for="">Loan Amount</label>
               <div class="loan-currency-wrapper">
-                <input type="text" placeholder="0.00" size="8" name="loanAmount" onKeyUp="inputHandler(event)" value=""
-                  required />
-                <select name="currency" onchange="inputHandler(event)" id="" required>
-                  <option data-symbol="$" data-placeholder="0.00">USD</option>
-                  <option data-symbol="€" data-placeholder="0.00">EUR</option>
-                  <option data-symbol="£" data-placeholder="0.00">GBP</option>
-                  <option data-symbol="₦" data-placeholder="0.00" selected>
-                    NGN
-                  </option>
-                  <option data-symbol="¥" data-placeholder="0">JPY</option>
-                  <option data-symbol="$" data-placeholder="0.00">CAD</option>
-                  <option data-symbol="$" data-placeholder="0.00">AUD</option>
+                <input type="text" placeholder="0.00" size="8" name="loanAmount" id="LoanAmount" onKeyUp="loanHandler(event)" required />
+                <select name="currency" id="LoanCurrency" onchange="loanHandler(event)" required>
+                  <option data-symbol="$" data-placeholder="0.00" value="-1" selected disabled>Select</option>
+                  <option data-symbol="$" data-placeholder="0.00" value="USD">USD</option>
+                  <option data-symbol="€" data-placeholder="0.00" value="EUR">EUR</option>
+                  <option data-symbol="£" data-placeholder="0.00" value="GBP">GBP</option>
+                  <option data-symbol="₦" data-placeholder="0.00" value="NGN">NGN</option>
+                  <option data-symbol="¥" data-placeholder="0.00" value="JPY">JPY</option>
+                  <option data-symbol="$" data-placeholder="0.00" value="CAD">CAD</option>
+                  <option data-symbol="$" data-placeholder="0.00" value="AUD">AUD</option>
                 </select>
               </div>
               <p for="">Moratorium</p>
-              <input type="text" placeholder="Moratorium" name="moratorium" onKeyUp="inputHandler(event)" value=""
-                required />
+              <input type="text" placeholder="Moratorium" name="moratorium" id="Moratorium" onKeyUp="loanHandler(event)" required />
               <p for="">Interest Rate</p>
-              <input type="text" placeholder="Interest Rate" name="interestRate" onKeyUp="inputHandler(event)" value=""
-                required />
+              <input type="text" placeholder="Interest Rate" name="interestRate" id="InterestRate" onKeyUp="loanHandler(event)" required />
               <p for="">Loan Duration/Maturity Date</p>
-              <input type="text" placeholder="Loan Duration/Maturity Date" name="loanDuration"
-                onKeyUp="inputHandler(event)" value="" required />
+              <input type="text" placeholder="Loan Duration/Maturity Date" name="loanDuration" id="LoanDuration" onKeyUp="loanHandler(event)" value="" required />
               <p for="">Use of Loan</p>
-              <input type="text" placeholder="Use of Loan" name="loanUse" onKeyUp="inputHandler(event)" value=""
-                required />
+              <input type="text" placeholder="Use of Loan" name="loanUse" id="UseOfLoan" onKeyUp="loanHandler(event)" value="" required />
             </form>
           </section>
 
@@ -254,13 +248,15 @@
 
           <!-- ------  5th Step  -------- -->
           <section class="step-tab-panel" data-step="step5">
-            <form name="frmMobile" id="definitionFrm">
-              <p for="">Definitions</p>
-              <input type="text" placeholder="Definitions" name="definition" onKeyUp="inputHandler(event)" value=""
-                required />
-              <p for="">Meaning</p>
-              <input type="text" placeholder="Meaning" name="meaning" onKeyUp="inputHandler(event)" value="" required />
-            </form>
+            <button class="definitionaddbtn" onclick="add_definition_form()">Add&nbsp;&nbsp;<i class="fa fa-plus"></i></button>
+            <div id="dynamic-definition-forms">
+              <form id="definition-form-1">
+                <p>Definitions</p>
+                <input type="text" onKeyUp="definitionInputHandler(event)" id="definition-input-1" placeholder="Definitions" name="definition" required />
+                <p>Meaning</p>
+                <input type="text" onKeyUp="definitionInputHandler(event)" id="meaning-input-1" placeholder="Meaning" name="meaning" required />
+              </form>
+            </div>
           </section>
         </div>
 
@@ -340,17 +336,12 @@
         </section>
         <!-- ------  3rd Step ------ -->
         <section id="display-step-2" class="display-steps">
-          <h2>Loan Info</h2>
           <div class="form-text">
-            <p>
-              “Loan” means <span class="currency">[CURRENCY]</span>
-              <span class="loanAmount">INPUT 1</span> <br />“Moratorium” means
-              <span class="moratorium">INPUT 2</span> <br />“Interest Rate”
-              means <span class="interestRate">INPUT 3</span> <br />“Loan
-              Duration” means <span class="loanDuration">INPUT 4</span>
-              <br />“Use of Loan” means
-              <span class="loanUse">INPUT 5</span>
-            </p>
+            <p>Loan means <span id="displayLoanCurrency">[Currency]</span><span id="displayLoanAmount"> Input 1</span></p>
+            <p>Moratorium means <span id="displayMoratorium">Input 2</span></p>
+            <p>Interest rate means <span id="displayInterestRate">Input 3</span></p>
+            <p>Loan duration means <span id="displayLoanDuration">Input 4</span></p>
+            <p>Use of loan means <span id="displayUseOfLoan">Input 5</span></p>
           </div>
         </section>
         <!-- ------  4th Step ------ -->
@@ -360,12 +351,7 @@
         </section>
         <!-- ------  5th Step ------ -->
         <section id="display-step-4" class="display-steps">
-          <h2>Definitions</h2>
-          <div class="form-text">
-            <div class="form-table">
-              <p class="definition">INPUT Definition</p>
-              <p class="meaning">INPUT Meaning</p>
-            </div>
+          <div class="display-definition-inputs">
           </div>
         </section>
 

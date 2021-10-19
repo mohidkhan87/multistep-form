@@ -230,7 +230,6 @@ body {
   width: 100%;
   box-sizing: border-box;
   border: 1px solid silver;
-  margin: 5px 0;
 }
 .step-app > .step-content > .step-tab-panel form select:focus {
   outline: 0;
@@ -305,6 +304,25 @@ body {
 }
 #wrapper .step-app .step-content .step-tab-panel #recitals-form .recital-row button i {
   color: #FFFFFF;
+}
+/* Step 5 */
+#wrapper .step-app .step-content .step-tab-panel #dynamic-definition-forms hr{
+  margin-top:30px;
+}
+#wrapper .step-app .step-content .step-tab-panel button.definitionaddbtn {
+  padding:6px 12px;
+  background: #28A745;
+  outline: none;
+  border: 0;
+  color:#FFFFFF
+}
+#wrapper .step-app .step-content .step-tab-panel #dynamic-definition-forms button.removebtn{
+  padding:6px 12px;
+  background-color:#DC3545;
+  color:white;
+  border: 0;
+  outline: none;
+  margin-top:8px;
 }
 /*****************************************************
                     Display Section
