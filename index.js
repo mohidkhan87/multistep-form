@@ -51,28 +51,28 @@ $("#demo").steps({
     // step3
     if (currentIndex === 2) {
       if (stepDirection === "forward") {
-        // return loanForm.valid();
+        return loanForm.valid();
       }
       if (stepDirection === "backward") {
-        // loanFormValidator.resetForm();
+        loanFormValidator.resetForm();
       }
     }
     // step4
     if (currentIndex === 3) {
       if (stepDirection === "forward") {
-        // return recitalsForm.valid();
+        return recitalsForm.valid();
       }
       if (stepDirection === "backward") {
-        // recitalsFormValidator.resetForm();
+        recitalsFormValidator.resetForm();
       }
     }
     // step5
     if (currentIndex === 4) {
       if (stepDirection === "forward") {
-        // return definitionFrm.valid();
+        return definitionFrm.valid();
       }
       if (stepDirection === "backward") {
-        // definitionFrmValidator.resetForm();
+        definitionFrmValidator.resetForm();
       }
     }
     return true;
@@ -156,7 +156,6 @@ function borrowerLegalDefinedHandler(event) {
     "display-borrower-legal-defined-input-" + id
   ).innerHTML = eventValue;
 }
-
 // Firstname
 function borrowerIndividualFirstnameHandler(event) {
   let eventValue = event.target.value;
@@ -397,7 +396,7 @@ function showLenderInputs() {
     input +=
       "<div>" +
       '<div class="legal-form" id="lendor-legal-display-' +
-      lendorForms +
+      (i+1) +
       '">' +
       '<div class="form-text">' +
       "<p>" +
@@ -420,7 +419,7 @@ function showLenderInputs() {
       "</div>" +
       "</div>" +
       '<div class="individual-form" id="lendor-individual-display-' +
-      lendorForms +
+      (i+1) +
       '">' +
       '<div class="form-text">' +
       "<p>" +
@@ -459,7 +458,9 @@ function recitals_fields() {
   let div = document.createElement("div");
   div.setAttribute("class", "removerecital" + recitals);
   div.innerHTML =
-    '<label for="">Recitals</label><div class="recital-row"><div class="input-with-error"><input type="text" placeholder="Recitals" onKeyUp="recitalsInputHandler(event)" name="recitals[]" class="rect-input" id="rect-input-' +
+    '<label for="">Recitals</label><div class="recital-row"><div class="input-with-error"><input type="text" placeholder="Recitals" onKeyUp="recitalsInputHandler(event)" name="recitals-' +
+    recitals +
+    '" class="rect-input" id="rect-input-' +
     recitals +
     '" required /></div><button class="removebtn" type="button" onclick="remove_recital_field(' +
     recitals +
@@ -473,9 +474,8 @@ function remove_recital_field(id) {
   showInputs();
 }
 function showInputs() {
-  let inputs = document.getElementsByName("recitals[]");
   let input = "";
-  for (var i = 0; i < inputs.length; i++) {
+  for (var i = 0; i < recitals; i++) {
     input +=
       '<div class="form-text"><span id="display-recitals-input-' +
       (i + 1) +

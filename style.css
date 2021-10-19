@@ -329,6 +329,10 @@ body {
   display: flex;
   gap: 10px;
 }
+#wrapper .step-app .step-content .step-tab-panel .loan-currency-wrapper > div {
+  width: 100%;
+}
+
 /* Step 4 */
 #wrapper
   .step-app

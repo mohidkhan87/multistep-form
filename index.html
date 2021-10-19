@@ -78,8 +78,6 @@
           <div class="step-content">
             <!-- -------  1st Step  ------ -->
             <section class="step-tab-panel" data-step="step2">
-              <!-- <button class="borroweraddbtn" onclick="add_borrower_form()">Add&nbsp;&nbsp;<i
-              class="fa fa-plus"></i></button> -->
               <div id="dynamic-borrower-forms">
                 <div id="borrower-form-div-1">
                   <div class="options">
@@ -340,52 +338,84 @@
               <form name="loan-form" id="loanForm">
                 <label for="">Loan Amount</label>
                 <div class="loan-currency-wrapper">
-                  <input
-                    type="text"
-                    placeholder="0.00"
-                    size="8"
-                    name="loanAmount"
-                    id="LoanAmount"
-                    onKeyUp="loanHandler(event)"
-                    required
-                  />
-                  <select
-                    name="currency"
-                    id="LoanCurrency"
-                    onchange="loanHandler(event)"
-                    required
-                  >
-                    <option
-                      data-symbol="$"
-                      data-placeholder="0.00"
-                      value="-1"
-                      selected
-                      disabled
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="0.00"
+                      size="8"
+                      name="loanAmount"
+                      id="LoanAmount"
+                      onKeyUp="loanHandler(event)"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <select
+                      name="currency"
+                      id="LoanCurrency"
+                      onchange="loanHandler(event)"
+                      required
                     >
-                      Select
-                    </option>
-                    <option data-symbol="$" data-placeholder="0.00" value="USD">
-                      USD
-                    </option>
-                    <option data-symbol="€" data-placeholder="0.00" value="EUR">
-                      EUR
-                    </option>
-                    <option data-symbol="£" data-placeholder="0.00" value="GBP">
-                      GBP
-                    </option>
-                    <option data-symbol="₦" data-placeholder="0.00" value="NGN">
-                      NGN
-                    </option>
-                    <option data-symbol="¥" data-placeholder="0.00" value="JPY">
-                      JPY
-                    </option>
-                    <option data-symbol="$" data-placeholder="0.00" value="CAD">
-                      CAD
-                    </option>
-                    <option data-symbol="$" data-placeholder="0.00" value="AUD">
-                      AUD
-                    </option>
-                  </select>
+                      <option
+                        data-symbol="$"
+                        data-placeholder="0.00"
+                        value="-1"
+                        selected
+                        disabled
+                      >
+                        Select
+                      </option>
+                      <option
+                        data-symbol="$"
+                        data-placeholder="0.00"
+                        value="USD"
+                      >
+                        USD
+                      </option>
+                      <option
+                        data-symbol="€"
+                        data-placeholder="0.00"
+                        value="EUR"
+                      >
+                        EUR
+                      </option>
+                      <option
+                        data-symbol="£"
+                        data-placeholder="0.00"
+                        value="GBP"
+                      >
+                        GBP
+                      </option>
+                      <option
+                        data-symbol="₦"
+                        data-placeholder="0.00"
+                        value="NGN"
+                      >
+                        NGN
+                      </option>
+                      <option
+                        data-symbol="¥"
+                        data-placeholder="0.00"
+                        value="JPY"
+                      >
+                        JPY
+                      </option>
+                      <option
+                        data-symbol="$"
+                        data-placeholder="0.00"
+                        value="CAD"
+                      >
+                        CAD
+                      </option>
+                      <option
+                        data-symbol="$"
+                        data-placeholder="0.00"
+                        value="AUD"
+                      >
+                        AUD
+                      </option>
+                    </select>
+                  </div>
                 </div>
                 <p for="">Moratorium</p>
                 <input
@@ -582,7 +612,10 @@
           </section>
           <!-- ------  4th Step ------ -->
           <section id="display-step-3" class="display-steps">
-            <div class="display-recitals-inputs"></div>
+            <div
+              class="display-recitals-inputs"
+              id="display-recitals-inputs-id"
+            ></div>
           </section>
           <!-- ------  5th Step ------ -->
           <section id="display-step-4" class="display-steps">
