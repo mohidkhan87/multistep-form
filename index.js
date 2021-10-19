@@ -1,9 +1,9 @@
 //  Step 1 Forms
-var legalFrm = $("#legalFrm");
-var legalFrmValidator = legalFrm.validate();
-
-//   var individualFrm = $("#individualFrm");
-//   var individualFrmValidator = individualFrm.validate();
+let borrowerLegalForm1 = $("#borrower-legal-form-1");
+let borrowerLegalForm1Validator = borrowerLegalForm1.validate();
+let borrowerIndividualForm1 = $("#borrower-individual-form-1");
+let borrowerIndividualForm1Validator = borrowerIndividualForm1.validate();
+let borrowerLegalOrIndividual = true;
 
 //   Step 2 Forms
 var legalFrm1 = $("#legalFrm1");
@@ -18,25 +18,27 @@ var recitalsForm = $("#recitals-form");
 var recitalsFormValidator = recitalsForm.validate();
 
 //   Step 5 Form
-var definitionFrm = $("#definitionFrm");
-var definitionFrmValidator = definitionFrm.validate();
+var definitionForm = $("#dynamic-definition-form");
+var definitionFormValidator = definitionForm.validate();
 
 $("#demo").steps({
   transitionEffect: 2,
   transitionEffectSpeed: 200,
   onChange: function (currentIndex, newIndex, stepDirection) {
-    console.log(currentIndex, newIndex, stepDirection);
     // Changing Right Display for each step change
     changeDisplay(currentIndex);
     // step1
     if (currentIndex === 0) {
       if (stepDirection === "forward") {
-        // return legalFrm.valid();
-        //   return individualFrm.valid();
+        // if(borrowerLegalOrIndividual){
+        //   return borrowerLegalForm1.valid();
+        // }else{
+        //   return borrowerIndividualForm1.valid();
+        // }
       }
       if (stepDirection === "backward") {
-        // legalFrmValidator.resetForm();
-        //   individualFrmValidator.resetForm();
+        // borrowerLegalForm1.resetForm();
+        // borrowerIndividualForm1.resetForm();
       }
     }
     // step2
@@ -69,10 +71,10 @@ $("#demo").steps({
     // step5
     if (currentIndex === 4) {
       if (stepDirection === "forward") {
-        return definitionFrm.valid();
+        return definitionForm.valid();
       }
       if (stepDirection === "backward") {
-        definitionFrmValidator.resetForm();
+        definitionFormValidator.resetForm();
       }
     }
     return true;
@@ -102,6 +104,7 @@ function toggleFormBorrower(type, id) {
       $("#borrower-legal-form-" + form_id).show();
       $("#legal-display-1").show();
       $("#individual-display-1").hide();
+      borrowerLegalOrIndividual = true;
       break;
     case "borrower-individual":
       form_id = id.substring(26);
@@ -109,6 +112,7 @@ function toggleFormBorrower(type, id) {
       $("#borrower-individual-form-" + form_id).show();
       $("#legal-display-1").hide();
       $("#individual-display-1").show();
+      borrowerLegalOrIndividual = false;
       break;
     default:
       break;
@@ -396,7 +400,7 @@ function showLenderInputs() {
     input +=
       "<div>" +
       '<div class="legal-form" id="lendor-legal-display-' +
-      (i+1) +
+      (i + 1) +
       '">' +
       '<div class="form-text">' +
       "<p>" +
@@ -419,7 +423,7 @@ function showLenderInputs() {
       "</div>" +
       "</div>" +
       '<div class="individual-form" id="lendor-individual-display-' +
-      (i+1) +
+      (i + 1) +
       '">' +
       '<div class="form-text">' +
       "<p>" +
@@ -495,21 +499,21 @@ function recitalsInputHandler(event) {
 showInputs();
 
 // Step 5
-let definitionTarget = $("#dynamic-definition-forms");
+let definitionTarget = $("#dynamic-definition-form");
 let definitionForms = 1;
 function add_definition_form() {
   definitionForms++;
-  let form = document.createElement("form");
-  form.setAttribute("id", "definition-form-" + definitionForms);
-  form.innerHTML =
+  let div = document.createElement("div");
+  div.setAttribute("id", "definition-form-" + definitionForms);
+  div.innerHTML =
     '<hr><p>Definitions</p><input type="text" onKeyUp="definitionInputHandler(event)" id="definition-input-' +
     definitionForms +
-    '" placeholder="Definitions" name="definition" required /><p>Meaning</p><input type="text" onKeyUp="definitionInputHandler(event)" id="meaning-input-' +
+    '" placeholder="Definitions" name="definition-input-' + definitionForms + '" required /><p>Meaning</p><input type="text" onKeyUp="definitionInputHandler(event)" id="meaning-input-' +
     definitionForms +
-    '" placeholder="Meaning" name="meaning" required /><button class="removebtn" type="button" onclick="remove_definition_form(' +
+    '" placeholder="Meaning" name="meaning-input-' + definitionForms + '" required /><button class="removebtn" type="button" onclick="remove_definition_form(' +
     definitionForms +
     ')">Delete <i class="fa fa-minus"></i></button>';
-  definitionTarget.append(form);
+  definitionTarget.append(div);
   showDefinitionInputs();
 }
 function remove_definition_form(id) {
@@ -518,8 +522,7 @@ function remove_definition_form(id) {
   showDefinitionInputs();
 }
 function showDefinitionInputs() {
-  let numberOfForms = $("#dynamic-definition-forms").children().length;
-  console.log(numberOfForms);
+  let numberOfForms = $("#dynamic-definition-form").children().length;
   let input = "";
   for (var i = 0; i < numberOfForms; i++) {
     input +=

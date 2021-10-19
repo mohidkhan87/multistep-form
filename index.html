@@ -118,6 +118,7 @@
                       placeholder="Company Name"
                       onKeyUp="borrowerLegalCompanyHandler(event)"
                       id="borrower-legal-company-1"
+                      name="borrower-legal-company-1"
                       required
                     />
                     <p for="">Registered Address</p>
@@ -126,6 +127,7 @@
                       placeholder="Registered Address"
                       onKeyUp="borrowerLegalAdressHandler(event)"
                       id="borrower-legal-address-1"
+                      name="borrower-legal-address-1"
                       required
                     />
                     <p for="">Registration Number</p>
@@ -134,14 +136,17 @@
                       placeholder="Registration Number"
                       onKeyUp="borrowerLegalRegNumberHandler(event)"
                       id="borrower-legal-regNumber-1"
+                      name="borrower-legal-regNumber-1"
                       required
                     />
                     <p for="">Registration Country</p>
                     <select
                       onchange="borrowerLegalCountryHandler(event)"
                       id="borrower-legal-country-1"
+                      name="borrower-legal-country-1"
                       required
                     >
+                      <option value="-1" selected disabled>Select</option>
                       <option value="Afganistan">Afghanistan</option>
                       <option value="Albania">Albania</option>
                       <option value="Algeria">Algeria</option>
@@ -162,6 +167,7 @@
                       placeholder="Defined as..."
                       onKeyUp="borrowerLegalDefinedHandler(event)"
                       id="borrower-legal-defined-1"
+                      name="borrower-legal-defined-1"
                       required
                     />
                   </form>
@@ -172,6 +178,7 @@
                       placeholder="First name"
                       onKeyUp="borrowerIndividualFirstnameHandler(event)"
                       id="borrower-individual-firstname-1"
+                      name="borrower-individual-firstname-1"
                       required
                     />
                     <p for="">Last name</p>
@@ -180,6 +187,7 @@
                       placeholder="Last Name"
                       onKeyUp="borrowerIndividualLastnameHandler(event)"
                       id="borrower-individual-lastname-1"
+                      name="borrower-individual-lastname-1"
                       required
                     />
                     <p for="">Address</p>
@@ -188,6 +196,7 @@
                       placeholder="Address"
                       onKeyUp="borrowerIndividualAddressHandler(event)"
                       id="borrower-individual-address-1"
+                      name="borrower-individual-address-1"
                       required
                     />
                     <p for="">Defined as..</p>
@@ -196,6 +205,7 @@
                       placeholder="Defined as.."
                       onKeyUp="borrowerIndividualDefinedHandler(event)"
                       id="borrower-individual-defined-1"
+                      name="borrower-individual-defined-1"
                       required
                     />
                   </form>
@@ -469,7 +479,7 @@
                         type="text"
                         placeholder="Recitals"
                         onKeyUp="recitalsInputHandler(event)"
-                        name="recitals[]"
+                        name="recitals-1"
                         class="rect-input"
                         id="rect-input-1"
                         required
@@ -492,15 +502,15 @@
               <button class="definitionaddbtn" onclick="add_definition_form()">
                 Add&nbsp;&nbsp;<i class="fa fa-plus"></i>
               </button>
-              <div id="dynamic-definition-forms">
-                <form id="definition-form-1">
+              <form id="dynamic-definition-form">
+                <div id="definition-form-1">
                   <p>Definitions</p>
                   <input
                     type="text"
                     onKeyUp="definitionInputHandler(event)"
                     id="definition-input-1"
-                    placeholder="Definitions"
-                    name="definition"
+                    name="definition-input-1"
+                    placeholder="Definition"
                     required
                   />
                   <p>Meaning</p>
@@ -508,12 +518,12 @@
                     type="text"
                     onKeyUp="definitionInputHandler(event)"
                     id="meaning-input-1"
+                    name="meaning-input-1"
                     placeholder="Meaning"
-                    name="meaning"
                     required
                   />
-                </form>
-              </div>
+                </div>
+              </form>
             </section>
           </div>
 
