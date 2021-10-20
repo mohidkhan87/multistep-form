@@ -273,7 +273,9 @@ function add_lendor_form() {
   div.setAttribute("id", "form-div-" + lendorForms);
   div.innerHTML =
     '<div class="options">' +
-    '<div class="legal field" onclick=toggleForm(\'lender-legal\',' + lendorForms + ') ><input type="radio" id="lendor-legal-radio-' +
+    "<div class=\"legal field\" onclick=toggleForm('lender-legal'," +
+    lendorForms +
+    ') ><input type="radio" id="lendor-legal-radio-' +
     lendorForms +
     '" name="lendor-radio-' +
     lendorForms +
@@ -285,7 +287,9 @@ function add_lendor_form() {
     "'\">Legal Entity</label>" +
     '<div class="custom-radio"></div>' +
     "</div>" +
-    '<div class="individual field" onclick=toggleForm(\'lender-individual\',' + lendorForms +') ><input type="radio" id="lendor-individual-radio-' +
+    "<div class=\"individual field\" onclick=toggleForm('lender-individual'," +
+    lendorForms +
+    ') ><input type="radio" id="lendor-individual-radio-' +
     lendorForms +
     '" name="lendor-radio-' +
     lendorForms +
@@ -465,7 +469,7 @@ function lenderIndividualDefinedHandler(event) {
 function showLenderInputs() {
   let input = "";
   for (var i = 0; i < lendorForms; i++) {
-    if(i > 0){
+    if (i > 0) {
       input += "<p style='text-align:center;'>AND</p>";
     }
     input +=
@@ -499,8 +503,9 @@ function showLenderInputs() {
       '<div class="form-text">' +
       "<p>" +
       '<span id="display-lender-individual-firstname-input-' +
-      (i + 1) + 
-      '">INPUT 1 </span>' + ' ' +
+      (i + 1) +
+      '">INPUT 1 </span>' +
+      " " +
       '<span id="display-lender-individual-lastname-input-' +
       (i + 1) +
       '">INPUT 2</span> of ' +
@@ -576,30 +581,61 @@ function recitalsInputHandler(event) {
 
 // Step 5
 let definitionTarget = $("#dynamic-definition-form");
+let definitionDisplay = $(".form-table");
 let definitionForms = 1;
 function add_definition_form() {
   definitionForms++;
   let div = document.createElement("div");
+  let displayDef = document.createElement("p");
+  let displayMean = document.createElement("p");
   div.setAttribute("id", "definition-form-" + definitionForms);
+  displayDef.setAttribute("id", "definition-" + definitionForms);
+  displayMean.setAttribute("id", "meaning-" + definitionForms);
   div.innerHTML =
     '<hr><p>Definitions</p><input type="text" onKeyUp="definitionInputHandler(event)" id="definition-input-' +
     definitionForms +
-    '" placeholder="Definitions" name="definition-input-' +
+    '" placeholder="Definitions" name="definition-' +
     definitionForms +
     '" required /><p>Meaning</p><input type="text" onKeyUp="definitionInputHandler(event)" id="meaning-input-' +
     definitionForms +
-    '" placeholder="Meaning" name="meaning-input-' +
+    '" placeholder="Meaning" name="meaning-' +
     definitionForms +
     '" required /><button class="removebtn" type="button" onclick="remove_definition_form(' +
     definitionForms +
     ')">Delete <i class="fa fa-minus"></i></button>';
+
+  //
+
+  // let display =
+  //   ' <div class="form-text"> ' +
+  //   '<div class="form-table">' +
+  //   '<p class="definition-input-' +
+  //   definitionForms +
+  //   '" id="display-definition-input-' +
+  //   definitionForms +
+  //   '">INPUT Definition</p>' +
+  //   '<p class="meaning-input-' +
+  //   definitionForms +
+  //   '" id="display-meaning-input-' +
+  //   definitionForms +
+  //   '">INPUT Meaning</p>' +
+  //   "</div>" +
+  //   "</div>";
+
+  //
   definitionTarget.append(div);
-  showDefinitionInputs();
+  definitionDisplay.append(displayDef);
+  definitionDisplay.append(displayMean);
+  console.log(displayDef);
+  console.log(displayMean);
+  // showDefinitionInputs();
 }
 function remove_definition_form(id) {
-  definitionForms--;
+  // definitionForms--;
   $("#definition-form-" + id).remove();
-  showDefinitionInputs();
+  $("#definition-" + id).remove();
+  $("#meaning-" + id).remove();
+  // showDefinitionInputs();
 }
 function showDefinitionInputs() {
   let numberOfForms = $("#dynamic-definition-form").children().length;
@@ -616,16 +652,19 @@ function showDefinitionInputs() {
   target.html(input);
 }
 function definitionInputHandler(event) {
-  let type = event.target.id.substring(0, 7);
+  // let id = event.target.id.substring(16, 18);
+  let eventName = event.target.name;
   let eventValue = event.target.value;
-  if (type === "meaning") {
-    let id = event.target.id.substring(14);
-    document.getElementById("display-meaning-input-" + id).innerHTML =
-      eventValue;
-  } else {
-    let id = event.target.id.substring(17);
-    document.getElementById("display-definition-input-" + id).innerHTML =
-      eventValue;
-  }
+  // if (type === "meaning") {
+  // let id = event.target.id.substring(17);
+  //   document.getElementById("display-meaning-input-" + id).innerHTML =
+  //     eventValue;
+  // } else {
+  //   let id = event.target.id.substring(17);
+  //   document.getElementById("display-definition-input-" + id).innerHTML =
+  //     eventValue;
+  // }
+  $("#" + eventName)[0].innerHTML = eventValue;
+  console.log($("#" + eventName)[0]);
 }
-showDefinitionInputs();
+// showDefinitionInputs();

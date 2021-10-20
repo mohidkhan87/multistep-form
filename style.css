@@ -482,7 +482,8 @@ body {
 }
 
 #wrapper .display-wrapper .step-content .display-steps .form-text .form-table {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
   gap: 20px;
 }
 
