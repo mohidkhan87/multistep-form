@@ -245,6 +245,7 @@ function toggleForm(type, id) {
   switch (type) {
     case "lender-legal":
       form_id = id;
+      $("#lendor-legal-radio-1").prop("checked", true);
       $("#lendor-individual-form-" + form_id).hide();
       $("#lendor-legal-form-" + form_id).show();
       $("#lendor-legal-display-" + form_id).show();
@@ -253,6 +254,7 @@ function toggleForm(type, id) {
       break;
     case "lender-individual":
       form_id = id;
+      $("#lendor-individual-radio-1").prop("checked", true);
       $("#lendor-legal-form-" + form_id).hide();
       $("#lendor-individual-form-" + form_id).show();
       $("#lendor-legal-display-" + form_id).hide();
@@ -271,8 +273,7 @@ function add_lendor_form() {
   div.setAttribute("id", "form-div-" + lendorForms);
   div.innerHTML =
     '<div class="options">' +
-    '<div class="legal field">' +
-    '<input type="radio" id="lendor-legal-radio-' +
+    '<div class="legal field" onclick=toggleForm(\'lender-legal\',' + lendorForms + ') ><input type="radio" id="lendor-legal-radio-' +
     lendorForms +
     '" name="lendor-radio-' +
     lendorForms +
@@ -281,13 +282,10 @@ function add_lendor_form() {
     lendorForms +
     '" id="lendor-legal-radio-' +
     lendorForms +
-    "\" onclick=\"toggleForm('lender-legal', 'lendor-legal-radio-" +
-    lendorForms +
-    "')\">Legal Entity</label>" +
+    "'\">Legal Entity</label>" +
     '<div class="custom-radio"></div>' +
     "</div>" +
-    '<div class="individual field">' +
-    '<input type="radio" id="lendor-individual-radio-' +
+    '<div class="individual field" onclick=toggleForm(\'lender-individual\',' + lendorForms +') ><input type="radio" id="lendor-individual-radio-' +
     lendorForms +
     '" name="lendor-radio-' +
     lendorForms +
@@ -296,9 +294,7 @@ function add_lendor_form() {
     lendorForms +
     '" id="lendor-individual-radio-' +
     lendorForms +
-    "\" onclick=\"toggleForm('lender-individual','lendor-individual-radio-" +
-    lendorForms +
-    "')\">Individual" +
+    "'\">Individual" +
     "</label>" +
     '<div class="custom-radio"></div>' +
     "</div>" +
@@ -469,6 +465,9 @@ function lenderIndividualDefinedHandler(event) {
 function showLenderInputs() {
   let input = "";
   for (var i = 0; i < lendorForms; i++) {
+    if(i > 0){
+      input += "<p style='text-align:center;'>AND</p>";
+    }
     input +=
       "<div>" +
       '<div class="legal-form" id="lendor-legal-display-' +
@@ -481,10 +480,10 @@ function showLenderInputs() {
       '">INPUT 1 LIMITED</span>, a company incorporated under the laws of ' +
       '<span id="display-lender-legal-country-input-' +
       (i + 1) +
-      '">INPUT 4</span> having its registered address at' +
+      '">INPUT 4</span> having its registered address at ' +
       '<span id="display-lender-legal-address-input-' +
       (i + 1) +
-      '"> INPUT 2</span> and have in its registration number as' +
+      '"> INPUT 2</span> and have in its registration number as ' +
       '<span id="display-lender-legal-regNumber-input-' +
       (i + 1) +
       '"> INPUT 3</span> (hereinafter referred to as the "' +
@@ -500,11 +499,11 @@ function showLenderInputs() {
       '<div class="form-text">' +
       "<p>" +
       '<span id="display-lender-individual-firstname-input-' +
-      (i + 1) +
-      '">INPUT 1 </span>' +
+      (i + 1) + 
+      '">INPUT 1 </span>' + ' ' +
       '<span id="display-lender-individual-lastname-input-' +
       (i + 1) +
-      '">INPUT 2</span> of' +
+      '">INPUT 2</span> of ' +
       '<span id="display-lender-individual-address-input-' +
       (i + 1) +
       '">INPUT 3</span> (hereinafter referred to as the "' +
@@ -514,7 +513,7 @@ function showLenderInputs() {
       "</p>" +
       "</div>" +
       "</div>" +
-      "</div><hr>";
+      "</div>";
   }
   let target = $(".display-lender-inputs");
   target.html(input);
@@ -550,7 +549,7 @@ function recitals_fields() {
   // showInputs();
 }
 function remove_recital_field(id) {
-  recitals--;
+  // recitals--;
   $(".removerecital" + id).remove();
   $("#recitals-" + id).remove();
   // showInputs();
