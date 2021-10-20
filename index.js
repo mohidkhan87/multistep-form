@@ -16,21 +16,6 @@ let lendorIndividualFormIds = [];
 let lendorLegalOrIndividual = true;
 let lendorFormLength = 1;
 
-function getLendorForms(length) {
-  for (let i = 1; i <= length; i++) {
-    // Lender Legal Forms
-    lendorLegalForms[i] = $("#lendor-legal-form-" + i);
-    lendorLegalFormIds[i] = $(lendorLegalForms[i]).attr("id");
-    // Lender Individual Forms
-    lendorIndividualForms[i] = $("#lendor-individual-form-" + i);
-    lendorIndividualFormIds[i] = $(lendorIndividualForms[i]).attr("id");
-    console.log($("#" + lendorLegalFormIds[i]));
-    console.log($("#" + lendorIndividualFormIds[i]));
-  }
-  console.log("---------------------------------------------------------");
-}
-getLendorForms(lendorFormLength);
-
 //   Step 3 Form
 var loanForm = $("#loanForm");
 var loanFormValidator = loanForm.validate();
@@ -67,31 +52,19 @@ $("#demo").steps({
     let flag = true;
     if (currentIndex === 1) {
       if (stepDirection === "forward") {
-        if (lendorLegalOrIndividual) {
-          for (let i = 1; i <= lendorFormLength; i++) {
-            if (!$("#" + lendorLegalFormIds[i]).valid()) {
-              flag = false;
-            }
+        var forms = $('#dynamic-lendor-forms form');
+        forms.each(function (index) {
+          if (!$("#" + $(this).attr('id')).valid()) {
+            flag = false;
           }
-          return flag;
-        } else {
-          for (let i = 1; i <= lendorFormLength; i++) {
-            if (!$("#" + lendorIndividualFormIds[i]).valid()) {
-              flag = false;
-            }
-          }
-          return flag;
-        }
+        });
+        return flag;
       }
       if (stepDirection === "backward") {
-        for (let i = 1; i <= lendorFormLength; i++) {
-          $("#" + lendorLegalFormIds[i])
-            .validate()
-            .resetForm();
-          $("#" + lendorIndividualFormIds[i])
-            .validate()
-            .resetForm();
-        }
+        var forms = $('#dynamic-lendor-forms form');
+        forms.each(function (index) {
+          $("#" + $(this).attr('id')).validate().resetForm()
+        });
       }
     }
     // step3
@@ -124,7 +97,106 @@ $("#demo").steps({
     return true;
   },
   onFinish: function () {
-    console.log(borrowerLegalForm1);
+    let data_json = {
+      step1: {
+        legal: {
+        },
+        individual: {
+        }
+      },
+      step2: {
+        legal: [],
+        individual: []
+      },
+      step3: {
+        amount: '',
+        currency: '',
+        moratorium: '',
+        interestRate: '',
+        loanDuration: '',
+        useOfLoan: '',
+      },
+      step4: [],
+      step5: {
+        definition: [],
+        meaning: []
+      }
+    }
+    if (borrowerLegalOrIndividual) {
+      data_json.step1.legal.company = $('#borrower-legal-company-1').val()
+      data_json.step1.legal.address = $('#borrower-legal-address-1').val()
+      data_json.step1.legal.registrationNumber = $('#borrower-legal-regNumber-1').val()
+      data_json.step1.legal.country = $('#borrower-legal-country-1').val()
+      data_json.step1.legal.defined = $('#borrower-legal-defined-1').val()
+    } else {
+      data_json.step1.individual.firstname = $('#borrower-individual-firstname-1').val()
+      data_json.step1.individual.lastname = $('#borrower-individual-lastname-1').val()
+      data_json.step1.individual.address = $('#borrower-individual-address-1').val()
+      data_json.step1.individual.defined = $('#borrower-individual-defined-1').val()
+    }
+    for (let i = 1; i <= lendorForms; i++) {
+      let obj = {}
+      if ($("form#lendor-legal-form-" + i).length == 0) {
+        $("form#lendor-individual-form-" + i + " input").each(function () {
+          var input = $(this)
+          var type = input.attr('onKeyUp');
+          if (type === "lenderIndividualFirstnameHandler(event)") {
+            obj.firstname = input.val();
+          } else if (type === "lenderIndividualLastnameHandler(event)") {
+            obj.lastname = input.val();
+          } else if (type === "lenderIndividualAddressHandler(event)") {
+            obj.address = input.val();
+          } else if (type === "lenderIndividualDefinedHandler(event)") {
+            obj.defined = input.val();
+          }
+        });
+        data_json.step2.individual.push(obj)
+      } else {
+        $("form#lendor-legal-form-" + i + " input").each(function () {
+          var input = $(this)
+          var type = input.attr('onKeyUp');
+          if (type === "lenderLegalCompanyHandler(event)") {
+            obj.company = input.val();
+          } else if (type === "lenderLegalAdressHandler(event)") {
+            obj.address = input.val();
+          } else if (type === "lenderLegalRegNumberHandler(event)") {
+            obj.registrationNumber = input.val();
+          } else if (type === "lenderLegalDefinedHandler(event)") {
+            obj.defined = input.val();
+          }
+        });
+        $("form#lendor-legal-form-" + i + " select").each(function () {
+          var input = $(this)
+          var type = input.attr('onchange');
+
+          if (type === "lenderLegalCountryHandler(event)") {
+            obj.country = input.val();
+          }
+        });
+        data_json.step2.legal.push(obj)
+      }
+    }
+    data_json.step3.amount = $('#LoanAmount').val()
+    data_json.step3.currency = $('#LoanCurrency').val()
+    data_json.step3.moratorium = $('#Moratorium').val()
+    data_json.step3.interestRate = $('#InterestRate').val()
+    data_json.step3.loanDuration = $('#LoanDuration').val()
+    data_json.step3.useOfLoan = $('#UseOfLoan').val()
+    $("form#recitals-form input[type=text]").each(function () {
+      var input = $(this);
+      data_json.step4.push(input.val())
+    });
+    $("form#dynamic-definition-form input[type=text]").each(function () {
+      var input = $(this);
+      let id = input.attr('id')
+      let type = id.substring(0, 1)
+      if (type === 'd') {
+        data_json.step5.definition.push(input.val())
+      } else {
+        data_json.step5.meaning.push(input.val())
+      }
+    });
+    console.log(data_json)
   },
 });
 
@@ -380,17 +452,13 @@ function add_lendor_form() {
     lendorForms +
     ')">Delete <i class="fa fa-minus"></i></button>';
   lendorTarget.append(div);
-  lendorFormLength = lendorForms;
-  getLendorForms(lendorFormLength);
+  lendorFormLength = $('.display-lender-inputs').children().length;
   showLenderInputs();
 }
 function remove_lendor_form(id) {
-  console.log(id);
-  lendorForms--;
   $("#form-div-" + id).remove();
-  lendorFormLength = lendorForms;
-  getLendorForms(lendorFormLength);
-  showLenderInputs();
+  lendorFormLength = $('.display-lender-inputs').children().length;
+  $('#display-lender-both-' + id).remove();
 }
 // Company
 function lenderLegalCompanyHandler(event) {
@@ -465,63 +533,61 @@ function lenderIndividualDefinedHandler(event) {
     "display-lender-individual-defined-input-" + id
   ).innerHTML = eventValue;
 }
-
 function showLenderInputs() {
-  let input = "";
-  for (var i = 0; i < lendorForms; i++) {
-    if (i > 0) {
-      input += "<p style='text-align:center;'>AND</p>";
-    }
-    input +=
-      "<div>" +
-      '<div class="legal-form" id="lendor-legal-display-' +
-      (i + 1) +
-      '">' +
-      '<div class="form-text">' +
-      "<p>" +
-      '<span id="display-lender-legal-company-input-' +
-      (i + 1) +
-      '">INPUT 1 LIMITED</span>, a company incorporated under the laws of ' +
-      '<span id="display-lender-legal-country-input-' +
-      (i + 1) +
-      '">INPUT 4</span> having its registered address at ' +
-      '<span id="display-lender-legal-address-input-' +
-      (i + 1) +
-      '"> INPUT 2</span> and have in its registration number as ' +
-      '<span id="display-lender-legal-regNumber-input-' +
-      (i + 1) +
-      '"> INPUT 3</span> (hereinafter referred to as the "' +
-      '<span id="display-lender-legal-defined-input-' +
-      (i + 1) +
-      '">INPUT 5</span>")of the first part' +
-      "</p>" +
-      "</div>" +
-      "</div>" +
-      '<div class="individual-form" id="lendor-individual-display-' +
-      (i + 1) +
-      '">' +
-      '<div class="form-text">' +
-      "<p>" +
-      '<span id="display-lender-individual-firstname-input-' +
-      (i + 1) +
-      '">INPUT 1 </span>' +
-      " " +
-      '<span id="display-lender-individual-lastname-input-' +
-      (i + 1) +
-      '">INPUT 2</span> of ' +
-      '<span id="display-lender-individual-address-input-' +
-      (i + 1) +
-      '">INPUT 3</span> (hereinafter referred to as the "' +
-      '<span id="display-lender-individual-defined-input-' +
-      (i + 1) +
-      '">INPUT 4</span>") of the second part' +
-      "</p>" +
-      "</div>" +
-      "</div>" +
-      "</div>";
+  let input = "<div id='display-lender-both-" + lendorForms + "'>";
+  // for (var i = 0; i < lendorForms; i++) {
+  if (lendorForms > 1) {
+    input += "<p style='text-align:center;'>AND</p>";
   }
+  input +=
+    '<div class="legal-form" id="lendor-legal-display-' +
+    (lendorForms) +
+    '">' +
+    '<div class="form-text">' +
+    "<p>" +
+    '<span id="display-lender-legal-company-input-' +
+    (lendorForms) +
+    '">INPUT 1 LIMITED</span>, a company incorporated under the laws of ' +
+    '<span id="display-lender-legal-country-input-' +
+    (lendorForms) +
+    '">INPUT 4</span> having its registered address at ' +
+    '<span id="display-lender-legal-address-input-' +
+    (lendorForms) +
+    '"> INPUT 2</span> and have in its registration number as ' +
+    '<span id="display-lender-legal-regNumber-input-' +
+    (lendorForms) +
+    '"> INPUT 3</span> (hereinafter referred to as the "' +
+    '<span id="display-lender-legal-defined-input-' +
+    (lendorForms) +
+    '">INPUT 5</span>")of the first part' +
+    "</p>" +
+    "</div>" +
+    "</div>" +
+    '<div class="individual-form" id="lendor-individual-display-' +
+    (lendorForms) +
+    '">' +
+    '<div class="form-text">' +
+    "<p>" +
+    '<span id="display-lender-individual-firstname-input-' +
+    (lendorForms) +
+    '">INPUT 1 </span>' +
+    " " +
+    '<span id="display-lender-individual-lastname-input-' +
+    (lendorForms) +
+    '">INPUT 2</span> of ' +
+    '<span id="display-lender-individual-address-input-' +
+    (lendorForms) +
+    '">INPUT 3</span> (hereinafter referred to as the "' +
+    '<span id="display-lender-individual-defined-input-' +
+    (lendorForms) +
+    '">INPUT 4</span>") of the second part' +
+    "</p>" +
+    "</div>" +
+    "</div>" +
+    "</div>";
+  // }
   let target = $(".display-lender-inputs");
-  target.html(input);
+  target.append(input);
 }
 showLenderInputs();
 // Step 3
@@ -550,34 +616,16 @@ function recitals_fields() {
     ')"> <i class="fa fa-minus"></i></button></div>';
   recitalsTarget.append(div);
   displayStep3.append(displayDiv); //  append child to parent
-
-  // showInputs();
 }
 function remove_recital_field(id) {
-  // recitals--;
   $(".removerecital" + id).remove();
   $("#recitals-" + id).remove();
-  // showInputs();
 }
-// function showInputs() {
-//   let input = "";
-//   for (var i = 0; i < recitals; i++) {
-//     input +=
-//       '<div class="form-text"><span id="display-recitals-input-' +
-//       (i + 1) +
-//       '">INPUT ' +
-//       (i + 1) +
-//       "</span></div>";
-//   }
-//   let target = $(".display-recitals-inputs");
-//   target.html(input);
-// }
 function recitalsInputHandler(event) {
   let eventValue = event.target.value;
   let id = event.target.id.substring(11);
   document.getElementById("recitals-" + id).innerHTML = eventValue;
 }
-// showInputs();
 
 // Step 5
 let definitionTarget = $("#dynamic-definition-form");
@@ -603,39 +651,14 @@ function add_definition_form() {
     '" required /><button class="removebtn" type="button" onclick="remove_definition_form(' +
     definitionForms +
     ')">Delete <i class="fa fa-minus"></i></button>';
-
-  //
-
-  // let display =
-  //   ' <div class="form-text"> ' +
-  //   '<div class="form-table">' +
-  //   '<p class="definition-input-' +
-  //   definitionForms +
-  //   '" id="display-definition-input-' +
-  //   definitionForms +
-  //   '">INPUT Definition</p>' +
-  //   '<p class="meaning-input-' +
-  //   definitionForms +
-  //   '" id="display-meaning-input-' +
-  //   definitionForms +
-  //   '">INPUT Meaning</p>' +
-  //   "</div>" +
-  //   "</div>";
-
-  //
   definitionTarget.append(div);
   definitionDisplay.append(displayDef);
   definitionDisplay.append(displayMean);
-  console.log(displayDef);
-  console.log(displayMean);
-  // showDefinitionInputs();
 }
 function remove_definition_form(id) {
-  // definitionForms--;
   $("#definition-form-" + id).remove();
   $("#definition-" + id).remove();
   $("#meaning-" + id).remove();
-  // showDefinitionInputs();
 }
 function showDefinitionInputs() {
   let numberOfForms = $("#dynamic-definition-form").children().length;
@@ -652,19 +675,7 @@ function showDefinitionInputs() {
   target.html(input);
 }
 function definitionInputHandler(event) {
-  // let id = event.target.id.substring(16, 18);
   let eventName = event.target.name;
   let eventValue = event.target.value;
-  // if (type === "meaning") {
-  // let id = event.target.id.substring(17);
-  //   document.getElementById("display-meaning-input-" + id).innerHTML =
-  //     eventValue;
-  // } else {
-  //   let id = event.target.id.substring(17);
-  //   document.getElementById("display-definition-input-" + id).innerHTML =
-  //     eventValue;
-  // }
   $("#" + eventName)[0].innerHTML = eventValue;
-  console.log($("#" + eventName)[0]);
 }
-// showDefinitionInputs();
