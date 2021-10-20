@@ -157,19 +157,23 @@ body {
 }
 .step-content > .step-tab-panel .options .field input[type="radio"] {
   position: absolute;
-  visibility: hidden;
+  opacity: 0;
+  z-index: 10;
+  /* visibility: hidden; */
 }
 .step-content > .step-tab-panel .options .field label {
   cursor: pointer;
-  margin-left: 1.5rem;
+  margin-left: 1.3rem;
+  /* font-weight: bold; */
   -webkit-transition: all 0.25s linear;
 }
 .step-content > .step-tab-panel .options .field:hover label {
   color: rgb(9, 9, 122);
+  user-select: none;
 }
 .step-content > .step-tab-panel .options .field .custom-radio {
   position: absolute;
-  border: 2px solid #aaaaaa;
+  border: 2px solid #3d3d3d;
   border-radius: 50%;
   height: 12px;
   width: 12px;
@@ -182,7 +186,7 @@ body {
 
 .step-content > .step-tab-panel .options .field:hover .custom-radio {
   border: 2px solid rgb(9, 9, 122);
-  display: flex;
+  z-index: 1;
 }
 
 .step-content > .step-tab-panel .options .field .custom-radio::before {
@@ -433,7 +437,7 @@ body {
 }
 
 #wrapper .display-wrapper .step-content h2.date {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   margin: 0;
 }
@@ -474,7 +478,7 @@ body {
 
 #wrapper .display-wrapper .step-content .display-steps .form-text p > span {
   font-size: 16px;
-  font-weight: 400;
+  font-weight: bold;
 }
 
 #wrapper .display-wrapper .step-content .display-steps .form-text .form-table {

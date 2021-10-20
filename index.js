@@ -124,7 +124,7 @@ $("#demo").steps({
     return true;
   },
   onFinish: function () {
-    alert("Agreement Completed");
+    console.log(borrowerLegalForm1);
   },
 });
 
@@ -143,7 +143,8 @@ function toggleFormBorrower(type, id) {
   let form_id = -1;
   switch (type) {
     case "borrower-legal":
-      form_id = id.substring(21);
+      form_id = id;
+      $("#borrower-legal-radio-1").prop("checked", true);
       $("#borrower-individual-form-" + form_id).hide();
       $("#borrower-legal-form-" + form_id).show();
       $("#legal-display-1").show();
@@ -151,7 +152,8 @@ function toggleFormBorrower(type, id) {
       borrowerLegalOrIndividual = true;
       break;
     case "borrower-individual":
-      form_id = id.substring(26);
+      form_id = id;
+      $("#borrower-individual-radio-1").prop("checked", true);
       $("#borrower-legal-form-" + form_id).hide();
       $("#borrower-individual-form-" + form_id).show();
       $("#legal-display-1").hide();
@@ -242,7 +244,7 @@ function toggleForm(type, id) {
   let form_id = -1;
   switch (type) {
     case "lender-legal":
-      form_id = id.substring(19);
+      form_id = id;
       $("#lendor-individual-form-" + form_id).hide();
       $("#lendor-legal-form-" + form_id).show();
       $("#lendor-legal-display-" + form_id).show();
@@ -250,7 +252,7 @@ function toggleForm(type, id) {
       lendorLegalOrIndividual = true;
       break;
     case "lender-individual":
-      form_id = id.substring(24);
+      form_id = id;
       $("#lendor-legal-form-" + form_id).hide();
       $("#lendor-individual-form-" + form_id).show();
       $("#lendor-legal-display-" + form_id).hide();
@@ -476,16 +478,16 @@ function showLenderInputs() {
       "<p>" +
       '<span id="display-lender-legal-company-input-' +
       (i + 1) +
-      '">INPUT 1 LIMITED</span>, a company incorporated under the laws of' +
+      '">INPUT 1 LIMITED</span>, a company incorporated under the laws of ' +
       '<span id="display-lender-legal-country-input-' +
       (i + 1) +
       '">INPUT 4</span> having its registered address at' +
       '<span id="display-lender-legal-address-input-' +
       (i + 1) +
-      '">INPUT 2</span> and have in its registration number as' +
+      '"> INPUT 2</span> and have in its registration number as' +
       '<span id="display-lender-legal-regNumber-input-' +
       (i + 1) +
-      '">INPUT 3</span> (hereinafter referred to as the "' +
+      '"> INPUT 3</span> (hereinafter referred to as the "' +
       '<span id="display-lender-legal-defined-input-' +
       (i + 1) +
       '">INPUT 5</span>")of the first part' +
@@ -526,11 +528,14 @@ function loanHandler(event) {
 
 // Step 4
 let recitalsTarget = $("form#recitals-form");
+let displayStep3 = $("#display-step-3"); //  Parent Display
 let recitals = 1;
 function recitals_fields() {
   recitals++;
   let div = document.createElement("div");
+  let displayDiv = document.createElement("div"); //  Child Display Div
   div.setAttribute("class", "removerecital" + recitals);
+  displayDiv.setAttribute("id", "recitals-" + recitals); // set attr Child Display Div
   div.innerHTML =
     '<label for="">Recitals</label><div class="recital-row"><div class="input-with-error"><input type="text" placeholder="Recitals" onKeyUp="recitalsInputHandler(event)" name="recitals-' +
     recitals +
@@ -540,33 +545,35 @@ function recitals_fields() {
     recitals +
     ')"> <i class="fa fa-minus"></i></button></div>';
   recitalsTarget.append(div);
-  showInputs();
+  displayStep3.append(displayDiv); //  append child to parent
+
+  // showInputs();
 }
 function remove_recital_field(id) {
   recitals--;
   $(".removerecital" + id).remove();
-  showInputs();
+  $("#recitals-" + id).remove();
+  // showInputs();
 }
-function showInputs() {
-  let input = "";
-  for (var i = 0; i < recitals; i++) {
-    input +=
-      '<div class="form-text"><span id="display-recitals-input-' +
-      (i + 1) +
-      '">INPUT ' +
-      (i + 1) +
-      "</span></div>";
-  }
-  let target = $(".display-recitals-inputs");
-  target.html(input);
-}
+// function showInputs() {
+//   let input = "";
+//   for (var i = 0; i < recitals; i++) {
+//     input +=
+//       '<div class="form-text"><span id="display-recitals-input-' +
+//       (i + 1) +
+//       '">INPUT ' +
+//       (i + 1) +
+//       "</span></div>";
+//   }
+//   let target = $(".display-recitals-inputs");
+//   target.html(input);
+// }
 function recitalsInputHandler(event) {
   let eventValue = event.target.value;
   let id = event.target.id.substring(11);
-  document.getElementById("display-recitals-input-" + id).innerHTML =
-    eventValue;
+  document.getElementById("recitals-" + id).innerHTML = eventValue;
 }
-showInputs();
+// showInputs();
 
 // Step 5
 let definitionTarget = $("#dynamic-definition-form");

@@ -81,7 +81,10 @@
               <div id="dynamic-borrower-forms">
                 <div id="borrower-form-div-1">
                   <div class="options">
-                    <div class="legal field">
+                    <div
+                      class="legal field"
+                      onclick="toggleFormBorrower('borrower-legal', 1)"
+                    >
                       <input
                         type="radio"
                         id="borrower-legal-radio-1"
@@ -91,12 +94,14 @@
                       <label
                         for="borrower-legal-radio-1"
                         id="borrower-legal-radio-1"
-                        onclick="toggleFormBorrower('borrower-legal', this.id)"
                         >Legal Entity</label
                       >
                       <div class="custom-radio"></div>
                     </div>
-                    <div class="individual field">
+                    <div
+                      class="individual field"
+                      onclick="toggleFormBorrower('borrower-individual', 1)"
+                    >
                       <input
                         type="radio"
                         id="borrower-individual-radio-1"
@@ -105,7 +110,6 @@
                       <label
                         for="borrower-individual-radio-1"
                         id="borrower-individual-radio-1"
-                        onclick="toggleFormBorrower('borrower-individual',this.id)"
                         >Individual
                       </label>
                       <div class="custom-radio"></div>
@@ -221,7 +225,10 @@
               <div id="dynamic-lendor-forms">
                 <div id="form-div-1">
                   <div class="options">
-                    <div class="legal field">
+                    <div
+                      class="legal field"
+                      onclick="toggleForm('lender-legal', 1)"
+                    >
                       <input
                         type="radio"
                         id="lendor-legal-radio-1"
@@ -231,12 +238,14 @@
                       <label
                         for="lendor-legal-radio-1"
                         id="lendor-legal-radio-1"
-                        onclick="toggleForm('lender-legal', this.id)"
                         >Legal Entity</label
                       >
                       <div class="custom-radio"></div>
                     </div>
-                    <div class="individual field">
+                    <div
+                      class="individual field"
+                      onclick="toggleForm('lender-individual', 1)"
+                    >
                       <input
                         type="radio"
                         id="lendor-individual-radio-1"
@@ -245,7 +254,6 @@
                       <label
                         for="lendor-individual-radio-1"
                         id="lendor-individual-radio-1"
-                        onclick="toggleForm('lender-individual',this.id)"
                         >Individual
                       </label>
                       <div class="custom-radio"></div>
@@ -632,10 +640,7 @@
           </section>
           <!-- ------  4th Step ------ -->
           <section id="display-step-3" class="display-steps">
-            <div
-              class="display-recitals-inputs"
-              id="display-recitals-inputs-id"
-            ></div>
+            <div class="display-recitals-inputs" id="recitals-1"></div>
           </section>
           <!-- ------  5th Step ------ -->
           <section id="display-step-4" class="display-steps">
