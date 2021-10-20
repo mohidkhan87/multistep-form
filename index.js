@@ -6,8 +6,30 @@ let borrowerIndividualForm1Validator = borrowerIndividualForm1.validate();
 let borrowerLegalOrIndividual = true;
 
 //   Step 2 Forms
-var legalFrm1 = $("#legalFrm1");
-var legalFrm1Validator = legalFrm1.validate();
+
+let lendorLegalForms = [];
+let lendorLegalFormIds = [];
+
+let lendorIndividualForms = [];
+let lendorIndividualFormIds = [];
+
+let lendorLegalOrIndividual = true;
+let lendorFormLength = 1;
+
+function getLendorForms(length) {
+  for (let i = 1; i <= length; i++) {
+    // Lender Legal Forms
+    lendorLegalForms[i] = $("#lendor-legal-form-" + i);
+    lendorLegalFormIds[i] = $(lendorLegalForms[i]).attr("id");
+    // Lender Individual Forms
+    lendorIndividualForms[i] = $("#lendor-individual-form-" + i);
+    lendorIndividualFormIds[i] = $(lendorIndividualForms[i]).attr("id");
+    console.log($("#" + lendorLegalFormIds[i]));
+    console.log($("#" + lendorIndividualFormIds[i]));
+  }
+  console.log("---------------------------------------------------------");
+}
+getLendorForms(lendorFormLength);
 
 //   Step 3 Form
 var loanForm = $("#loanForm");
@@ -30,24 +52,46 @@ $("#demo").steps({
     // step1
     if (currentIndex === 0) {
       if (stepDirection === "forward") {
-        // if(borrowerLegalOrIndividual){
-        //   return borrowerLegalForm1.valid();
-        // }else{
-        //   return borrowerIndividualForm1.valid();
-        // }
+        if (borrowerLegalOrIndividual) {
+          return borrowerLegalForm1.valid();
+        } else {
+          return borrowerIndividualForm1.valid();
+        }
       }
       if (stepDirection === "backward") {
-        // borrowerLegalForm1.resetForm();
-        // borrowerIndividualForm1.resetForm();
+        borrowerLegalForm1.resetForm();
+        borrowerIndividualForm1.resetForm();
       }
     }
     // step2
+    let flag = true;
     if (currentIndex === 1) {
       if (stepDirection === "forward") {
-        // return legalFrm1.valid();
+        if (lendorLegalOrIndividual) {
+          for (let i = 1; i <= lendorFormLength; i++) {
+            if (!$("#" + lendorLegalFormIds[i]).valid()) {
+              flag = false;
+            }
+          }
+          return flag;
+        } else {
+          for (let i = 1; i <= lendorFormLength; i++) {
+            if (!$("#" + lendorIndividualFormIds[i]).valid()) {
+              flag = false;
+            }
+          }
+          return flag;
+        }
       }
       if (stepDirection === "backward") {
-        // legalFrm1Validator.resetForm();
+        for (let i = 1; i <= lendorFormLength; i++) {
+          $("#" + lendorLegalFormIds[i])
+            .validate()
+            .resetForm();
+          $("#" + lendorIndividualFormIds[i])
+            .validate()
+            .resetForm();
+        }
       }
     }
     // step3
@@ -203,6 +247,7 @@ function toggleForm(type, id) {
       $("#lendor-legal-form-" + form_id).show();
       $("#lendor-legal-display-" + form_id).show();
       $("#lendor-individual-display-" + form_id).hide();
+      lendorLegalOrIndividual = true;
       break;
     case "lender-individual":
       form_id = id.substring(24);
@@ -210,6 +255,7 @@ function toggleForm(type, id) {
       $("#lendor-individual-form-" + form_id).show();
       $("#lendor-legal-display-" + form_id).hide();
       $("#lendor-individual-display-" + form_id).show();
+      lendorLegalOrIndividual = false;
       break;
     default:
       break;
@@ -257,21 +303,29 @@ function add_lendor_form() {
     "</div>" +
     '<form id="lendor-legal-form-' +
     lendorForms +
-    '" class="legal-form">' +
+    '" class="legal-form" >' +
     '<p for="">Company Name</p>' +
     '<input type="text" placeholder="Company Name" onKeyUp="lenderLegalCompanyHandler(event)" id="lender-legal-company-' +
+    lendorForms +
+    '" name="lender-legal-company-' +
     lendorForms +
     '" required />' +
     '<p for="">Registered Address</p>' +
     '<input type="text" placeholder="Registered Address" onKeyUp="lenderLegalAdressHandler(event)" id="lender-legal-address-' +
     lendorForms +
+    '" name="lender-legal-address-' +
+    lendorForms +
     '" required />' +
     '<p for="">Registration Number</p>' +
     '<input type="text" placeholder="Registration Number" onKeyUp="lenderLegalRegNumberHandler(event)" id="lender-legal-regNumber-' +
     lendorForms +
+    '" name="lender-legal-regNumber-' +
+    lendorForms +
     '" required />' +
     '<p for="">Registration Country</p>' +
     '<select onchange="lenderLegalCountryHandler(event)" id="lender-legal-country-' +
+    lendorForms +
+    '" name="lender-legal-country-' +
     lendorForms +
     '" required>' +
     '<option value="Afganistan">Afghanistan</option>' +
@@ -287,7 +341,11 @@ function add_lendor_form() {
     '<option value="Aruba">Aruba</option>' +
     "</select>" +
     '<p for="">Defined as...</p>' +
-    '<input type="text" placeholder="Defined as..." onKeyUp="lenderLegalDefinedHandler(event)" id="lender-legal-defined-1" required />' +
+    '<input type="text" placeholder="Defined as..." onKeyUp="lenderLegalDefinedHandler(event)" id="lender-legal-defined-' +
+    lendorForms +
+    '" name="lender-legal-defined-' +
+    lendorForms +
+    '" required />' +
     "</form>" +
     '<form id="lendor-individual-form-' +
     lendorForms +
@@ -295,29 +353,41 @@ function add_lendor_form() {
     '<p for="">First name</p>' +
     '<input type="text" placeholder="First name" onKeyUp="lenderIndividualFirstnameHandler(event)" id="lender-individual-firstname-' +
     lendorForms +
+    '" name="lender-individual-firstname-' +
+    lendorForms +
     '" required />' +
     '<p for="">Last name</p>' +
     '<input type="text" placeholder="Last Name" onKeyUp="lenderIndividualLastnameHandler(event)" id="lender-individual-lastname-' +
+    lendorForms +
+    '" name="lender-individual-lastname-' +
     lendorForms +
     '" required />' +
     '<p for="">Address</p>' +
     '<input type="text" placeholder="Address" onKeyUp="lenderIndividualAddressHandler(event)" id="lender-individual-address-' +
     lendorForms +
+    '" name="lender-individual-address-' +
+    lendorForms +
     '" required />' +
     '<p for="">Defined as..</p>' +
     '<input type="text" placeholder="Defined as.." onKeyUp="lenderIndividualDefinedHandler(event)" id="lender-individual-defined-' +
+    lendorForms +
+    '" name="lender-individual-defined-' +
     lendorForms +
     '" required />' +
     '</form><button class="removebtn" type="button" onclick="remove_lendor_form(' +
     lendorForms +
     ')">Delete <i class="fa fa-minus"></i></button>';
   lendorTarget.append(div);
+  lendorFormLength = lendorForms;
+  getLendorForms(lendorFormLength);
   showLenderInputs();
 }
 function remove_lendor_form(id) {
   console.log(id);
   lendorForms--;
   $("#form-div-" + id).remove();
+  lendorFormLength = lendorForms;
+  getLendorForms(lendorFormLength);
   showLenderInputs();
 }
 // Company
@@ -508,9 +578,13 @@ function add_definition_form() {
   div.innerHTML =
     '<hr><p>Definitions</p><input type="text" onKeyUp="definitionInputHandler(event)" id="definition-input-' +
     definitionForms +
-    '" placeholder="Definitions" name="definition-input-' + definitionForms + '" required /><p>Meaning</p><input type="text" onKeyUp="definitionInputHandler(event)" id="meaning-input-' +
+    '" placeholder="Definitions" name="definition-input-' +
     definitionForms +
-    '" placeholder="Meaning" name="meaning-input-' + definitionForms + '" required /><button class="removebtn" type="button" onclick="remove_definition_form(' +
+    '" required /><p>Meaning</p><input type="text" onKeyUp="definitionInputHandler(event)" id="meaning-input-' +
+    definitionForms +
+    '" placeholder="Meaning" name="meaning-input-' +
+    definitionForms +
+    '" required /><button class="removebtn" type="button" onclick="remove_definition_form(' +
     definitionForms +
     ')">Delete <i class="fa fa-minus"></i></button>';
   definitionTarget.append(div);
