@@ -1,13 +1,14 @@
 body {
   margin: 0;
-  font-family: "Calibri";
-  background-color: #f8f8f8;
+  font-family: Microsoft JhengHei UI;
+  background-color: #d1d1d1;
+  color: rgb(97, 97, 97);
 }
 #wrapper {
   max-width: 1370px;
   margin: 0 auto;
   display: flex;
-  gap: 40px;
+  gap: 30px;
   justify-content: center;
   padding: 20px 50px;
 }
@@ -16,22 +17,27 @@ body {
                     Steps Header
 ******************************************************/
 #wrapper .steps-wrapper {
-  border: 1px solid #e5e5e5;
-  padding: 10px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  padding: 10px 20px;
   flex: 1;
+
   background-color: #ffffff;
 }
 #wrapper h1 {
   text-align: center;
   font-weight: normal;
-  margin: 26px 0px 12px;
+  margin: 36px 0px 28px;
+  font-size: 30px;
 }
 #wrapper .step-app > .step-steps {
   margin: 0;
-  padding: 0;
+  padding: 10px 5px;
   display: flex;
   justify-content: center;
-  border-radius: 3px 3px 0 0;
+  border-radius: 10px;
+  border: 1px solid lightgrey;
+  box-shadow: 5px 5px 12px 5px lightgrey;
   overflow: hidden;
 }
 #wrapper .step-app > .step-steps > li {
@@ -41,6 +47,7 @@ body {
   display: block;
   color: #333333;
   text-decoration: none;
+  font-size: 15px;
 }
 #wrapper .step-app > .step-steps > li.done {
   padding: 0;
@@ -138,6 +145,7 @@ body {
 #wrapper .step-app > .step-content > .step-tab-panel {
   display: none;
 }
+
 .step-app > .step-content > .step-tab-panel .legal-form {
   display: block;
 }
@@ -154,6 +162,7 @@ body {
 .step-content > .step-tab-panel .options .field {
   position: relative;
   z-index: 9;
+  font-size: 15px;
 }
 .step-content > .step-tab-panel .options .field input[type="radio"] {
   position: absolute;
@@ -164,8 +173,8 @@ body {
 .step-content > .step-tab-panel .options .field label {
   cursor: pointer;
   margin-left: 1.3rem;
-  /* font-weight: bold; */
-  -webkit-transition: all 0.25s linear;
+
+  -webkit-transition: all 0.3s linear;
 }
 .step-content > .step-tab-panel .options .field:hover label {
   color: rgb(9, 9, 122);
@@ -180,8 +189,8 @@ body {
   top: 50%;
   left: 0px;
   transform: translateY(-50%);
-  transition: border 0.25s linear;
-  -webkit-transition: border 0.25s linear;
+  transition: border 0.4s linear;
+  -webkit-transition: border 0.4s linear;
 }
 
 .step-content > .step-tab-panel .options .field:hover .custom-radio {
@@ -200,8 +209,8 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   margin: auto;
-  transition: background 0.25s linear;
-  -webkit-transition: background 0.25s linear;
+  transition: background 0.5s linear;
+  -webkit-transition: background 0.5s linear;
 }
 
 .step-tab-panel .options .field input[type="radio"]:checked ~ .custom-radio {
@@ -223,21 +232,24 @@ body {
 .step-app > .step-content > .step-tab-panel form p {
   margin-top: 1rem;
   margin-bottom: 0;
+  font-size: 15px;
 }
 
 .step-app > .step-content > .step-tab-panel form input {
   height: 40px;
-  padding: 0px 10px;
+  padding: 15px 10px;
   width: 100%;
+  color: rgb(97, 97, 97);
   box-sizing: border-box;
-  border: 1px solid silver;
+  border: 1px solid lightgrey;
 }
 .step-app > .step-content > .step-tab-panel form select {
   height: 40px;
   padding: 0px 10px;
   width: 100%;
+  color: rgb(97, 97, 97);
   box-sizing: border-box;
-  border: 1px solid silver;
+  border: 1px solid lightgrey;
 }
 .step-app > .step-content > .step-tab-panel form select:focus {
   outline: 0;
@@ -255,9 +267,7 @@ body {
   margin-top: 15px;
   margin-bottom: 15px;
   padding: 10px;
-  display: grid;
-  grid-template-columns: auto auto;
-  align-items: end;
+  display: flex;
   gap: 8px;
 }
 #wrapper .step-app > .step-footer > .step-btn {
@@ -277,7 +287,7 @@ body {
   box-shadow: 0 0 0 2px white, 0 0 0 3px rgb(9, 9, 122);
 }
 /* Step 1 */
-#wrapper .step-app .step-content .step-tab-panel button.borroweraddbtn {
+/* #wrapper .step-app .step-content .step-tab-panel button.borroweraddbtn {
   padding: 6px 12px;
   background: #28a745;
   outline: none;
@@ -296,14 +306,27 @@ body {
   border: 0;
   outline: none;
   margin-top: 8px;
-}
+} */
 /* Step 2 */
 #wrapper .step-app .step-content .step-tab-panel button.lendoraddbtn {
-  padding: 6px 12px;
-  background: #28a745;
+  padding: 7px 15px;
+  background: rgb(9, 9, 122);
   outline: none;
   border: 0;
+  border-radius: 1rem;
   color: #ffffff;
+  font-family: Microsoft JhengHei UI;
+  display: block;
+  margin-left: auto;
+  text-transform: uppercase;
+  transform: translateY(50px);
+  transition: all 0.3s;
+}
+#wrapper .step-app .step-content .step-tab-panel button.lendoraddbtn:hover {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px rgb(9, 9, 122);
+}
+#wrapper .step-app .step-content .step-tab-panel button i {
+  font-size: 12px;
 }
 #wrapper
   .step-app
@@ -320,15 +343,37 @@ body {
   .step-tab-panel
   #dynamic-lendor-forms
   button.removebtn {
-  padding: 6px 12px;
   background-color: #dc3545;
   color: white;
   border: 0;
+  padding: 7px 15px;
+  border-radius: 1rem;
+  display: block;
+  font-family: Microsoft JhengHei UI;
+  margin-left: auto;
+  text-transform: uppercase;
   outline: none;
-  margin-top: 8px;
+  margin-top: 12px;
+  transition: all 0.3s;
+}
+#wrapper .step-app .step-content .step-tab-panel button.removebtn:hover {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #dc3545;
+}
+
+#wrapper
+  .step-app
+  .step-content
+  .step-tab-panel
+  #dynamic-lendor-forms
+  button
+  i {
+  margin-right: 3px;
 }
 
 /* Step 3 */
+#wrapper .step-app .step-content .step-tab-panel label {
+  font-size: 15px;
+}
 #wrapper .step-app .step-content .step-tab-panel .loan-currency-wrapper {
   display: flex;
   gap: 10px;
@@ -404,11 +449,20 @@ body {
   margin-top: 30px;
 }
 #wrapper .step-app .step-content .step-tab-panel button.definitionaddbtn {
-  padding: 6px 12px;
-  background: #28a745;
+  padding: 7px 15px;
+  background: rgb(9, 9, 122);
+  border-radius: 1rem;
+  font-family: Microsoft JhengHei UI;
+  display: block;
+  margin-left: auto;
+  text-transform: uppercase;
   outline: none;
   border: 0;
   color: #ffffff;
+  transition: all 0.3s;
+}
+#wrapper .step-app .step-content .step-tab-panel button.definitionaddbtn:hover {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px rgb(9, 9, 122);
 }
 #wrapper
   .step-app
@@ -416,18 +470,37 @@ body {
   .step-tab-panel
   #dynamic-definition-form
   button.removebtn {
-  padding: 6px 12px;
+  padding: 7px 15px;
+  border-radius: 1rem;
+  font-family: Microsoft JhengHei UI;
+  display: block;
+  margin-left: auto;
+  text-transform: uppercase;
   background-color: #dc3545;
   color: white;
   border: 0;
   outline: none;
-  margin-top: 8px;
+  margin-top: 12px;
+  transition: all 0.3s;
+}
+#wrapper .step-app .step-content .step-tab-panel button.removebtn:hover {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #dc3545;
+}
+#wrapper
+  .step-app
+  .step-content
+  .step-tab-panel
+  #dynamic-definition-form
+  button
+  i {
+  margin-right: 3px;
 }
 /*****************************************************
                     Display Section
 ******************************************************/
 #wrapper .display-wrapper {
-  border: 1px solid #e5e5e5;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
   flex: 1;
   display: flex;
   justify-content: center;
@@ -439,7 +512,7 @@ body {
 #wrapper .display-wrapper .step-content h2.date {
   font-size: 20px;
   font-weight: bold;
-  margin: 0;
+  margin: 0 0 1rem;
 }
 
 #wrapper .display-wrapper .step-content .display-steps {
@@ -500,8 +573,9 @@ body {
 }
 
 /* Error Class */
-.error{
+.error {
   color: red;
+  font-size: 15px;
 }
 /*****************************************************
                     Media Queries
