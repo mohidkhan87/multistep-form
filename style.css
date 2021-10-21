@@ -1,8 +1,11 @@
 body {
   margin: 0;
   font-family: Microsoft JhengHei UI;
-  background-color: #d1d1d1;
+  background-color: #eeeeee;
   color: rgb(97, 97, 97);
+}
+::placeholder {
+  opacity: 0.6;
 }
 #wrapper {
   max-width: 1370px;
@@ -17,7 +20,7 @@ body {
                     Steps Header
 ******************************************************/
 #wrapper .steps-wrapper {
-  border: 1px solid lightgrey;
+  /* border: 1px solid lightgrey; */
   border-radius: 10px;
   padding: 10px 20px;
   flex: 1;
@@ -33,7 +36,8 @@ body {
   top: 50%;
   transform: translateY(-50%);
   border: none;
-  font-size: 26px;
+  font-size: 28px;
+  background-color: transparent;
   color: rgb(97, 97, 97);
   transition: all 0.5s;
 }
@@ -54,8 +58,8 @@ body {
   display: flex;
   justify-content: center;
   border-radius: 10px;
-  border: 1px solid lightgrey;
-  box-shadow: 5px 5px 12px 5px lightgrey;
+  border: 1px solid #eeeeee;
+  box-shadow: 5px 5px 10px 1px #eeeeee;
   overflow: hidden;
 }
 #wrapper .step-app > .step-steps > li {
@@ -90,11 +94,11 @@ body {
   margin: 0;
 }
 #wrapper .step-app > .step-steps > li.done > .step .title p {
-  color: blue;
+  color: rgb(15, 15, 172);
 }
 #wrapper .step-app > .step-steps > li > .step .bullet {
   position: relative;
-  background-color: lightgrey;
+  background-color: #eeeeee;
   color: grey;
   height: 30px;
   width: 30px;
@@ -158,7 +162,8 @@ body {
 #wrapper .step-app > .step-content {
   border: 1px solid #e5e5e5;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
+  border-radius: 10px 10px 0 0;
 }
 #wrapper .step-app > .step-content > .step-tab-panel {
   display: none;
@@ -259,7 +264,7 @@ body {
   width: 100%;
   color: rgb(97, 97, 97);
   box-sizing: border-box;
-  border: 1px solid lightgrey;
+  border: 1px solid #eeeeee;
 }
 .step-app > .step-content > .step-tab-panel form select {
   height: 40px;
@@ -267,7 +272,7 @@ body {
   width: 100%;
   color: rgb(97, 97, 97);
   box-sizing: border-box;
-  border: 1px solid lightgrey;
+  border: 1px solid #eeeeee;
 }
 .step-app > .step-content > .step-tab-panel form select:focus {
   outline: 0;
@@ -517,7 +522,7 @@ body {
                     Display Section
 ******************************************************/
 #wrapper .display-wrapper {
-  border: 1px solid lightgrey;
+  /* border: 1px solid lightgrey; */
   border-radius: 10px;
   flex: 1;
   display: flex;
