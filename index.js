@@ -28,6 +28,7 @@ var recitalsFormValidator = recitalsForm.validate();
 var definitionForm = $("#dynamic-definition-form");
 var definitionFormValidator = definitionForm.validate();
 
+let options;
 $("#demo").steps({
   transitionEffect: 2,
   transitionEffectSpeed: 200,
@@ -58,6 +59,7 @@ $("#demo").steps({
             flag = false;
           }
         });
+        console.log($("form#lendor-legal-form-1").length);
         return flag;
       }
       if (stepDirection === "backward") {
@@ -99,6 +101,16 @@ $("#demo").steps({
     return true;
   },
   onFinish: function () {
+    // var forms = $("#dynamic-lendor-forms").children();
+    // for (let i = 0; i < forms.length; i++) {
+    //   options = $(forms[i]).attr("id");
+    //   for (let n = 0; n < 2; n++) {
+    //     console.log(
+    //       $($($($("#" + options).children()[0]).children()[n]).children()[0])
+    //     );
+    //   }
+    // }
+    console.log(formIds);
     let data_json = {
       step1: {
         legal: {},
@@ -120,6 +132,10 @@ $("#demo").steps({
       step5: {
         definition: [],
         meaning: [],
+      },
+      formIds: {
+        legalForm: [],
+        individualForm: [],
       },
     };
     if (borrowerLegalOrIndividual) {
@@ -144,9 +160,10 @@ $("#demo").steps({
         "#borrower-individual-defined-1"
       ).val();
     }
+
     for (let i = 1; i <= lendorForms; i++) {
       let obj = {};
-      if ($("form#lendor-legal-form-" + i).length == 0) {
+      if ("lendor-individual-form-" + i === formIds[i].name) {
         $("form#lendor-individual-form-" + i + " input").each(function () {
           var input = $(this);
           var type = input.attr("onKeyUp");
@@ -322,26 +339,46 @@ function borrowerIndividualDefinedHandler(event) {
 }
 
 // Step 2
+let formIds = [
+  {
+    id: 1,
+    name: "lendor-legal-form-1",
+  },
+];
+// let formId = "";
 function toggleForm(type, id) {
   let form_id = -1;
   switch (type) {
     case "lender-legal":
       form_id = id;
-      $("#lendor-legal-radio-1").prop("checked", true);
+      $("#lendor-legal-radio-" + id).prop("checked", true);
       $("#lendor-individual-form-" + form_id).hide();
       $("#lendor-legal-form-" + form_id).show();
       $("#lendor-legal-display-" + form_id).show();
       $("#lendor-individual-display-" + form_id).hide();
+      // Add form type
+      formIds = formIds.map((obj) =>
+        obj.id === form_id
+          ? { ...obj, name: "lendor-legal-form-" + form_id }
+          : obj
+      );
+
       lendorLegalOrIndividual = true;
       break;
     case "lender-individual":
       form_id = id;
-      $("#lendor-individual-radio-1").prop("checked", true);
+      $("#lendor-individual-radio-" + id).prop("checked", true);
       $("#lendor-legal-form-" + form_id).hide();
       $("#lendor-individual-form-" + form_id).show();
       $("#lendor-legal-display-" + form_id).hide();
       $("#lendor-individual-display-" + form_id).show();
-      lendorLegalOrIndividual = false;
+      // Add form type
+      formIds = formIds.map((obj) =>
+        obj.id === form_id
+          ? { ...obj, name: "lendor-individual-form-" + form_id }
+          : obj
+      );
+
       break;
     default:
       break;
@@ -349,6 +386,7 @@ function toggleForm(type, id) {
 }
 let lendorTarget = $("#dynamic-lendor-forms");
 let lendorForms = 1;
+let formType;
 function add_lendor_form() {
   lendorForms++;
   let div = document.createElement("div");
@@ -462,6 +500,12 @@ function add_lendor_form() {
     lendorForms +
     ')"><i class="fa fa-minus"></i> Remove</button>';
   lendorTarget.append(div);
+  formType = {
+    id: lendorForms,
+    name: "lendor-legal-form-" + lendorForms,
+  };
+  formIds.push(formType);
+  console.log(formIds);
   lendorFormLength = $(".display-lender-inputs").children().length;
   showLenderInputs();
 }
@@ -469,6 +513,9 @@ function remove_lendor_form(id) {
   $("#form-div-" + id).remove();
   lendorFormLength = $(".display-lender-inputs").children().length;
   $("#display-lender-both-" + id).remove();
+  // remove form id
+  formIds = formIds.filter((obj) => obj.id !== id);
+  console.log(formIds);
 }
 // Company
 function lenderLegalCompanyHandler(event) {

@@ -614,3 +614,18 @@ body {
     width: 100%;
   }
 }
+
+@media (max-width: 900px) {
+  #wrapper {
+    flex-direction: column;
+  }
+  #wrapper .step-app > .step-steps > li.done > .step .bullet:after {
+    width: 110px;
+  }
+}
+
+@media (max-width: 705px) {
+  #wrapper .step-app > .step-steps > li.done > .step .bullet:after {
+    width: 100%;
+  }
+}
