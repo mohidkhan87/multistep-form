@@ -100,16 +100,6 @@ $("#demo").steps({
     return true;
   },
   onFinish: function () {
-    // var forms = $("#dynamic-lendor-forms").children();
-    // for (let i = 0; i < forms.length; i++) {
-    //   options = $(forms[i]).attr("id");
-    //   for (let n = 0; n < 2; n++) {
-    //     console.log(
-    //       $($($($("#" + options).children()[0]).children()[n]).children()[0])
-    //     );
-    //   }
-    // }
-    console.log(formIds);
     let data_json = {
       step1: {
         legal: {},
