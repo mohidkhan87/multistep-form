@@ -24,29 +24,16 @@ body {
   border-radius: 10px;
   padding: 10px 20px;
   flex: 1;
-
+  position: relative;
   background-color: #ffffff;
 }
-#wrapper .steps-wrapper .steps-header {
-  position: relative;
-}
-#wrapper .steps-wrapper .steps-header button {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  font-size: 28px;
-  background-color: transparent;
-  color: rgb(97, 97, 97);
-  transition: all 0.5s;
-}
+
 #wrapper .steps-wrapper .steps-header button:hover {
   color: rgb(9, 9, 122);
   top: 50%;
   transform: translateY(-50%) scale(0.9);
 }
-#wrapper .steps-wrapper .steps-header h1 {
+#wrapper .steps-wrapper h1 {
   text-align: center;
   font-weight: normal;
   margin: 36px 0px 28px;
@@ -293,6 +280,7 @@ body {
   display: flex;
   gap: 8px;
 }
+
 #wrapper .step-app > .step-footer > .step-btn {
   width: 100%;
   padding: 13px 16px;
@@ -308,6 +296,24 @@ body {
 
 #wrapper .step-app > .step-footer > .step-btn:hover {
   box-shadow: 0 0 0 2px white, 0 0 0 3px rgb(9, 9, 122);
+}
+
+#wrapper .step-app > .step-footer > .back-btn {
+  position: absolute;
+  top: 3rem;
+  left: 4%;
+  width: min-content;
+  color: rgb(97, 97, 97);
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  font-size: 30px;
+  transition: all 0.3s;
+}
+#wrapper .step-app > .step-footer > .back-btn:hover {
+  color: rgb(9, 9, 122);
+  box-shadow: none;
+  transform: scale(0.9);
 }
 /* Step 1 */
 /* #wrapper .step-app .step-content .step-tab-panel button.borroweraddbtn {
