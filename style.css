@@ -24,7 +24,25 @@ body {
 
   background-color: #ffffff;
 }
-#wrapper h1 {
+#wrapper .steps-wrapper .steps-header {
+  position: relative;
+}
+#wrapper .steps-wrapper .steps-header button {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  font-size: 26px;
+  color: rgb(97, 97, 97);
+  transition: all 0.5s;
+}
+#wrapper .steps-wrapper .steps-header button:hover {
+  color: rgb(9, 9, 122);
+  top: 50%;
+  transform: translateY(-50%) scale(0.9);
+}
+#wrapper .steps-wrapper .steps-header h1 {
   text-align: center;
   font-weight: normal;
   margin: 36px 0px 28px;

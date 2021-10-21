@@ -15,7 +15,12 @@
   <body>
     <div id="wrapper">
       <div class="steps-wrapper">
-        <h1>Loan Agreement</h1>
+        <div class="steps-header">
+          <button data-step-action="prev" class="step-btn">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <h1>Loan Agreement</h1>
+        </div>
         <div class="step-app" id="demo">
           <ul class="step-steps">
             <li data-step-target="step1">
@@ -547,7 +552,7 @@
 
           <!-- Step Footer -->
           <div class="step-footer">
-            <button data-step-action="prev" class="step-btn">Previous</button>
+            <!-- <button data-step-action="prev" class="step-btn">Previous</button> -->
             <button data-step-action="next" class="step-btn">Next</button>
             <button data-step-action="finish" class="step-btn">Finish</button>
           </div>
