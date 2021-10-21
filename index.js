@@ -59,7 +59,6 @@ $("#demo").steps({
             flag = false;
           }
         });
-        console.log($("form#lendor-legal-form-1").length);
         return flag;
       }
       if (stepDirection === "backward") {
@@ -161,10 +160,11 @@ $("#demo").steps({
       ).val();
     }
 
-    for (let i = 1; i <= lendorForms; i++) {
+    for (let i = 0; i < formIds.length; i++) {
       let obj = {};
-      if ("lendor-individual-form-" + i === formIds[i].name) {
-        $("form#lendor-individual-form-" + i + " input").each(function () {
+      let name = formIds[i].name;
+      if (name === "individual") {
+        $("form#lendor-individual-form-" + formIds[i].id + " input").each(function () {
           var input = $(this);
           var type = input.attr("onKeyUp");
           if (type === "lenderIndividualFirstnameHandler(event)") {
@@ -179,7 +179,7 @@ $("#demo").steps({
         });
         data_json.step2.individual.push(obj);
       } else {
-        $("form#lendor-legal-form-" + i + " input").each(function () {
+        $("form#lendor-legal-form-" + formIds[i].id + " input").each(function () {
           var input = $(this);
           var type = input.attr("onKeyUp");
           if (type === "lenderLegalCompanyHandler(event)") {
@@ -192,7 +192,7 @@ $("#demo").steps({
             obj.defined = input.val();
           }
         });
-        $("form#lendor-legal-form-" + i + " select").each(function () {
+        $("form#lendor-legal-form-" + formIds[i].id + " select").each(function () {
           var input = $(this);
           var type = input.attr("onchange");
 
@@ -375,7 +375,7 @@ function toggleForm(type, id) {
       // Add form type
       formIds = formIds.map((obj) =>
         obj.id === form_id
-          ? { ...obj, name: "lendor-individual-form-" + form_id }
+          ? { ...obj, name: "individual" }
           : obj
       );
 
@@ -502,10 +502,9 @@ function add_lendor_form() {
   lendorTarget.append(div);
   formType = {
     id: lendorForms,
-    name: "lendor-legal-form-" + lendorForms,
+    name: "legal",
   };
   formIds.push(formType);
-  console.log(formIds);
   lendorFormLength = $(".display-lender-inputs").children().length;
   showLenderInputs();
 }
@@ -515,7 +514,6 @@ function remove_lendor_form(id) {
   $("#display-lender-both-" + id).remove();
   // remove form id
   formIds = formIds.filter((obj) => obj.id !== id);
-  console.log(formIds);
 }
 // Company
 function lenderLegalCompanyHandler(event) {
